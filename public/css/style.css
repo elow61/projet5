@@ -70,7 +70,13 @@ a {
 }
 
 section {
-    padding-top: 80px;
+    padding-top: 100px;
+}
+
+h2 {
+    color: #6e4eb0;
+    text-align: left;
+    font-weight: 900;
 }
 
 /* ========================================================================================= */
@@ -194,10 +200,43 @@ h1 {
 
 /* ========================================================================================= */
 
-/* SECTION */
+/* SECTION INFO */
+
+#info {
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-info p {
+    text-align: justify;
+
+}
+
+.text-info p span {
+    font-weight: 900;
+}
 
 .mockup {
-    width: 40%;
+    width: 80%;
     height: auto;
-    float: right;
+}
+
+/* ========================================================================================= */
+
+/* SECION HOW */
+
+.how__bg {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#d5f5fd ,#5693d6);
+}
+
+#how h2 {
+    text-align: center;
 }

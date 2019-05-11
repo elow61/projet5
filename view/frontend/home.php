@@ -42,20 +42,29 @@
         </div>
     </header>
 
-    <section id="info">
-        <h2>Accédez aux informations rapidement</h2>
-        <p>
-            Vous souhaitez des détails sur une tâche ? 
-            <br>
-            Ajoutez des images, des dates limites ou encore
-            <br>
-            des commentaires à chacune de vos missions.
-        </p>
+    <!-- Section informations -->
+    <div id="info">
+        <div class="text-info">
+            <h2>Accédez aux informations rapidement</h2>
+            <p>
+                <span>Vous souhaitez des détails sur une tâche ?</span>
+                <br>
+                Ajoutez des images, des dates limites ou encore
+                <br>
+                des commentaires à chacune de vos missions.
+            </p>
+        </div>
         <aside>
-            <img class="mockup" src="../public/images/mockup.jpg" alt="">
+            <img class="mockup" src="../public/images/mockup.png" alt="Site web visible depuis un iMac">
         </aside>
-    </section>
+    </div>
 
+    <!-- Section how it works? -->
+    <section id="how">
+        <div class="how__bg"></div>
+        <h2>Comment ça marche ?</h2>
+        <div class="diapo"></div>
+    </section>
     
 </body>
 </html>
