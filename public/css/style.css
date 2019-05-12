@@ -206,6 +206,7 @@ h1 {
     padding-top: 80px;
     display: flex;
     justify-content: space-around;
+    padding-bottom: 80px;
 }
 
 .text-info p {
@@ -224,19 +225,91 @@ h1 {
 
 /* ========================================================================================= */
 
-/* SECION HOW */
+/* SECTION HOW */
 
-.how__bg {
+#how {
     position: relative;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     background: linear-gradient(#d5f5fd ,#5693d6);
+    padding-bottom: 100px;
 }
 
 #how h2 {
     text-align: center;
+}
+
+#slider {
+    padding-top: 60px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+}
+
+#slider img {
+    height: 100%;
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+
+}
+
+/* .slides::before {
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    border-radius: 12px / 65px;
+    box-shadow: 0 0 10px #000000;
+    z-index: 30;
+} */
+
+.slides figure + figure {
+    display: none;
+}
+
+.slide {
+    width: 100%;
+    height: auto;
+}
+
+/* Arrow */
+.command {
+    position: absolute;
+    top: 50%;
+    z-index: 20;
+}
+
+.command-prev {
+    left: -100px;
+}
+
+.command-next {
+    right: -100px;
+}
+
+.command i {
+    height: auto;
+    color: #6e4eb0;
+}
+
+.command-prev i {
+    position: absolute;
+    top: 5px;
+    left: 3px;
+}
+
+.command-prev i {
+    position: absolute;
+    top: 5px;
+    right: 3px;
 }

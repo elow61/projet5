@@ -7,6 +7,7 @@
     <title>Success Mission</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
 
     <!-- Section informations -->
     <div id="info">
-        <div class="text-info">
+        <section class="text-info">
             <h2>Accédez aux informations rapidement</h2>
             <p>
                 <span>Vous souhaitez des détails sur une tâche ?</span>
@@ -53,7 +54,7 @@
                 <br>
                 des commentaires à chacune de vos missions.
             </p>
-        </div>
+        </section>
         <aside>
             <img class="mockup" src="../public/images/mockup.png" alt="Site web visible depuis un iMac">
         </aside>
@@ -63,8 +64,31 @@
     <section id="how">
         <div class="how__bg"></div>
         <h2>Comment ça marche ?</h2>
-        <div class="diapo"></div>
+        <div id="slider">
+            <div id="button-prev" class="command command-prev"><i class="far fa-arrow-alt-circle-left fa-2x"></i></div>
+            <div id="button-next" class="command command-next"><i class="far fa-arrow-alt-circle-right fa-2x"></i></div>
+            <div id="container-slider">
+                <div class="slides">
+                    <figure class="slide">
+                        <img src="../public/images/slider/diapo1.jpg" alt="">
+                    </figure>
+                    <figure class="slide">
+                        <img src="../public/images/slider/diapo2.jpg" alt="">
+                    </figure>
+                    <figure class="slide">
+                        <img src="../public/images/slider/diapo3.jpg" alt="">
+                    </figure>
+                    <figure class="slide">
+                        <img src="../public/images/slider/diapo4.jpg" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Autre section -->
+    <section></section>
     
+    <script src="../public/js/Slider.js"></script>
 </body>
 </html>
