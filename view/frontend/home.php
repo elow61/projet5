@@ -65,8 +65,8 @@
         <div class="how__bg"></div>
         <h2>Comment ça marche ?</h2>
         <div id="slider">
-            <div id="button-prev" class="command command-prev"><i class="far fa-arrow-alt-circle-left fa-2x"></i></div>
-            <div id="button-next" class="command command-next"><i class="far fa-arrow-alt-circle-right fa-2x"></i></div>
+            <div id="button-prev" class="command command-prev" onclick="slider.returnImage();"><i class="far fa-arrow-alt-circle-left fa-2x"></i></div>
+            <div id="button-next" class="command command-next" onclick="slider.changeImage();"><i class="far fa-arrow-alt-circle-right fa-2x"></i></div>
             <div id="container-slider">
                 <div class="slides">
                     <figure class="slide">
@@ -88,10 +88,10 @@
                 </div>
                 <nav>
                     <ul>
-                        <a href="" class="step active"></a>
-                        <a href="" class="step"></a>
-                        <a href="" class="step"></a>
-                        <a href="" class="step"></a>
+                        <li class="step active"></li>
+                        <li class="step"></li>
+                        <li class="step"></li>
+                        <li class="step"></li>
                     </ul>
                 </nav>
             </div>

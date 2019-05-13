@@ -331,7 +331,7 @@ figcaption {
 
 }
 
-#container-slider nav a {
+#container-slider nav li {
     transition: all ease 3ms;
     margin: 15px;
     z-index: 1000;
@@ -344,12 +344,12 @@ figcaption {
     cursor: pointer;
 }
 
-#container-slider nav a.active {
+#container-slider nav li.active {
     background-color: #3FD5FB;
     width: 15px;
     height: 15px;
 }
 
-#container-slider nav a:hover {
+#container-slider nav li:hover {
     background-color: #3FD5FB;
 } 
