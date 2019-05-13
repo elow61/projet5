@@ -106,7 +106,7 @@ h2 {
 }
 
 /* Navigation */
-nav {
+header nav {
     z-index: 100;
     position: relative;
     display: flex;
@@ -260,18 +260,10 @@ h1 {
     max-width: 100%;
     height: auto;
     overflow: hidden;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 14px 0 #000;
 
 }
-
-/* .slides::before {
-    top: 15px;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    border-radius: 12px / 65px;
-    box-shadow: 0 0 10px #000000;
-    z-index: 30;
-} */
 
 .slides figure + figure {
     display: none;
@@ -287,6 +279,7 @@ h1 {
     position: absolute;
     top: 50%;
     z-index: 20;
+    cursor: pointer;
 }
 
 .command-prev {
@@ -313,3 +306,50 @@ h1 {
     top: 5px;
     right: 3px;
 }
+
+/* figcaption */
+figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: inherit;
+    background-color: rgba(77, 76, 76, 0.8);
+    padding: 20px;
+    color: #fdfdfd;
+}
+
+#container-slider nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#container-slider nav ul {
+    position: absolute;
+
+}
+
+#container-slider nav a {
+    transition: all ease 3ms;
+    margin: 15px;
+    z-index: 1000;
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #5693d6;
+    box-shadow: 0 0 2px 0 #fff;
+    cursor: pointer;
+}
+
+#container-slider nav a.active {
+    background-color: #3FD5FB;
+    width: 15px;
+    height: 15px;
+}
+
+#container-slider nav a:hover {
+    background-color: #3FD5FB;
+} 

@@ -71,17 +71,29 @@
                 <div class="slides">
                     <figure class="slide">
                         <img src="../public/images/slider/diapo1.jpg" alt="">
+                        <figcaption>...</figcaption>
                     </figure>
                     <figure class="slide">
                         <img src="../public/images/slider/diapo2.jpg" alt="">
+                        <figcaption>...</figcaption>
                     </figure>
                     <figure class="slide">
                         <img src="../public/images/slider/diapo3.jpg" alt="">
+                        <figcaption>...</figcaption>
                     </figure>
                     <figure class="slide">
                         <img src="../public/images/slider/diapo4.jpg" alt="">
+                        <figcaption>...</figcaption>
                     </figure>
                 </div>
+                <nav>
+                    <ul>
+                        <a href="" class="step active"></a>
+                        <a href="" class="step"></a>
+                        <a href="" class="step"></a>
+                        <a href="" class="step"></a>
+                    </ul>
+                </nav>
             </div>
         </div>
     </section>
