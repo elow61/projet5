@@ -1,0 +1,16 @@
+{
+    "name": "elodiemeunier/projet5",
+    "description": "Projet 5 pour la formation Développeur web Junior",
+    "authors": [
+        {
+            "name": "Elodie Meunier",
+            "email": "elow.m@live.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "class/"
+        }
+    },
+    "require": {}
+}
