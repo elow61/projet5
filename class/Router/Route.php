@@ -28,6 +28,14 @@ class Route {
     }
 
     public function call() {
-        return call_user_func_array($this->callable, $this->matches);
+
+        if (is_string($this->callable)) {
+            $params = explode('#', $this->callable);
+            $controller = "App\\Controller\\" . $params[0];
+            $controller = new $controller();
+            return call_user_func_array([$controller, $params[1], $this->matches]);
+        } else {
+            return call_user_func_array($this->callable, $this->matches);
+        }
     }
 }
