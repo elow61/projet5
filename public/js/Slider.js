@@ -49,6 +49,13 @@ class Slider {
             };
         });
     }
-    
+
+    clickOnStep () {
+        for (let i = 0; i < this.image.length; i = i+this.image.length) {
+            
+            this.step[i].addEventListener('click', () => this.changeImage(i));
+        }
+    }
+
 }
 const slider = new Slider('slide', 'step');

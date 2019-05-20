@@ -79,6 +79,14 @@ h2 {
     font-weight: 900;
 }
 
+
+.btn {
+    padding: 10px;
+    border: transparent;
+    border-radius: 6px 6px 6px 6px;
+    cursor: pointer;
+}
+
 /* ========================================================================================= */
 
 /* HEADER */
@@ -116,8 +124,8 @@ header nav {
 }
 
 #logo-menu {
-    width: 4%;
-    height: 4%;
+    width: 50px;
+    height: auto;
 }
 
 nav ul {
@@ -164,13 +172,6 @@ h1 {
     height: auto;
     border-left: 2px solid #3FD5FB;
     padding-right: 15px;
-}
-
-.btn a {
-    padding: 10px;
-    border: transparent;
-    border-radius: 6px 6px 6px 6px;
-    cursor: pointer;
 }
 
 .btn-look {
@@ -353,3 +354,62 @@ figcaption {
 #container-slider nav li:hover {
     background-color: #3FD5FB;
 } 
+
+/* ========================================================================================= */
+/* separation */
+
+/* SECTION BEGIN */
+
+#begin {
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+#begin h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.btn-begin {
+    background-color: #3FD5FB;
+    color: #fdfdfd;
+    margin-right: 10px;
+}
+
+/* ========================================================================================= */
+/* PAGE CONNEXION */
+
+.container-form {
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-form form {
+    text-align: center;
+}
+
+.container-form form p {
+    margin-bottom: 20px;
+}
+
+.container-form input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.container-form button {
+    background-color: #E6EAEC;
+    color: #6e4eb0;
+    padding: 10px;
+    border: transparent;
+    border-radius: 6px 6px 6px 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 900;
+
+}
+
