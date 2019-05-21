@@ -377,7 +377,7 @@ figcaption {
 }
 
 /* ========================================================================================= */
-/* PAGE CONNEXION */
+/* PAGE CONNEXION ET INSCRIPTION */
 
 .container-form {
     padding-top: 200px;
@@ -410,6 +410,50 @@ figcaption {
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 900;
+    margin-bottom: 20px;
 
 }
+
+.separation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.separate {
+    position: relative;
+    display: inline-block;
+}
+
+.separate::before {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 130px;
+    background-color: #000;
+    left: 30px;
+    top: 10px;
+}
+
+.separate::after {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 130px;
+    background-color: #000;
+    right: 30px;
+    top: 10px;
+}
+
+.already-account {
+    margin-top: 20px;
+}
+
+.link-co {
+    color: #6e4eb0;
+}
+
+/* ========================================================================================= */
+
 

@@ -10,6 +10,10 @@ ob_start();
             <p><input type="password" name="pass" placeholder="Votre mot de passe"></p>
             <button class="btn-connexion" type="submit">Se connecter</button>
         </form>
+        <div class="separation">
+            <div><p class="separate">ou</p></div>
+        </div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
     <div class="bubble-blue">
         <img src="<?= IMAGES ?>bubble_blue.svg" alt="">

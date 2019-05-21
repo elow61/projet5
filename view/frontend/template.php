@@ -11,6 +11,7 @@
     <meta property="og:title" content="Success Mission">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
+    <meta name="google-signin-client_id" content="785047213751-h0p7jjmjfvhdhmslgk5tv2822hfpsvut.apps.googleusercontent.com">
 </head>
 <body>
     <header>
@@ -23,12 +24,14 @@
                 </a>
             </div>
             <ul>
-                <li><a href="#info">En savoir plus</a></li>
+                <li><a href="/inscription">Inscription</a></li>
                 <li><a href="/connexion">Connexion</a></li>
             </ul>
         </nav>
     <?= $content ?>
 
+    <script src="<?= JS ?>api.js"></script>
     <script src="<?= JS ?>Slider.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>
