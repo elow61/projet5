@@ -1,12 +1,13 @@
 <?php 
 
-namespace App\Router;
+namespace Src;
 
 class Router 
 {
 
     private $url;
     private $routes = [];
+    
     public function __construct($url) {
         $this->url = $url;
     }

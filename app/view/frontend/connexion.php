@@ -15,7 +15,7 @@ ob_start();
         </div>
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </div>
-    <div class="bubble-blue">
+    <div class="bubble_blue">
         <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
     </div>  
 </header>

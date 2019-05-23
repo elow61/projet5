@@ -18,7 +18,7 @@ ob_start();
             <p>Vous avez déjà un compte ? <a class="link-co" href="/Connexion">Connexion</a></p>
         </div>
     </div>
-    <div class="bubble-blue">
+    <div class="bubble_blue">
         <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
     </div>
 </header>
