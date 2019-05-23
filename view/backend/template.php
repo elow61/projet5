@@ -6,26 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="<?= CSS ?>/backend/style.css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 </head>
 <body>
     <header>
-        <nav>
-            <div class="container-logo1">
+        <div class="container-btn__hamburger">
+            <div class="container-logo">
                 <a class="link-logo" href="/dashboard">
                     <img id="logo-menu" src="<?= IMAGES ?>logo.png" alt="Logo Success Mission">
                 </a>
             </div>
-            <!-- <img src="<?= IMAGES ?>bubble_gray.svg" alt="Bulle grise"> -->
             <div id="btn-hamburger">
                 <div class="barre"></div>
                 <div class="barre"></div>
                 <div class="barre"></div>
             </div>
+        </div>
+        <nav>
+            <ul>
+                <li class="pseudo">Elodie Meunier</li>
+                <hr>
+                <a href="#"><li>Profil</li></a>
+                <a href="/dashboard"><li>Tableau de bord</li></a>
+                <a href="#"><li>Créer un nouveau projet</li></a>
+                <hr>
+                <a href="/connexion"><li>Déconnexion</li></a>
+            </ul>
         </nav> 
     </header>
     <?= $content ?>
 
+    <script src="<?= JS ?>backend/main.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ ob_start();
 
     <div class="container-form">
         <h1>Connexion</h1>
-        <form action="" method="post">
+        <form action="/dashboard" method="post">
             <p><input type="email" name="email" placeholder="Votre e-mail"></p>
             <p><input type="password" name="pass" placeholder="Votre mot de passe"></p>
             <button class="btn-connexion" type="submit">Se connecter</button>

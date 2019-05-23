@@ -48,12 +48,32 @@ table {
 /* ========================================================================================= */
 
 /* GENERAL */
+html, body {
+    height: 100%;
+}
+
 body {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 1.2em;
     background-color: #141414;
     color: #fff;
 }
+
+header {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 /* ========================================================================================= */
-nav {
+
+/* DASHBOARD */
+
+.container-btn__hamburger {
     display: flex;
     justify-content: space-between;
     box-shadow: 0 .5rem 1rem #000;
@@ -76,4 +96,96 @@ nav {
     background-color: #3FD5FB;
     margin-top: 8px;
 }
+
+nav {
+    border-radius: 5px 5px 5px 5px;
+    float: right;
+    background-color: #333333;
+    padding: 15px;
+    line-height: 25px;
+
+    transform: translateX(100%);
+    transition: transform .6s ease-in-out;
+}
+
+nav.view {
+    transform: translateX(0%);
+}
+
+.pseudo {
+    text-align: center;
+}
+
+nav a:last-child {
+    color: #3FD5FB;
+}
+
+nav hr {
+    background: #3FD5FB;
+    height: .7px;
+    border: none;
+}
+
+.container-dashboard h1 {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    color: #3FD5FB;
+}
+
+.container-projects {
+    padding-left: 50px;
+    padding: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+}
+
+.project {
+    background-color: #333333;
+    border-radius: 5px 5px 5px 5px;
+    padding-left: 10px;
+    width: 300px;
+    height: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px #535353;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.project:hover {
+    transform: skewY(2deg) scale(1.3);
+}
+
+.project.red {
+    background-color: rgb(163, 53, 53);
+}
+
+.project.green {
+    background-color: rgb(94, 190, 75);
+}
+
+.project.blue {
+    background-color: #3FD5FB;
+}
+
+.project.yellow {
+    background-color: rgb(206, 216, 67);
+}
+
+.project.violet {
+    background-color: #6e4eb0;
+}
+
+.project h3 {
+    font-weight: normal;
+}
+
+.bubble-blue {
+    position: fixed;
+    bottom: -60px;
+    margin: auto;
+}
+
 
