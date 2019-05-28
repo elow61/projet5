@@ -4,10 +4,10 @@ ob_start();
 ?>
     <div class="container-form">
         <h1>Inscription</h1>
-        <form action="" method="post">
+        <form action="/dashboard" method="post">
             <p><input type="email" name="email" placeholder="Votre e-mail"></p>
             <p><input type="password" name="pass" placeholder="Votre mot de passe"></p>
-            <p><input type="password" name="pass" placeholder="Confirmez votre mot de passe"></p>
+            <p><input type="password" name="pass_confirm" placeholder="Confirmez votre mot de passe"></p>
             <button class="btn-connexion" type="submit">Commencer</button>
         </form>
         <div class="separation">

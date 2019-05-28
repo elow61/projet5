@@ -9,7 +9,8 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 define('HOST', 'http://'.$host);
 define('ROOT', $root);
 
-define('CLASSES', ROOT.'/app/class/');
+define('CONTROLLER', ROOT.'app/controller/');
+// define('CLASSES', ROOT.'/app/class/');
 define('VIEW_FRONT', ROOT.'/app/view/frontend/');
 define('VIEW_BACK', ROOT.'/app/view/backend/');
 

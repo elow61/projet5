@@ -2,44 +2,36 @@
 
 namespace App\Controller;
 
-use \App\Model\UsersManager;
+use Src\Helper;
+use App\Router\Request;
+use App\View\View;
 
 abstract class Controller {
-    
-    protected $action = '';
-    protected $view = '';
+   
+    private $action; // Action à réaliser 
+    protected $request; // Définit la requête entrante
 
-    public function __construct($action, $view) {
-        $this->setAction($action);
-        $this->ssetView($view);
-
+    public function setRequest(Request $request) {
+        $this->request = $request;
     }
 
-    public function executeAction() {
+    public function executeAction($action) {
         if (method_exists($this, $action)) {
             $this->action = $action;
             $this->{$this->action}();
         } else {
-            $controller = get_class($this);
-            throw new Exception('Action '.$action.' non définie dans la classe '.$controller);
+            $fileName = get_class($this);
+            throw new Exception('Action' . $action . ' non définie dans la classe ' . $fileName);
         }
     }
+    
+    // Méthode abstraite correspondant à l'action par défaut (ce qui oblige les classes dérivées à implémenter cette action par défaut)
+    abstract function index();
 
-    public function setAction($action) {
-        if (!is_string($action) || empty($action)) {
-            throw new Exception('L\'action doit être une chaine de caractère.');
-        }
-
-        $this->action = $action;
+    protected function generateView($datas = []) {
+        $fileName = get_class($this);
+        $controller = str_replace($fileName, "", "Controller");
+        $view = new View($this->action, $controller);
+        $view->generate($datas);
     }
-
-    public function setView($view) {
-        if (!is_string($view) || empty($view)) {
-            throw new Exception('La vue doit être une chaine de caractère.');
-        }
-
-        $this->view = $view;
-    }
-
-
 }
