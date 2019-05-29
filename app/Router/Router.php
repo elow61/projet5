@@ -15,29 +15,39 @@ class Router {
 
             $controller->executeAction($action);
         } catch (Exception $e) {
-            $this->messageError($e);
+            throw new \Exception('Impossible d\'exécuter la requête.');
         }
     }
 
-    public function callController(Request $request) {
-        $controller = 'home'; // Par défaut
+    private function callController(Request $request) {
+        $controller = 'Home'; // Par défaut
         if($request->paramExist('url')) {
             $controller = $request->getParam('url');
             $controller = ucfirst(strtolower($controller));
         }
         $fileName = $controller . 'Controller';
-        $file = CONTROLLER.$fileName."Controller.php";
+        $file = CONTROLLER.$fileName.'.php';
         if (file_exists($file)) {
-            require $file;
-            $controller = new fileName();
+
+            print_r($fileName);
+            echo '<hr>';
+            print_r($file);
+            echo '<hr>';
+            print_r($controller);
+
+            // Instanciation du controller adapté à la requête
+            require($file);
+            
+
+            $controller = new $fileName();
             $controller->setRequest($request);
             return $controller;
         } else {
-            echo ('Fichier introuvable');
+            echo ('Fichier '. $file .' introuvable');
         }
     }
 
-    public function callAction(Request $request) {
+    private function callAction(Request $request) {
         $action = 'index'; // par défaut
         if ($request->paramExist('action')) {
             $action = $request->getParam('action');

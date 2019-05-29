@@ -30,8 +30,13 @@ abstract class Controller {
 
     protected function generateView($datas = []) {
         $fileName = get_class($this);
-        $controller = str_replace($fileName, "", "Controller");
+        $controllerView = str_replace($fileName, "", "Controller");
         $view = new View($this->action, $controller);
         $view->generate($datas);
+    }
+
+    protected function redirecting($controller, $action = null) {
+        $racine = HOST . '/';
+        header('Location: ' . $racine . $controller . '/' . $action);
     }
 }
