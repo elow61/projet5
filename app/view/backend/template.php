@@ -25,13 +25,13 @@
         </div>
         <nav>
             <ul>
-                <li class="pseudo">Elodie Meunier</li>
+                <li class="pseudo"><?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] ?></li>
                 <hr>
                 <a href="#"><li>Profil</li></a>
                 <a href="/dashboard"><li>Tableau de bord</li></a>
                 <a href="#"><li>Créer un nouveau projet</li></a>
                 <hr>
-                <a href="/connexion"><li>Déconnexion</li></a>
+                <a href="/connexion/logout"><li>Déconnexion</li></a>
             </ul>
         </nav> 
     </header>

@@ -2,6 +2,8 @@
 
 namespace App\View;
 
+use App\Controller\Controller;
+
 class View {
 
     private $file;

@@ -25,20 +25,14 @@ class Router {
             $controller = $request->getParam('url');
             $controller = ucfirst(strtolower($controller));
         }
-        $fileName = $controller . 'Controller';
-        $file = CONTROLLER.$fileName.'.php';
-        if (file_exists($file)) {
+        $fileName = 'App\\Controller\\'.$controller . 'Controller';
+        $file = CONTROLLER.$controller.'Controller.php';
 
-            print_r($fileName);
-            echo '<hr>';
-            print_r($file);
-            echo '<hr>';
-            print_r($controller);
+        if (file_exists($file)) {
 
             // Instanciation du controller adapté à la requête
             require($file);
-            
-
+      
             $controller = new $fileName();
             $controller->setRequest($request);
             return $controller;

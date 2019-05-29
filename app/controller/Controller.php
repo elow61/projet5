@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use Src\Helper;
+use App\Helper;
 use App\Router\Request;
 use App\View\View;
 
 abstract class Controller {
-   
+    
+    protected $session;
     private $action; // Action à réaliser 
     protected $request; // Définit la requête entrante
 
@@ -21,7 +22,7 @@ abstract class Controller {
             $this->{$this->action}();
         } else {
             $fileName = get_class($this);
-            throw new Exception('Action' . $action . ' non définie dans la classe ' . $fileName);
+            throw new \Exception('Action' . $action . ' non définie dans la classe ' . $fileName);
         }
     }
     
