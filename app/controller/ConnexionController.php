@@ -9,22 +9,25 @@ class ConnexionController extends Controller {
 
     private $users;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->session = new Helper();
         $this->users = new UsersManager();
     }
 
-    public function index() {
+    public function index() 
+    {
         require VIEW_FRONT . 'connexion.php';
     }
 
-    public function login() {
+    public function login() 
+    {
         $users = $this->users->get($this->request->getParam('email'));
 
         // Vérifie que les champs ont étés remplis
         if ($this->request->paramExist('email') && $this->request->paramExist('pass')) {
-            $email = $this->request->getParam('email');
-            $pass = $this->request->getParam('pass');
+            $email = htmlspecialchars($this->request->getParam('email'));
+            $pass = htmlspecialchars($this->request->getParam('pass'));
 
             // Vérification du mot de passe
             $pass_true = password_verify($pass, $users['pass']);
@@ -46,7 +49,8 @@ class ConnexionController extends Controller {
         }
     }
 
-    public function logout() {
+    public function logout() 
+    {
         $_SESSION = [];
         setcookie(session_name(), '', time());
         session_destroy();
