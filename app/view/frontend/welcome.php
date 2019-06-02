@@ -15,7 +15,7 @@
     <meta name="google-signin-client_id" content="785047213751-h0p7jjmjfvhdhmslgk5tv2822hfpsvut.apps.googleusercontent.com">
 </head>
 <body>
-    <header>
+    <header style="min-height:0;">
         <img id="bubble-violet" src="<?= IMAGES ?>big-bubble.svg" alt="bulle violette">
         <nav>
             <div class="container-logo">
@@ -28,12 +28,25 @@
                 <li><a href="/connexion/logout">Déconnexion</a></li>
             </ul>
         </nav>
-        <div class="container-btn__create">
-            <a href="/create" class="btn btn-create">Créer votre premier projet</a>
-        </div>
         <div class="bubble_blue">
             <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
         </div>
     </header>
+
+    <main class="modal">
+        <button type="button" class="btn btn-create" onclick="modal.viewModal();">Créer votre premier projet</button>
+        <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
+            <div role="document" class="container-modal">
+                <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
+                <h2>Créer un projet</h2>
+                <form action="" method="post">
+                    <input type="text" name="project_name" id="project_name" placeholder="Entrez un nom de projet. Ex: Anniversaire Aurélie">
+                    <button type="submit" class="btn btn-create">Créer</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script src="<?= JS?>Modal.js"></script>
 </body>
 </html>
