@@ -39,7 +39,7 @@
             <div role="document" class="container-modal">
                 <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
                 <h2>Créer un projet</h2>
-                <form action="" method="post">
+                <form action="/welcome/create" method="post">
                     <input type="text" name="project_name" id="project_name" placeholder="Entrez un nom de projet. Ex: Anniversaire Aurélie">
                     <button type="submit" class="btn btn-create">Créer</button>
                 </form>

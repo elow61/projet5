@@ -32,7 +32,7 @@ class ConnexionController extends Controller {
             // Vérification du mot de passe
             $pass_true = password_verify($pass, $users['pass']);
             if($pass_true) {
-                $_SESSION['id'] = $users['id'];
+                $_SESSION['id'] = $users['id_user'];
                 $_SESSION['first_name'] = $users['first_name'];
                 $_SESSION['last_name'] = $users['last_name'];
 

@@ -107,7 +107,7 @@ class InscriptionController extends Controller {
     {
         $getUsers = $this->users->get($this->request->getParam('email'));
         echo 'connexion réussie';
-        $_SESSION['id'] = $getUsers['id'];
+        $_SESSION['id'] = $getUsers['id_user'];
         $_SESSION['first_name'] = $getUsers['first_name'];
         $_SESSION['last_name'] = $getUsers['last_name'];
         if ($this->session->is_connected()) {
