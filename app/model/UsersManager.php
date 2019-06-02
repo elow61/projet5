@@ -5,22 +5,25 @@ namespace App\Model;
 class UsersManager extends Manager {
 
     
-    public function __construct() {
+    public function __construct() 
+    {
         $this->db = $this->dbConnect();
     }
 
     // Save a new user
-    public function newUser($email, $pass) {
-        $req = $this->db->prepare('INSERT INTO users(email, pass, date_open_account)
-        VALUES(?, ?, NOW()') or die (var_dump($this->db->errorInfo()));
+    public function newUser($email, $pass, $first_name, $last_name) 
+    {
+        $req = $this->db->prepare('INSERT INTO users(email, pass, first_name, last_name, date_open_account)
+        VALUES(?, ?, ?, ?, NOW())') or die (var_dump($this->db->errorInfo()));
 
-        $users = $req->execute(array($email, $pass));
+        $users = $req->execute(array($email, $pass, $first_name, $last_name));
 
         return $users;
     }
-    // Get a user
-    public function get($email) {
-        $req = $this->db->prepare('SELECT id, email, pass, first_name, last_name,
+    // Get a user with his email 
+    public function get($email) 
+    {
+        $req = $this->db->prepare('SELECT id_user, email, pass, first_name, last_name,
         DATE_FORMAT(date_open_account, "%d/%m/%Y à %Hh%imin%ss") AS date_create
          FROM users WHERE email = ?') or die(var_dump($this->db->errorInfo()));
 
@@ -28,5 +31,15 @@ class UsersManager extends Manager {
         $users = $req->fetch();
 
         return $users;
+    }
+
+    // Get a user with his ID
+    public function getId($id) 
+    {
+        $req = $this->db->prepare('SELECT id_user, email, pass, first_name, last_name
+        FROM users WHERE id = ?') or die(var_dump($this->db->errorInfo()));
+
+        $req->execute(array($id));
+        $users = $req->fetch();
     }
 }
