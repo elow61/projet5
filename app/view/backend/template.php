@@ -37,6 +37,7 @@
     </header>
     <?= $content ?>
 
+    <script src="<?= JS ?>Modal.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
 </body>
 </html>

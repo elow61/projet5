@@ -68,6 +68,12 @@ a {
     color: inherit;
 }
 
+.btn {
+    padding: 10px;
+    border: transparent;
+    border-radius: 6px 6px 6px 6px;
+    cursor: pointer;
+}
 
 /* ========================================================================================= */
 
@@ -180,6 +186,7 @@ nav hr {
 
 .project h3 {
     font-weight: normal;
+    padding-top: 15px;
 }
 
 .bubble-blue {
@@ -188,4 +195,78 @@ nav hr {
     margin: auto;
 }
 
+/** modal **/
+
+.btn-create {
+    background-color: #E6EAEC;
+    color: #6e4eb0;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+/* Dialog overlay */
+
+.modal {
+    position: absolute;
+    left: 50px;
+    margin-bottom: 50px;
+}
+
+
+.dialog {
+    position: fixed;
+    top: 0; right: 0;  left: 0;
+    background-color: rgba(0, 0, 0, .7);
+
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    padding: 10rem;
+    transition: .2s;
+
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.container-modal {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    max-width: 50rem;
+    margin: auto;
+
+}
+
+.container-modal button:first-child {
+    color: #3FD5FB;
+    border: 1px solid #000;
+    font-weight: 900;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.container-modal h2 {
+    text-align: center;
+}
+
+.container-modal form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-modal form input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #000;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.dialog[aria-hidden="true"] {
+    visibility: hidden;
+    opacity: 0;
+}
 
