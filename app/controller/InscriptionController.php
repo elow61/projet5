@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Helper;
 use App\Model\UsersManager;
 
 class InscriptionController extends Controller {
@@ -12,7 +11,6 @@ class InscriptionController extends Controller {
     public function __construct() 
     {
         $this->users = new UsersManager();
-        $this->session = new Helper();
     }
 
     public function index() 

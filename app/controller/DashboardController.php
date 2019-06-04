@@ -2,21 +2,20 @@
 
 namespace App\Controller;
 
-use App\Helper;
 use App\Model\UsersManager;
 
 class DashboardController extends Controller {
-    
-    public function __construct() 
-    {
-        $this->session = new Helper();
-    }
 
     public function index() 
     {
-        if ($this->session->is_connected()) {
+        if ($this->session->is_connected()) 
+        {
+            $projects = $this->project->getProject($_SESSION['id']);
             require VIEW_BACK . '/dashboard.php';
-        } else {
+
+        } 
+        else 
+        {
             echo 'no connecté.';
         }
     }

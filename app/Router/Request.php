@@ -6,18 +6,24 @@ class Request {
     
     private $params;
 
-    public function __construct($params) {
+    public function __construct($params) 
+    {
         $this->params = $params;
     }
 
-    public function paramExist($name) {
+    public function paramExist($name) 
+    {
         return (isset($this->params[$name]) && $this->params[$name] != "");
     }
 
-    public function getParam($name) {
-        if ($this->paramExist($name)) {
+    public function getParam($name) 
+    {
+        if ($this->paramExist($name)) 
+        {
             return $this->params[$name];
-        } else {
+        } 
+        else 
+        {
             throw new \Exception('Paramètre ' . $name . ' absent de la requête.');
         }
     }

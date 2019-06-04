@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Helper;
 use App\Model\UsersManager;
 
 class ConnexionController extends Controller {
@@ -11,7 +10,6 @@ class ConnexionController extends Controller {
 
     public function __construct() 
     {
-        $this->session = new Helper();
         $this->users = new UsersManager();
     }
 

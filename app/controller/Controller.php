@@ -4,17 +4,22 @@ namespace App\Controller;
 
 use App\Helper;
 use App\Router\Request;
+use App\Model\ProjectManager;
 use App\View\View;
 
 abstract class Controller {
     
     protected $session;
+    protected $project;
     private $action; // Action à réaliser 
     protected $request; // Définit la requête entrante
 
     public function setRequest(Request $request) 
     {
         $this->request = $request;
+        $this->project = new ProjectManager();
+        $this->session = new Helper();
+
     }
 
     public function executeAction($action) 
@@ -30,6 +35,27 @@ abstract class Controller {
     
     // Méthode abstraite correspondant à l'action par défaut (ce qui oblige les classes dérivées à implémenter cette action par défaut)
     abstract function index();
+
+    public function create() 
+    {
+        if ($this->request->paramExist('project_name')) 
+        {
+            $project = htmlspecialchars($this->request->getParam('project_name'));
+            if ($this->session->is_connected()) {
+                $project_name = $this->project->newProject($project);
+                $id = $this->project->projectId($_SESSION['id'], $project);
+                $this->redirecting('dashboard');
+            } 
+            else 
+            {
+                'Veuillez être connecté avant de créer un projet.';
+            }
+        } 
+        else 
+        {
+            echo 'Veuillez entrer un nom de projet.';
+        }
+    }
 
     protected function generateView($datas = []) 
     {
