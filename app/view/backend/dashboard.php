@@ -9,9 +9,18 @@ ob_start();
         <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
             <div role="document" class="container-modal">
                 <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
-                <h2>Créer un projet</h2>
+                <h2>Créer un projet :</h2>
                 <form action="/dashboard/create" method="post">
                     <input type="text" name="project_name" id="project_name" placeholder="Entrez un nom de projet. Ex: Anniversaire Aurélie">
+                    <label for="color">Veuillez choisir une couleur de référence :</label>
+                    <div class="container-color">
+                        <div class="color" style="background-color:rgb(163, 53, 53);"></div>
+                        <div class="color" style="background-color:rgb(94, 190, 75);"></div>
+                        <div class="color" style="background-color:#3fd5fb;"></div>
+                        <div class="color" style="background-color:rgb(206, 216, 67);"></div>
+                        <div class="color" style="background-color:#6e4eb0;"></div>
+                        <div class="color" style="background-color:#333333;"></div>
+                    </div>
                     <button type="submit" class="btn btn-create">Créer</button>
                 </form>
             </div>

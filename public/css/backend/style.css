@@ -232,11 +232,14 @@ nav hr {
 
 .container-modal {
     flex: 1;
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
     max-width: 50rem;
     margin: auto;
+}
 
+.container-modal h2 {
+    color: #6e4eb0;
 }
 
 .container-modal button:first-child {
@@ -268,5 +271,24 @@ nav hr {
 .dialog[aria-hidden="true"] {
     visibility: hidden;
     opacity: 0;
+}
+
+/* choice of color */
+.container-modal form label {
+    margin-bottom: 5px;
+    color: #6e4eb0;
+}
+
+.container-color {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.color {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
