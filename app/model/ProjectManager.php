@@ -19,15 +19,15 @@ class ProjectManager extends Manager {
         return $project_name;
     }
 
-    public function projectId($id_user) 
+    public function projectId($project_name) 
     {
-        $req = $this->db->prepare('INSERT INTO user_project(id_project)
-        SELECT id_project FROM project,
-        SELECT id_user FROM users WHERE id_user = ?');
+       $req = $this->db->prepare('INSERT INTO user_project(id_user, id_project)
+       VALUES(?, )
+       WHERE project_name = ?') or die(print_r($this->db->errorInfo()));
 
-        $project_id = $req->execute(array($id_user));
+       $id = $req->execute(array($project_name));
 
-        return $project_id;
+       return $id;
     }
 
 }

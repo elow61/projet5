@@ -42,4 +42,15 @@ class UsersManager extends Manager {
         $req->execute(array($id));
         $users = $req->fetch();
     }
+
+    // Add id's user to the table user_project
+    public function addId($id_user) 
+    {
+        $req = $this->db->prepare('INSERT INTO user_project(id_user)
+        VALUES(?)') or die(print_r($this->db->errorInfo()));
+
+        $userId = $req->execute(array($id_user));
+
+        return $userId;
+    }
 }

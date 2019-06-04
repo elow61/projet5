@@ -8,10 +8,12 @@ use App\Model\ProjectManager;
 
 class WelcomeController extends Controller {
 
+    private $user;
     private $project;
 
     public function __construct() 
     {
+        $this->user = new UsersManager();
         $this->project = new ProjectManager();
         $this->session = new Helper();
     }
@@ -33,7 +35,8 @@ class WelcomeController extends Controller {
             $project = htmlspecialchars($this->request->getParam('project_name'));
             if ($this->session->is_connected()) {
                 $project_name = $this->project->newProject($project);
-                $project_id = $this->project->projectId($_SESSION['id']);
+                $id = $this->project->projectId($project);
+                // $userId = $this->user->addId($_SESSION['id']);
                 $this->redirecting('dashboard');
             } 
             else 
