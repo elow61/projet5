@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Helper;
 use App\Router\Request;
+use App\Model\UsersManager;
 use App\Model\ProjectManager;
 use App\View\View;
 
 abstract class Controller {
     
     protected $session;
+    protected $users;
     protected $project;
     private $action; // Action à réaliser 
     protected $request; // Définit la requête entrante
@@ -17,6 +19,7 @@ abstract class Controller {
     public function setRequest(Request $request) 
     {
         $this->request = $request;
+        $this->users = new UsersManager();
         $this->project = new ProjectManager();
         $this->session = new Helper();
 

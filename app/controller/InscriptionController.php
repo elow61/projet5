@@ -2,16 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\UsersManager;
 
 class InscriptionController extends Controller {
-
-    private $users;
-
-    public function __construct() 
-    {
-        $this->users = new UsersManager();
-    }
 
     public function index() 
     {

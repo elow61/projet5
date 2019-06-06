@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\UsersManager;
-
 class DashboardController extends Controller {
 
     public function index() 

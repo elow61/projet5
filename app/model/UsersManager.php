@@ -34,23 +34,12 @@ class UsersManager extends Manager {
     }
 
     // Get a user with his ID
-    public function getId($id) 
-    {
-        $req = $this->db->prepare('SELECT id_user, email, pass, first_name, last_name
-        FROM users WHERE id = ?') or die(var_dump($this->db->errorInfo()));
+    // public function getId($id) 
+    // {
+    //     $req = $this->db->prepare('SELECT id_user, email, pass, first_name, last_name
+    //     FROM users WHERE id = ?') or die(var_dump($this->db->errorInfo()));
 
-        $req->execute(array($id));
-        $users = $req->fetch();
-    }
-
-    // Add id's user to the table user_project
-    public function addId($id_user) 
-    {
-        $req = $this->db->prepare('INSERT INTO user_project(id_user)
-        VALUES(?)') or die(print_r($this->db->errorInfo()));
-
-        $userId = $req->execute(array($id_user));
-
-        return $userId;
-    }
+    //     $req->execute(array($id));
+    //     $users = $req->fetch();
+    // }
 }

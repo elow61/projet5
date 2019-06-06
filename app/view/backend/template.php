@@ -29,7 +29,6 @@
                 <hr>
                 <a href="#"><li>Profil</li></a>
                 <a href="/dashboard"><li>Tableau de bord</li></a>
-                <a href="#"><li>Créer un nouveau projet</li></a>
                 <hr>
                 <a href="/connexion/logout"><li>Déconnexion</li></a>
             </ul>
