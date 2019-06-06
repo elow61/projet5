@@ -29,7 +29,7 @@ ob_start();
         <div class="container-projects">
             <?php if (is_array($projects)): ?>
                 <?php foreach ($projects as $project): ?>
-                    <a href="/workspace/<?=$projects['id_project']?>">
+                    <a href="/workspace/<?=$project['id_project']?>">
                         <div class="project">
                             <h3><?= htmlspecialchars_decode($project['p_name'])?></h3>
                         </div>

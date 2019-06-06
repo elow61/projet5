@@ -1,5 +1,8 @@
-<?php
-$title = $project['p_name'] . ' | ' . $user['first_name'];
+<?php 
+    foreach($projects as $project)
+    {
+        $title = $project['p_name'] . ' | ' . $_SESSION['first_name'];
+    }
 ob_start();
 ?>
 

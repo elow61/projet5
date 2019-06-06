@@ -2,17 +2,7 @@
 
 namespace App\Controller;
 
-use App\Helper;
-use App\Model\UsersManager;
-use App\Model\ProjectManager;
-
-class Workspace extends Controller {
-
-
-    public function __construct()
-    {
-        $this->session = new Helper();
-    }
+class WorkspaceController extends Controller {
 
     public function index()
     {
@@ -20,8 +10,24 @@ class Workspace extends Controller {
         {
             if ($this->request->paramExist('id'))
             {
-                require VIEW_BACK . '/workspace/' . $project['p_name'] . '.php';
+                if ($this->request->getParam('id') && !empty($this->project->getProjectById($this->request->getParam('id'))))
+                {   
+                    $projects = $this->project->getProject($_SESSION['id']);
+                    require VIEW_BACK . 'workspace.php';
+                }
+                else
+                {
+                    echo 'Ce projet n\'existe pas.';
+                }
+            } 
+            else 
+            {
+                echo 'Aucun projet trouvé.';
             }
+        } 
+        else 
+        {
+            echo 'Vous devez être connecté.';
         }
     }
 }
