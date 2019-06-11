@@ -9,16 +9,17 @@ class ProjectManager extends Manager {
         $this->db = $this->dbConnect();
     }
 
-    public function newProject($project) 
+    public function newProject($project, $color) 
     {
-        $req = $this->db->prepare('INSERT INTO project(project_name)
-        VALUES(?)') or die (var_dump($this->db->errorInfo()));
+        $req = $this->db->prepare('INSERT INTO project(project_name, color_project)
+        VALUES(?, ?)') or die (var_dump($this->db->errorInfo()));
 
-        $project_name = $req->execute(array($project));
+        $project_name = $req->execute(array($project, $color));
 
         return $project_name;
     }
 
+    // Add the id's project and the id's user in the table reference (user_project)
     public function projectId($id_user, $project_name) 
     {
        $req = $this->db->prepare('INSERT INTO user_project(id_user, id_project)
@@ -32,7 +33,7 @@ class ProjectManager extends Manager {
 
     public function getProject($id_user) 
     {
-        $req = $this->db->prepare('SELECT p.id_project p_id, p.project_name p_name, 
+        $req = $this->db->prepare('SELECT p.id_project p_id, p.project_name p_name, p.color_project p_color, 
         i.id_user u_id, i.id_project id_project
         FROM project AS p
         INNER JOIN user_project AS i
@@ -51,5 +52,15 @@ class ProjectManager extends Manager {
         $project_id = $req->fetch();
 
         return $project_id;
+    }
+
+    public function getProjectByName($name) 
+    {
+        $req = $this->db->prepare('SELECT id_project, project_name FROM project WHERE project_name = ? ')
+        or die(var_dump($this->db->errorInfo()));
+        $req->execute(array($name));
+        $project_name = $req->fetch();
+
+        return $project_name;
     }
 }

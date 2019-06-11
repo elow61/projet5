@@ -12,14 +12,25 @@ ob_start();
                 <h2>Créer un projet :</h2>
                 <form action="/dashboard/create" method="post">
                     <input type="text" name="project_name" id="project_name" placeholder="Entrez un nom de projet. Ex: Anniversaire Aurélie">
-                    <label for="color">Veuillez choisir une couleur de référence :</label>
+                    <h3>Veuillez choisir une couleur de référence :</h3>
                     <div class="container-color">
-                        <div class="color" style="background-color:rgb(163, 53, 53);"></div>
-                        <div class="color" style="background-color:rgb(94, 190, 75);"></div>
-                        <div class="color" style="background-color:#3fd5fb;"></div>
-                        <div class="color" style="background-color:rgb(206, 216, 67);"></div>
-                        <div class="color" style="background-color:#6e4eb0;"></div>
-                        <div class="color" style="background-color:#333333;"></div>
+                        <input type="radio" name="color" id="red" value="#BC1D35, #EB8C53">
+                        <label for="red" class="red"></label>
+
+                        <input type="radio" name="color" id="green" value="#5EBE4B,#CED843">
+                        <label for="green" class="green"></label>
+
+                        <input type="radio" name="color" id="blue" value="#3FD5FB, #f3afe4">
+                        <label for="blue" class="blue"></label>
+
+                        <input type="radio" name="color" id="yellow" value="#CED843, #D1721D">
+                        <label for="yellow" class="yellow"></label>
+
+                        <input type="radio" name="color" id="violet" value="#6362D4, #811DD1">
+                        <label for="violet" class="violet"></label>
+
+                        <input type="radio" name="color" id="black" value="#1c212e, #242d3d">
+                        <label for="black" class="black"></label>
                     </div>
                     <button type="submit" class="btn btn-create">Créer</button>
                 </form>
@@ -30,7 +41,7 @@ ob_start();
             <?php if (is_array($projects)): ?>
                 <?php foreach ($projects as $project): ?>
                     <a href="/workspace/<?=$project['id_project']?>">
-                        <div class="project">
+                        <div class="project" style="background:linear-gradient(<?= $project['p_color']?>);">
                             <h3><?= htmlspecialchars_decode($project['p_name'])?></h3>
                         </div>
                     </a>
@@ -41,31 +52,6 @@ ob_start();
         <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
     </div>
 </div>
-
-<!-- <div class="container-dashboard">
-    <h1>Tableau de bord</h1>
-    <div class="container-projects">
-        <div class="project yellow">
-            <h3>Projet 5</h3>
-        </div>
-        <div class="project red">
-            <h3>Anniversaire Aurélie</h3>
-        </div>
-        <div class="project blue">
-            <h3>Recherche d'emplois</h3>
-        </div>
-        <div class="project green">
-            <h3>Recherche d'emplois</h3>
-        </div>
-        <div class="project violet">
-            <h3>Recherche d'emplois</h3>
-        </div>
-        <div class="project">
-            <h3>Recherche d'emplois</h3>
-        </div>
-    </div>
-</div> -->
-
 <?php 
 $content = ob_get_clean();
 require 'template.php';

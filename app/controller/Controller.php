@@ -41,22 +41,35 @@ abstract class Controller {
 
     public function create() 
     {
-        if ($this->request->paramExist('project_name')) 
+        $projectDB = $this->project->getProjectByName($this->request->getParam('project_name'));
+
+        if ($this->request->paramExist('project_name') && $this->request->paramExist('color')) 
         {
+            $color = $this->request->getParam('color');
             $project = htmlspecialchars($this->request->getParam('project_name'));
-            if ($this->session->is_connected()) {
-                $project_name = $this->project->newProject($project);
-                $id = $this->project->projectId($_SESSION['id'], $project);
-                $this->redirecting('dashboard');
-            } 
+
+            if ($project !== $projectDB['project_name'])
+            {
+                if ($this->session->is_connected()) {
+                    $project_name = $this->project->newProject($project, $color);
+                    $id = $this->project->projectId($_SESSION['id'], $project);
+                    $this->redirecting('dashboard');
+                } 
+                else 
+                {
+                    'Veuillez être connecté avant de créer un projet.';
+                } 
+            }
             else 
             {
-                'Veuillez être connecté avant de créer un projet.';
+                echo 'Le projet existe déjà.';
             }
+
+            
         } 
         else 
         {
-            echo 'Veuillez entrer un nom de projet.';
+            echo 'Veuillez entrer un nom de projet ou sélectionner une couleur de référence.';
         }
     }
 
