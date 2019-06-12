@@ -57,7 +57,6 @@ body {
     font-family: 'Alegreya Sans', sans-serif;
     font-size: 1.2em;
     color: #fff;
-    /* background-image: radial-gradient(circle, #191f2a, #151b26, #121822, #0e141f, #090f1b);} */
     background-image: linear-gradient(to right bottom, #1f2835, #1e2532, #1d222f, #1c202c, #1b1d29);
 }
 header {
@@ -78,8 +77,8 @@ a {
 
 /* ========================================================================================= */
 
-/* DASHBOARD */
 
+/* MENU */
 .container-btn__hamburger {
     display: flex;
     justify-content: space-between;
@@ -106,7 +105,7 @@ a {
 nav {
     border-radius: 5px 5px 5px 5px;
     float: right;
-    background-color: #33323f;
+    background-color: #1f2835;
     padding: 15px;
     line-height: 25px;
 
@@ -132,46 +131,39 @@ nav hr {
     border: none;
 }
 
-.container-dashboard h1 {
+
+/* DASHBOARD */
+
+.headline {
     position: absolute;
-    top: 100px;
-    left: 50px;
-    color: #3FD5FB;
+    top: 50px;
+    background-image: url(/public/images/wave-blue.svg);
+    background-repeat: repeat-x;
+    background-position: top center;
+    background-position-x: 100px;
+    background-position-y: 80%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: transitionWave linear infinite 20s;
 }
 
-.container-projects {
-    padding-left: 50px;
-    padding: 60px;
+@keyframes transitionWave {
+    from {background-position-x: 0;}
+    to {background-position-x: 100%;}
+}
+
+.container-dashboard h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+
+/* SPACE DASHBOARD */
+.container-space__dashboard {
     display: flex;
-    flex-wrap: wrap;
-    overflow-y: hidden;
-}
 
-.project {
-    background: linear-gradient(#1d2841, #2d384d); 
-    border-radius: 5px 5px 5px 5px;
-    padding-left: 10px;
-    width: 300px;
-    height: 150px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: transform .2s;
-}
-
-.project:hover {
-    transform: skewY(2deg) scale(1.3);
-}
-
-.project h3 {
-    font-weight: normal;
-    padding-top: 15px;
-}
-
-.bubble-blue {
-    position: fixed;
-    bottom: -80px;
-    margin: auto;
 }
 
 /** modal **/
@@ -300,4 +292,64 @@ label:hover {
 .yellow {background-color: rgb(206, 216, 67);} /* #CED843 */
 .violet {background-color: #6e4eb0;}
 .black {background-color: #101119;}
+
+/* projects */
+.container-projects {
+    margin-left: 10px;
+    padding-top: 60px;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.project {
+    border-radius: 5px 5px 5px 5px;
+    padding-left: 10px;
+    width: 300px;
+    height: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #fff;
+    transition: transform .2s;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.project:hover {
+    transform: scale(1.2);
+}
+
+.project h3 {
+    font-weight: normal;
+    padding-top: 15px;
+}
+
+.bubble {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .3);
+    z-index: 11;
+}
+.bubble-top {
+    top: 7px;
+    left: 36px;
+}
+
+.bubble-bottom {
+    top: -34px;
+    left: 5px;
+}
+
+.bubble-blue {
+    position: fixed;
+    bottom: -80px;
+    margin: auto;
+}
+
+
 
