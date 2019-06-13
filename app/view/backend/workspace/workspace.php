@@ -7,7 +7,6 @@ ob_start();
 ?>
 
 <div class="container-workspace">
-    <h1>Bon courage</h1>
 </div>
 
 <?php 

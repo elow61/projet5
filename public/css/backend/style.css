@@ -77,7 +77,6 @@ a {
 
 /* ========================================================================================= */
 
-
 /* MENU */
 .container-btn__hamburger {
     display: flex;
@@ -162,14 +161,22 @@ nav hr {
 
 /* SPACE DASHBOARD */
 .container-space__dashboard {
+    position: relative;
+    top: 200px;
     display: flex;
+    flex-direction: column;
+}
 
+.list-projects {
+    position: absolute;
+    padding-top: 9px;
+    padding-left: 25px;
 }
 
 /** modal **/
 
 .btn-create {
-    background-color: #181d28;
+    background-color: #E6EAEC;
     color: #3FD5FB;
     text-transform: uppercase;
     font-weight: 900;
@@ -180,10 +187,13 @@ nav hr {
 
 .modal {
     position: absolute;
-    left: 50px;
-    margin-bottom: 50px;
+    left: 25px;
+    top: 25%;
 }
 
+.create-project {
+    background: linear-gradient(#1c212e, #242d3d);
+}
 
 .dialog {
     position: fixed;
@@ -291,12 +301,13 @@ label:hover {
 .blue {background-color: #3FD5FB;}
 .yellow {background-color: rgb(206, 216, 67);} /* #CED843 */
 .violet {background-color: #6e4eb0;}
-.black {background-color: #101119;}
+.white {background-color: #E6EAEC;}
 
 /* projects */
 .container-projects {
-    margin-left: 10px;
-    padding-top: 60px;
+    margin-top: 20px;
+    padding-left: 25px;
+    padding-top: 40px;
     display: flex;
     overflow-y: hidden;
 }

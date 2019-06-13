@@ -5,7 +5,9 @@ ob_start();
         <div class="container-accroche">
             <div class="accroche">
                 <div class="title">
-                    <h1>Success<br>Mission</h1>
+                    <div class="headline">
+                        <h1>Success<br>Mission</h1>
+                    </div>
                     <div class="text">
                         <div class="barre-verticale"></div>
                         <p>Manipulez vos tâches avec facilité, organisez votre planning <br> et sélectionnez vos priorités avec souplesse.</p>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="<?= CSS ?>/backend/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="<?= CSS ?>/backend/workspace/red.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
@@ -34,8 +34,41 @@
             </ul>
         </nav> 
     </header>
-    <?= $content ?>
-
+    <div class="container-workspace">
+        <div class="headline">
+            <h1><?= $project['p_name']?></h1>
+        </div>
+        <div class="container-list">
+            <div class="list currently">
+                <h2>En cours</h2>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+            </div>
+            <div class="list todo">
+                <h2>A faire</h2>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+            </div>
+            <div class="list finish">
+                <h2>Terminé</h2>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+                <div class="task"></div>
+            </div>
+        </div>
+        <div class="bubble-red">
+            <img src="<?= IMAGES ?>bubble_red.svg" alt="">
+        </div>
+    </div>
+    
     <script src="<?= JS ?>Modal.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
 </body>

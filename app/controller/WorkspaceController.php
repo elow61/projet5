@@ -13,7 +13,7 @@ class WorkspaceController extends Controller {
                 if ($this->request->getParam('id') && !empty($this->project->getProjectById($this->request->getParam('id'))))
                 {   
                     $projects = $this->project->getProject($_SESSION['id']);
-                    require VIEW_BACK . 'workspace.php';
+                    require VIEW_BACK . 'workspace/workspace.php';
                 }
                 else
                 {
