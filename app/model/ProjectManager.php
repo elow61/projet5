@@ -54,6 +54,16 @@ class ProjectManager extends Manager {
         return $project_id;
     }
 
+    public function getOneProject($id)
+    {
+        $req = $this->db->prepare('SELECT id_project, project_name, color_project FROM project WHERE id_project = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $req->execute(array($id));
+        $project_id = $req->fetch();
+
+        return $project_id;
+    }
+
     public function getProjectByName($name) 
     {
         $req = $this->db->prepare('SELECT id_project, project_name FROM project WHERE project_name = ? ')
