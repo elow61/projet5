@@ -92,6 +92,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                 <div class="task"></div>
                 <div class="task"></div>
             </div>
+            <div class="add-list" style="background-color: <?= $color ?>;" onclick="ajax()"></div>
         </div>
         <div class="bubble-end">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="237" viewBox="0 0 157 237">                
@@ -116,6 +117,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         </div>
     </div>
     
+    <script src="<?= JS ?>Ajax.js"></script>
     <script src="<?= JS ?>Modal.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
 </body>

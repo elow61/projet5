@@ -386,4 +386,30 @@ label:hover {
     margin: auto;
 }
 
+.add-list {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
+.add-list::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 44%;
+    width: 4px;
+    height: 20px;
+    background-color: #1f2835;
+}
+
+.add-list::after {
+    content: '';
+    position: absolute;
+    top: 44%;
+    left: 13%;
+    width: 20px;
+    height: 4px;
+    background-color: #1f2835;
+}
