@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <img id="bubble-violet" src="<?= IMAGES ?>big-bubble.svg" alt="bulle violette">
+        <img id="bubble-violet" src="<?= IMAGES_BUBBLE ?>big-bubble.svg" alt="bulle violette">
         
         <nav>
             <div class="container-logo">

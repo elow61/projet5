@@ -14,5 +14,9 @@ define('VIEW_FRONT', ROOT.'/app/view/frontend/');
 define('VIEW_BACK', ROOT.'/app/view/backend/');
 
 define('CSS', HOST.'/public/css/');
+
 define('IMAGES', HOST.'/public/images/');
+define('IMAGES_BUBBLE', HOST.'/public/images/bubbles/');
+define('IMAGES_WAVE', HOST.'/public/images/waves/');
+
 define('JS', HOST.'/public/js/');

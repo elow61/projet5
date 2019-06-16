@@ -16,7 +16,7 @@
 </head>
 <body>
     <header style="min-height:0;">
-        <img id="bubble-violet" src="<?= IMAGES ?>big-bubble.svg" alt="bulle violette">
+        <img id="bubble-violet" src="<?= IMAGES_BUBBLE ?>big-bubble.svg" alt="bulle violette">
         <nav>
             <div class="container-logo">
                 <a class="link-logo" href="/">
@@ -41,6 +41,26 @@
                 <h2>Créer un projet</h2>
                 <form action="/welcome/create" method="post">
                     <input type="text" name="project_name" id="project_name" placeholder="Entrez un nom de projet. Ex: Anniversaire Aurélie">
+                    <h3>Veuillez choisir une couleur de référence :</h3>
+                    <div class="container-color">
+                        <input type="radio" name="color" id="red" value="#BC1D35, #EB8C53">
+                        <label for="red" class="red"></label>
+
+                        <input type="radio" name="color" id="green" value="#5EBE4B,#CED843">
+                        <label for="green" class="green"></label>
+
+                        <input type="radio" name="color" id="blue" value="#3FD5FB, #f3afe4">
+                        <label for="blue" class="blue"></label>
+
+                        <input type="radio" name="color" id="yellow" value="#CED843, #D1721D">
+                        <label for="yellow" class="yellow"></label>
+
+                        <input type="radio" name="color" id="violet" value="#6362D4, #f3afe4">
+                        <label for="violet" class="violet"></label>
+
+                        <input type="radio" name="color" id="white" value="#40454A, #B1B9B9">
+                        <label for="white" class="white"></label>
+                    </div>
                     <button type="submit" class="btn btn-create">Créer</button>
                 </form>
             </div>

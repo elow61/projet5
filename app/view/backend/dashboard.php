@@ -59,7 +59,7 @@ ob_start();
     </div>
     
     <div class="bubble-blue">
-        <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
+        <img src="<?= IMAGES_BUBBLE ?>bubble_blue.svg" alt="">
     </div>
 </div>
 <?php 

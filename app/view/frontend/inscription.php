@@ -21,7 +21,7 @@ ob_start();
         </div>
     </div>
     <div class="bubble_blue">
-        <img src="<?= IMAGES ?>bubble_blue.svg" alt="">
+        <img src="<?= IMAGES_BUBBLE ?>bubble_blue.svg" alt="">
     </div>
 </header>
     

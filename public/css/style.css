@@ -159,7 +159,7 @@ nav ul li a:hover {
 
 .headline {
     top: 50px;
-    background-image: url(/public/images/wave-violet.svg);
+    background-image: url(/public/images/waves/wave-violet-head.svg);
     background-repeat: repeat-x;
     background-position: top center;
     background-position-x: 100px;
@@ -567,3 +567,51 @@ figcaption {
     visibility: hidden;
     opacity: 0;
 }
+/* choice of color */
+.container-modal form h3 {
+    margin-bottom: 5px;
+    color: #6e4eb0;
+}
+
+.container-color {
+    display: flex;
+    margin: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + label::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f00c";
+
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 12px;
+    color: #000;
+}
+
+label {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative;
+    margin-right: 5px;
+}
+
+label:hover {
+    border-color: #000;
+}
+
+.red {background-color: rgb(163, 53, 53);} /* #A33535 */
+.green {background-color: rgb(94, 190, 75);} /* #5EBE4B */
+.blue {background-color: #3FD5FB;}
+.yellow {background-color: rgb(206, 216, 67);} /* #CED843 */
+.violet {background-color: #6e4eb0;}
+.white {background-color: #E6EAEC;}
