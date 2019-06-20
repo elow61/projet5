@@ -370,14 +370,17 @@ label:hover {
 #container-list {
     display: flex;
     padding-left: 20px;
+    overflow-y: hidden;
+
 }
 
 .list {
-    width: 300px;
+    min-width: 300px;
     height: 400px;
     background-color: #1f2835;
     padding-left: 20px;
     margin-right: 20px;
+    text-transform: uppercase;
 }
 
 .bubble-end {
@@ -386,7 +389,7 @@ label:hover {
     margin: auto;
 }
 
-.add-list {
+.btn-list {
     position: relative;
     width: 25px;
     height: 25px;
@@ -405,6 +408,16 @@ label:hover {
 }
 
 .add-list::after {
+    content: '';
+    position: absolute;
+    top: 44%;
+    left: 13%;
+    width: 20px;
+    height: 4px;
+    background-color: #1f2835;
+}
+
+.remove-list::before {
     content: '';
     position: absolute;
     top: 44%;
