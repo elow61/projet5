@@ -367,7 +367,7 @@ label:hover {
 /* WORKSPACE */
 
 /* lists */
-.container-list {
+#container-list {
     display: flex;
     padding-left: 20px;
 }

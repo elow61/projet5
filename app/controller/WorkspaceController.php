@@ -38,4 +38,24 @@ class WorkspaceController extends Controller {
             echo 'Vous devez être connecté.';
         }
     }
+
+    protected function isAjax()
+    {
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
+
+    public function lists() 
+    {
+
+        if ($this->isAjax())
+        {
+            // $list_name = $this->request->getParam('list_name');
+
+            echo json_encode($this->request->getParam('list_name'));
+            header('Content-Type: application/json');
+        }
+        // $addList = $this->list->addList($list_name, $this->request->getParam('id'));
+
+
+    }
 }

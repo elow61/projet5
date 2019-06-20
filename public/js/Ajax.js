@@ -1,27 +1,39 @@
-class Ajax {
-    
-    contructor (url, callback) {
-        this.url = url;
-        this.callback = callback;
-    }
-
-    ajaxGet(url, callback) {
-        this.url = url;
-        this.callback = callback;
-        const req = new XMLHttpRequest();
-        req.open('GET', this.url);
-        req.addEventListener('load', () => {
-            if (req.status >= 200 && req.status < 400) {
-                this.callback(req.responseText);
-            } else {
-                console.error(req.status + ' ' + req.statusText + ' ' + this.url);
-            }
-        });
-        req.addEventListener('error', () => {
-            console.error("Erreur réseau avec l'URL " + this.url);
-        });
-        req.send(null);
-    }
+function ajaxPost (url, data, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            callback(xhr.responseText);
+        } else {
+            console.error(xhr.status);
+        }
+    });
+    xhr.addEventListener('error', () => {
+        console.error('Erreur réseau avec l\'url ' + url);
+    });
+    xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+    xhr.send(data);
 }
-console.log(window.location);
-const ajax = new Ajax('window.location.origin + ajax');
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = new FormData(form);
+
+
+    ajaxPost('lists', input, (response) => {
+        const data = JSON.parse(response);
+        const container = document.getElementById('container-list');
+        const list = document.createElement('div');
+        list.classList.add('list');
+        const title = document.createElement('div');
+        title.textContent = data;
+        container.appendChild(list);
+        list.appendChild(title);
+
+        modal.closeModal();
+    
+    });
+    
+})

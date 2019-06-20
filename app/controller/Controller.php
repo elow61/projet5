@@ -6,6 +6,7 @@ use App\Helper;
 use App\Router\Request;
 use App\Model\UsersManager;
 use App\Model\ProjectManager;
+use App\Model\ListsManager;
 use App\View\View;
 
 abstract class Controller {
@@ -13,6 +14,7 @@ abstract class Controller {
     protected $session;
     protected $users;
     protected $project;
+    protected $list;
     private $action; // Action à réaliser 
     protected $request; // Définit la requête entrante
 
@@ -21,6 +23,7 @@ abstract class Controller {
         $this->request = $request;
         $this->users = new UsersManager();
         $this->project = new ProjectManager();
+        $this->list = new ListsManager();
         $this->session = new Helper();
 
     }
@@ -32,7 +35,7 @@ abstract class Controller {
             $this->{$this->action}();
         } else {
             $fileName = get_class($this);
-            throw new \Exception('Action' . $action . ' non définie dans la classe ' . $fileName);
+            throw new \Exception('Action "' . $action . '" non définie dans la classe ' . $fileName);
         }
     }
     
@@ -71,14 +74,6 @@ abstract class Controller {
         {
             echo 'Veuillez entrer un nom de projet ou sélectionner une couleur de référence.';
         }
-    }
-
-    protected function generateView($datas = []) 
-    {
-        $fileName = get_class($this);
-        $controllerView = str_replace($fileName, "", "Controller");
-        $view = new View($this->action, $controller);
-        $view->generate($datas);
     }
 
     protected function redirecting($controller, $action = null) 

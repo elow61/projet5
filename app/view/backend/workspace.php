@@ -67,32 +67,33 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         <div class="headline" style="background-image: url('<?= $svg_wave?>');">
             <h1><?= $project['project_name']?></h1>
         </div>
-        <div class="container-list">
-            <div class="list currently">
-                <h2>En cours</h2>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
+        <div id="container-list"> 
+            <?php //if (is_array($lists)): ?>
+                <?php //foreach ($lists as $list):?>
+                    <!-- <div class="list currently">
+                        <h2>A faire</h2>
+                        <div class="task"></div>
+                        <div class="task"></div>
+                        <div class="task"></div>
+                        <div class="task"></div>
+                        <div class="task"></div>
+                    </div> -->
+                <?php //endforeach;?>
+            <?php //endif;?>
+            <div class="add-list" style="background-color: <?= $color ?>;" onclick="modal.viewModal();"></div>
+            <div class="modal">
+                <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
+                    <div role="document" class="container-modal">
+                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
+                        <h2 style="color: <?= $color ?>;">Créer une liste :</h2>
+                        <form method="POST" id="form">
+                            <input type="text" name="list_name" id="list_name" placeholder="Entrez le nom d'une liste. Ex: En cours">
+                            
+                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Créer</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="list todo">
-                <h2>A faire</h2>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-            </div>
-            <div class="list finish">
-                <h2>Terminé</h2>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-                <div class="task"></div>
-            </div>
-            <div class="add-list" style="background-color: <?= $color ?>;" onclick="ajax()"></div>
         </div>
         <div class="bubble-end">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="237" viewBox="0 0 157 237">                
@@ -117,7 +118,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         </div>
     </div>
     
-    <script src="<?= JS ?>Ajax.js"></script>
+    <script src="<?= JS ?>ajax.js"></script>
     <script src="<?= JS ?>Modal.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
 </body>
