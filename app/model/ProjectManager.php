@@ -73,4 +73,21 @@ class ProjectManager extends Manager {
 
         return $project_name;
     }
+
+    // Delete project from table reference
+    public function deleteProject($id_project, $id_user) 
+    {
+        $req = $this->db->prepare('DELETE FROM user_project WHERE id_project = ? AND id_user = ?') or die(var_dump($this->db->errorInfo()));
+        $deleteProject = $req->execute(array($id_project, $id_user));
+
+        return $deleteProject;
+    }
+
+    public function deleteProjectFrom($id_project)
+    {
+        $req = $this->db->prepare('DELETE FROM project WHERE id_project = ?') or die(var_dump($this->db->errorInfo()));
+        $deleteProject = $req->execute(array($id_project));
+
+        return $deleteProject;
+    }
 }

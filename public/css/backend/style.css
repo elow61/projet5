@@ -105,7 +105,6 @@ nav {
     border-radius: 5px 5px 5px 5px;
     float: right;
     background-color: #1f2835;
-    padding: 15px;
     line-height: 25px;
 
     transform: translateX(100%);
@@ -118,6 +117,14 @@ nav.view {
 
 .pseudo {
     text-align: center;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav li:hover {
+    background-color: #2f3b4d;
 }
 
 nav a:last-child {
@@ -162,7 +169,7 @@ nav hr {
 /* SPACE DASHBOARD */
 .container-space__dashboard {
     position: relative;
-    top: 200px;
+    top: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -184,15 +191,26 @@ nav hr {
 }
 
 /* Dialog overlay */
-
-.modal {
-    position: absolute;
-    left: 25px;
-    top: 25%;
+.container-modals {
+    display: flex;
+    padding-left: 25px;
+    text-align: center;
 }
 
 .create-project {
     background: linear-gradient(#1c212e, #242d3d);
+    border-radius: 5px 5px 5px 5px;
+    padding-left: 10px;
+    width: 300px;
+    height: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: #fff;
+    transition: transform .2s;
+    overflow: hidden;
 }
 
 .dialog {
@@ -210,6 +228,7 @@ nav hr {
     -webkit-overflow-scrolling: touch;
 
 }
+
 
 .container-modal {
     flex: 1;
@@ -241,7 +260,7 @@ nav hr {
     align-items: center;
 }
 
-.container-modal form input {
+.modal .container-modal form input {
     margin-bottom: 20px;
     padding: 10px;
     width: 300px;
@@ -265,11 +284,11 @@ nav hr {
     margin: 20px;
 }
 
-input[type="radio"] {
+.container-color input[type="radio"] {
     display: none;
 }
 
-input[type="radio"]:checked + label::before {
+.container-color input[type="radio"]:checked + label::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f00c";
@@ -282,7 +301,7 @@ input[type="radio"]:checked + label::before {
     color: #000;
 }
 
-label {
+.container-color label {
     display: inline-block;
     height: 16px;
     width: 16px;
@@ -292,7 +311,7 @@ label {
     margin-right: 5px;
 }
 
-label:hover {
+.container-color label:hover {
     border-color: #000;
 }
 
@@ -303,6 +322,16 @@ label:hover {
 .violet {background-color: #6e4eb0;}
 .white {background-color: #E6EAEC;}
 
+/* Choice of project */
+.container-choice-project {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-input {
+    color: #000;
+    margin-bottom: 10px;
+}
 /* projects */
 .container-projects {
     margin-top: 20px;
@@ -381,6 +410,8 @@ label:hover {
     padding-left: 20px;
     margin-right: 20px;
     text-transform: uppercase;
+    display: flex;
+    justify-content: space-around;
 }
 
 .bubble-end {
@@ -393,36 +424,25 @@ label:hover {
     position: relative;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
     cursor: pointer;
 }
 
 .add-list::before {
-    content: '';
-    position: absolute;
-    top: 15%;
-    left: 44%;
-    width: 4px;
-    height: 20px;
-    background-color: #1f2835;
+    content: '\f055';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #5EBE4B;
 }
 
-.add-list::after {
-    content: '';
-    position: absolute;
-    top: 44%;
-    left: 13%;
-    width: 20px;
-    height: 4px;
-    background-color: #1f2835;
-}
 
 .remove-list::before {
-    content: '';
-    position: absolute;
-    top: 44%;
-    left: 13%;
-    width: 20px;
-    height: 4px;
-    background-color: #1f2835;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f057';
+    color: #A33535;
 }
+
+#error {
+    margin-bottom: 20px;
+}
+
