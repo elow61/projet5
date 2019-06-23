@@ -67,24 +67,24 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         <div class="headline" style="background-image: url('<?= $svg_wave?>');">
             <h1><?= $project['project_name']?></h1>
         </div>
+        <div class="btn-list add-list" onclick="modal.viewModal();"></div> 
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
                     <div class="list">
                         <h2><?= $list['name_list'] ?></h2>
-                        <div class="btn-list remove-list" style="background-color: <?= $color ?>;"></div>
+                        <div class="btn-list remove-list"></div>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>
             <div class="modal">
-                <div class="btn-list add-list" style="background-color: <?= $color ?>;" onclick="modal.viewModal();"></div> 
                 <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
                         <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
                         <h2 style="color: <?= $color ?>;">Créer une liste :</h2>
                         <form method="POST" id="form">
                             <input type="text" name="list_name" id="list_name" placeholder="Entrez le nom d'une liste. Ex: En cours">
-                            <p id="error"></p>
+                            <p id="error" style="color: <?= $color ?>;"></p>
                             <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Créer</button>
                         </form>
                     </div>

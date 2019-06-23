@@ -49,82 +49,32 @@ class WorkspaceController extends Controller {
 
     public function lists() 
     {
-        // $list_name = $this->request->getParam('list_name');
-        // $lists = $this->list->getLists($_SESSION['id_project']);
-
-        // if (!empty($_SESSION['id_project']))
-        // {
-        //     if ($this->isAjax())
-        //     {
-        //         if ($lists['name_list'] !== $list_name)
-        //         {
-        //             $addList = $this->list->addList($list_name, $_SESSION['id_project']);
-        //             echo json_encode($list_name);
-        //             header('Content-Type: application/json');
-        //         }
-        //         else 
-        //         {
-        //             echo 'Cette liste existe déjà.';
-        //         }
-        //     }
-        //     else 
-        //     {
-        //         echo 'JavaScript doit être activé.';
-        //     }
-        // }
-        // else 
-        // {
-        //     echo 'Erreur : Projet non trouvé.';
-        // }
-        $list = $this->list->getNameList($_SESSION['id_project']);
+        $response = [];
         $list_name = $this->request->getParam('list_name');
+        $list = $this->list->getNameList($_SESSION['id_project'], $list_name);
 
             if (!empty($_SESSION['id_project']))
             {
-                if ($list_name === $list['name_list'])
+                if ($list_name == $list['name_list'])
                 {
-                    echo 'Cette liste existe déjà.';
+                    $response['error'] = 'Cette liste existe déjà.';
                 }
                 else 
                 {
-                    if ($this->isAjax()) 
-                    {
-                        $addList = $this->list->addList($list_name, $_SESSION['id_project']);
-                        echo json_encode($list_name);
-                        header('Content-Type: application/json');
-
-                    }
+                    $addList = $this->list->addList($list_name, $_SESSION['id_project']);
+                    $response = $list_name;
+                    header('Content-Type: application/json');
                 }
             }
             else 
             {
-                echo 'non non non';
+                $response[errors] = 'Aucun projet existant';
             }
+        echo json_encode($response);
+    }
 
-            // if ($this->isAjax())
-            // {
-            //     if (!empty($_SESSION['id_project']) && !empty($list_name)) 
-            //     {
-            //         if ($list_name !== $lists['name_list'])
-            //         {
-            //             $addList = $this->list->addList($list_name, $_SESSION['id_project']);
-            //             echo json_encode($list_name);
-            //             header('Content-Type: application/json');
-            //         }
-            //         else 
-            //         {
-            //             echo 'Cette liste existe déjà !';
-            //         }
-            //     }
-            //     else
-            //     {
-            //         echo 'Aucun identifiant trouvé';
-            //     }
-                
-
-            // }
-        
-
-
+    public function removeLists() 
+    {
+        $removeList = $this->list->removeList();
     }
 }
