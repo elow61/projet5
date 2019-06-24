@@ -52,25 +52,27 @@ class WorkspaceController extends Controller {
         $response = [];
         $list_name = $this->request->getParam('list_name');
         $list = $this->list->getNameList($_SESSION['id_project'], $list_name);
+        if (!empty($_SESSION['id_project']))
+        {
 
-            if (!empty($_SESSION['id_project']))
+            if ($list_name == $list['name_list'])
             {
-
-                if ($list_name == $list['name_list'])
-                {
-                    $response['error'] = 'Cette liste existe déjà.';
-                }
-                else 
-                {
-                    $addList = $this->list->addList($list_name, $_SESSION['id_project']);
-                    $response = $list_name;
-                    header('Content-Type: application/json');
-                }
+                $response['error'] = 'Cette liste existe déjà.';
             }
             else 
             {
-                $response[errors] = 'Aucun projet existant';
+                $addList = $this->list->addList($list_name, $_SESSION['id_project']);
+                $lists = $this->list->getNameList($_SESSION['id_project'], $list_name);
+
+                $response['success'] = $list_name;
+                $response['id'] = $lists['id_list'];
+                header('Content-Type: application/json');
             }
+        }
+        else 
+        {
+            $response[errors] = 'Aucun projet existant';
+        }
         echo json_encode($response);
     }
 

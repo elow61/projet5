@@ -71,9 +71,9 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
-                    <div class="list">
+                    <div data-name="<?= $list['id_list'] ?>" class="list">
                         <h2><?= $list['name_list'] ?></h2>
-                        <div class="btn-list remove-list" value="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
+                        <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>

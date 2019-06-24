@@ -16,6 +16,7 @@ function ajaxPost (url, data, callback) {
     xhr.send(data);
 }
 
+// The form's management to add a list
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -38,14 +39,22 @@ form.addEventListener('submit', (e) => {
 
             const list = document.createElement('div');
             list.classList.add('list');
+            list.setAttribute('data-name', data.id);
+            console.log(JSON.parse(data.id));
 
             const title = document.createElement('h2');
-            title.textContent = data;
+            title.textContent = data.success;
 
             const btnRemove = document.createElement('div');
             btnRemove.classList.add('remove-list');
             btnRemove.classList.add('btn-list');
             btnRemove.setAttribute('onclick', 'modal2.viewModal();');
+            btnRemove.setAttribute('data-name', data.id);
+            const attribute = btnRemove.getAttribute('data-name');
+            btnRemove.addEventListener('click', () => {
+                const inputTitle = document.getElementById('input-list');
+                inputTitle.value = attribute;
+            })
 
             container.appendChild(list);
             list.appendChild(title);
@@ -57,6 +66,18 @@ form.addEventListener('submit', (e) => {
     
 })
 
+// Add the value for the input
+let btnRemoved = document.getElementsByClassName('remove-list');
+for (let i = 0; i < btnRemoved.length; i++) {
+    let attribute = btnRemoved[i].getAttribute('data-name');
+
+    btnRemoved[i].addEventListener('click', () => {
+        let inputTitle = document.getElementById('input-list');
+        inputTitle.value = attribute;
+    })
+}
+
+// The form's management to remove a list
 const formDelete = document.getElementById('form-delete');
 formDelete.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -64,7 +85,6 @@ formDelete.addEventListener('submit', (e) => {
 
     ajaxPost('removeLists', input, (response) => {
         const data = JSON.parse(response);
-
         if (data['error']) {
             const errorsKey = Objet.keys(data);
 
@@ -77,12 +97,18 @@ formDelete.addEventListener('submit', (e) => {
             }
         } else {
             const container = document.getElementById('container-list').childNodes;
-            
-            for (let child of container) {
-                console.log(child);
-                console.log(child.innerHTML);
+            let list = document.getElementsByClassName('list');
+            for (let i = 0; i < list.length; i++) {
+                let attrList = list[i].getAttribute('data-name');
+                console.log(attrList);
+
+                if (data == attrList) {
+                    console.log('coucou');
+                    // container.removeChild(list[i]);
+                } else {
+                    console.log('non');
+                }
             }
-            console.log(container);
             modal2.closeModal();
         }
     }) 
@@ -104,17 +130,3 @@ function ajaxGet(url, callback) {
     });
     xhr.send(null);
 }
-
-// let btnRemove = document.getElementsByClassName('remove-list');
-
-// for (let i = 0; i < btnRemove.length; i++) {
-    
-//     btnRemove[i].addEventListener('click', () => {
-//         ajaxGet('removeLists', (response) => {
-//             const data = JSON.parse(response);
-
-//             return(confirm('Êtes-vous sûr de vouloir supprimer cette liste ?'));
-        
-//         })
-//     });
-// }
