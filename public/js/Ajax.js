@@ -32,7 +32,6 @@ form.addEventListener('submit', (e) => {
                 const p_error = document.getElementById('error');
 
                 p_error.textContent = errors;
-
             }
         } else {
             const container = document.getElementById('container-list');
@@ -46,6 +45,7 @@ form.addEventListener('submit', (e) => {
             const btnRemove = document.createElement('div');
             btnRemove.classList.add('remove-list');
             btnRemove.classList.add('btn-list');
+            btnRemove.setAttribute('onclick', 'modal2.viewModal();');
 
             container.appendChild(list);
             list.appendChild(title);
@@ -55,6 +55,37 @@ form.addEventListener('submit', (e) => {
         }
     });
     
+})
+
+const formDelete = document.getElementById('form-delete');
+formDelete.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = new FormData(formDelete);
+
+    ajaxPost('removeLists', input, (response) => {
+        const data = JSON.parse(response);
+
+        if (data['error']) {
+            const errorsKey = Objet.keys(data);
+
+            for (let i = 0; i < errorsKey.length; i++) {
+                let key = errorsKey[i];
+                let errors = data[key];
+                const p_error = document.getElementById('error-delete');
+
+                p_error.textContent = errors;
+            }
+        } else {
+            const container = document.getElementById('container-list').childNodes;
+            
+            for (let child of container) {
+                console.log(child);
+                console.log(child.innerHTML);
+            }
+            console.log(container);
+            modal2.closeModal();
+        }
+    }) 
 })
 
 // Function request ajax generic for method GET
@@ -74,13 +105,16 @@ function ajaxGet(url, callback) {
     xhr.send(null);
 }
 
-const btnRemove = document.getElementsByClassName('remove-list');
+// let btnRemove = document.getElementsByClassName('remove-list');
 
-for (let i = 0; i < btnRemove.length; i++) {
-    btnRemove[i].addEventListener('click', () => {
-        ajaxGet('removeLists', (response) => {
-            const data = JSON.parse(response);
-            alert('La liste ' + data + ' est supprimé.');
-        });
-    })
-}
+// for (let i = 0; i < btnRemove.length; i++) {
+    
+//     btnRemove[i].addEventListener('click', () => {
+//         ajaxGet('removeLists', (response) => {
+//             const data = JSON.parse(response);
+
+//             return(confirm('Êtes-vous sûr de vouloir supprimer cette liste ?'));
+        
+//         })
+//     });
+// }

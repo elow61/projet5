@@ -260,7 +260,7 @@ nav hr {
     align-items: center;
 }
 
-.modal .container-modal form input {
+#dialog .container-modal form input {
     margin-bottom: 20px;
     padding: 10px;
     width: 300px;
@@ -427,18 +427,28 @@ nav hr {
     cursor: pointer;
 }
 
+.add-list {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
 .add-list::before {
     content: '\f055';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
+    font-size: 30px;
     color: #5EBE4B;
 }
 
+.remove-list {
+    margin-top: 24px;
+}
 
 .remove-list::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: '\f057';
+    font-size: 20px;
     color: #A33535;
 }
 

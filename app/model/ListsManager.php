@@ -38,7 +38,7 @@ class ListsManager extends Manager {
 
     public function removeList($id)
     {
-        $req = $this->db->prepare('DELETE FROM lists WHERE id = ?')
+        $req = $this->db->prepare('DELETE FROM lists WHERE id_list = ?')
         or die(var_dump($this->db->errorInfo()));
         $removeList = $req->execute(array($id));
 

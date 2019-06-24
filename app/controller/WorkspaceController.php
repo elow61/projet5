@@ -55,6 +55,7 @@ class WorkspaceController extends Controller {
 
             if (!empty($_SESSION['id_project']))
             {
+
                 if ($list_name == $list['name_list'])
                 {
                     $response['error'] = 'Cette liste existe déjà.';
@@ -75,6 +76,26 @@ class WorkspaceController extends Controller {
 
     public function removeLists() 
     {
-        $removeList = $this->list->removeList();
+        $response = [];
+        $idList = $this->request->getParam('name_list');
+            if (!empty($_SESSION['id_project']))
+            {
+                    // if ($idList == $list['id_list'])
+                    // {
+                        $removeList = $this->list->removeList($idList);
+                        $response = $idList;
+                        header('Content-type: application/json');
+                    // }
+                    // else 
+                    // {
+                    //     $response['error'] = 'Cette liste n\'existe plus.';
+                    // }
+                
+            }
+            else 
+            {
+                $response['error'] = 'Aucun projet trouvé.';
+            }
+        echo json_decode($response);
     }
 }

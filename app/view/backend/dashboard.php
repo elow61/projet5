@@ -40,7 +40,7 @@ ob_start();
                 </div>
             </div>
         </div>
-        <div class="modal2">
+        <div class="modal">
             <button type="button" class="create-project" onclick="modal2.viewModal();">Supprimer un projet</button>
             <div id="dialog2" class="dialog" role="dialog" aria-hidden="true">
                 <div role="document" class="container-modal">

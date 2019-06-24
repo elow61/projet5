@@ -73,10 +73,23 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                 <?php foreach ($lists as $list):?>
                     <div class="list">
                         <h2><?= $list['name_list'] ?></h2>
-                        <div class="btn-list remove-list"></div>
+                        <div class="btn-list remove-list" value="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>
+            <div class="modal">
+                <div id="dialog2" class="dialog" role="dialog" aria-hidden="true">
+                    <div role="document" class="container-modal">
+                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
+                        <h2 style="color: <?= $color ?>;">Êtes-vous sûr de vouloir supprimer cette liste ?</h2>
+                        <form method="POST" id="form-delete">
+                            <input id="input-list" type="hidden" name="name_list" value="">
+                            <p id="error-delete" style="color: <?= $color ?>;"></p>
+                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="modal">
                 <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
@@ -90,6 +103,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                     </div>
                 </div>
             </div>
+            
         </div>
         <div class="bubble-end">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="237" viewBox="0 0 157 237">                
