@@ -77,7 +77,9 @@ a {
 
 /* ========================================================================================= */
 
-/* MENU */
+/****************************************************
+*********************** MENU ************************
+****************************************************/
 .container-btn__hamburger {
     display: flex;
     justify-content: space-between;
@@ -138,8 +140,9 @@ nav hr {
 }
 
 
-/* DASHBOARD */
-
+/****************************************************
+******************* DASHBOARD ***********************
+****************************************************/
 .headline {
     position: absolute;
     top: 50px;
@@ -180,8 +183,9 @@ nav hr {
     padding-left: 25px;
 }
 
-/** modal **/
-
+/****************************************************
+******************** MODAL **************************
+****************************************************/
 .btn-create {
     background-color: #E6EAEC;
     color: #3FD5FB;
@@ -273,7 +277,9 @@ nav hr {
     opacity: 0;
 }
 
-/* choice of color */
+/****************************************************
+************ CHOICE OF COLOR ************************
+****************************************************/
 .container-modal form h3 {
     margin-bottom: 5px;
     color: #6e4eb0;
@@ -322,7 +328,9 @@ nav hr {
 .violet {background-color: #6e4eb0;}
 .white {background-color: #E6EAEC;}
 
-/* Choice of project */
+/****************************************************
+************ CHOICE OF PROJECT **********************
+****************************************************/
 .container-choice-project {
     display: flex;
     flex-direction: column;
@@ -332,7 +340,9 @@ nav hr {
     color: #000;
     margin-bottom: 10px;
 }
-/* projects */
+/****************************************************
+********************* PROJECT ***********************
+****************************************************/
 .container-projects {
     margin-top: 20px;
     padding-left: 25px;
@@ -395,7 +405,9 @@ nav hr {
 
 /* WORKSPACE */
 
-/* lists */
+/****************************************************
+********************** LIST *************************
+****************************************************/
 #container-list {
     display: flex;
     padding-left: 20px;
@@ -407,7 +419,6 @@ nav hr {
     min-width: 300px;
     height: 400px;
     background-color: #1f2835;
-    padding-left: 20px;
     margin-right: 20px;
 }
 
@@ -415,6 +426,7 @@ nav hr {
     display: flex;
     justify-content: space-around;
     text-transform: uppercase;
+    padding-left: 20px;
 }
 
 .bubble-end {
@@ -467,8 +479,22 @@ nav hr {
     top: 302px;
     left: -15px;
     cursor: pointer;
+    padding-left: 20px;
 }
 
-.form-task-add {
+.container-form-task {
     display: none;
+    background-color: #2f3b4d;
+    padding: 10px;
+    width: inherit;
+}
+
+.form-task {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+}
+
+.container-button {
+    margin-top: 10px;
 }

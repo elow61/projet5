@@ -90,11 +90,24 @@ class WorkspaceController extends Controller {
             {
                 $response['error'] = 'Aucun projet trouvé.';
             }
-        echo json_decode($response);
+        echo json_encode($response);
     }
 
     public function addTask()
     {
-        $task = $this->task->addTasks($name, $user, $project, $list); 
+        $response = [];
+        $taskName = $this->request->getParam('name_task');
+        if (!empty($_SESSION['id_project']))
+        {
+            $task = $this->task->addTasks($name, $user, $project, $list);
+            $response['name'] = $tasks['name'];
+            $response['user'] = $_SESSION['id'];
+            $response['project'] = $tasks['project'];
+            $response['list'] = $tasks['id_list'];
+            header('Content-type: application/json');
+        } else {
+            $response['error'] = 'Aucun project n\'est relié à cette tâche.';
+        }
+        echo json_decode($response);
     }
 }

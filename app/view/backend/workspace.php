@@ -76,14 +76,20 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                             <h2><?= $list['name_list'] ?></h2>
                             <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                         </div>
-                        <div class="task">
-                            <div class="btn-add-task" data-name="<?= $list['id_list'] ?>">+ tâches</div>
-                            <form method="POST" class="form-task-add">
-                                <input type="hidden" name="name_list" value="<?= $list['name_list'] ?>">
-                                <input type="hidden" name="id_list" value="<?= $list['id_list'] ?>">
-                                <input type="text" name="name_task" id="">
-                                <button type="submit">Nouvelle tâche</button>
-                            </form>
+                        <div class="container-task">
+                            <div class="task"></div>
+                            <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
+                                <form method="POST" class="form-task">
+                                    <input type="hidden" name="name_list" id="name_list" value="">
+                                    <input type="hidden" class="input_id_list" name="id_list" id="id_list" value="<?= $list['id_list'] ?>">
+                                    <textarea name="name_task" id="" cols="30" rows="5"></textarea>
+                                    <div class="container-button">
+                                        <button type="submit">Nouvelle tâche</button>
+                                        <button class="cancel">X</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="btn-add-task" data-name="<?= $list['name_list'] ?>" data-id="<?= $list['id_list'] ?>">+ tâches</div>
                         </div>
                     </div>
                 <?php endforeach;?>
@@ -114,7 +120,6 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                     </div>
                 </div>
             </div>
-            
         </div>
         <div class="bubble-end">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="237" viewBox="0 0 157 237">                
