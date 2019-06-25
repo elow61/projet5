@@ -72,8 +72,19 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
                     <div data-name="<?= $list['id_list'] ?>" class="list">
-                        <h2><?= $list['name_list'] ?></h2>
-                        <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
+                        <div class="title-list">
+                            <h2><?= $list['name_list'] ?></h2>
+                            <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
+                        </div>
+                        <div class="task">
+                            <div class="btn-add-task" data-name="<?= $list['id_list'] ?>">+ tâches</div>
+                            <form method="POST" class="form-task-add">
+                                <input type="hidden" name="name_list" value="<?= $list['name_list'] ?>">
+                                <input type="hidden" name="id_list" value="<?= $list['id_list'] ?>">
+                                <input type="text" name="name_task" id="">
+                                <button type="submit">Nouvelle tâche</button>
+                            </form>
+                        </div>
                     </div>
                 <?php endforeach;?>
             <?php endif;?>

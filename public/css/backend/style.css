@@ -409,9 +409,12 @@ nav hr {
     background-color: #1f2835;
     padding-left: 20px;
     margin-right: 20px;
-    text-transform: uppercase;
+}
+
+.title-list {
     display: flex;
     justify-content: space-around;
+    text-transform: uppercase;
 }
 
 .bubble-end {
@@ -456,3 +459,16 @@ nav hr {
     margin-bottom: 20px;
 }
 
+/****************************************************
+********************** TASK *************************
+****************************************************/
+.btn-add-task {
+    position: relative;
+    top: 302px;
+    left: -15px;
+    cursor: pointer;
+}
+
+.form-task-add {
+    display: none;
+}

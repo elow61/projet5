@@ -7,7 +7,7 @@ use App\Router\Request;
 use App\Model\UsersManager;
 use App\Model\ProjectManager;
 use App\Model\ListsManager;
-use App\View\View;
+use App\Model\TasksManager;
 
 abstract class Controller {
     
@@ -15,6 +15,7 @@ abstract class Controller {
     protected $users;
     protected $project;
     protected $list;
+    protected $task;
     private $action; // Action à réaliser 
     protected $request; // Définit la requête entrante
 
@@ -24,6 +25,7 @@ abstract class Controller {
         $this->users = new UsersManager();
         $this->project = new ProjectManager();
         $this->list = new ListsManager();
+        $this->task = new TasksManager();
         $this->session = new Helper();
 
     }
@@ -42,6 +44,7 @@ abstract class Controller {
     // Méthode abstraite correspondant à l'action par défaut (ce qui oblige les classes dérivées à implémenter cette action par défaut)
     abstract function index();
 
+    // Create a project
     public function create() 
     {
         $projectDB = $this->project->getProjectByName($this->request->getParam('project_name'));
