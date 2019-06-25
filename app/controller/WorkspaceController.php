@@ -42,10 +42,10 @@ class WorkspaceController extends Controller {
         }
     }
 
-    protected function isAjax()
-    {
-        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-    }
+    // protected function isAjax()
+    // {
+    //     return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    // }
 
     public function lists() 
     {
@@ -82,22 +82,19 @@ class WorkspaceController extends Controller {
         $idList = $this->request->getParam('name_list');
             if (!empty($_SESSION['id_project']))
             {
-                    // if ($idList == $list['id_list'])
-                    // {
-                        $removeList = $this->list->removeList($idList);
-                        $response = $idList;
-                        header('Content-type: application/json');
-                    // }
-                    // else 
-                    // {
-                    //     $response['error'] = 'Cette liste n\'existe plus.';
-                    // }
-                
+                $removeList = $this->list->removeList($idList);
+                $response = $idList;
+                header('Content-type: application/json');
             }
             else 
             {
                 $response['error'] = 'Aucun projet trouvé.';
             }
         echo json_decode($response);
+    }
+
+    public function addTask()
+    {
+        $task = $this->task->addTasks($name, $user, $project, $list); 
     }
 }

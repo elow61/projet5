@@ -42,6 +42,9 @@ form.addEventListener('submit', (e) => {
             list.setAttribute('data-name', data.id);
             console.log(JSON.parse(data.id));
 
+            const containerTitle = document.createElement('div');
+            containerTitle.classList.add('title-list');
+
             const title = document.createElement('h2');
             title.textContent = data.success;
 
@@ -56,9 +59,21 @@ form.addEventListener('submit', (e) => {
                 inputTitle.value = attribute;
             })
 
+            // add tasks
+            const containerTask = document.createElement('div');
+            containerTask.classList.add('task');
+
+            const btnTask = document.createElement('div');
+            btnTask.classList.add('btn-add-task');
+            btnTask.setAttribute('data-name', data.id);
+            btnTask.textContent = '+ tâches';
+            containerTask.appendChild(btnTask);
+
             container.appendChild(list);
-            list.appendChild(title);
-            list.appendChild(btnRemove);
+            list.appendChild(containerTitle);
+            list.appendChild(containerTask);
+            containerTitle.appendChild(title);
+            containerTitle.appendChild(btnRemove);
 
             modal.closeModal();
         }
@@ -72,7 +87,7 @@ for (let i = 0; i < btnRemoved.length; i++) {
     let attribute = btnRemoved[i].getAttribute('data-name');
 
     btnRemoved[i].addEventListener('click', () => {
-        let inputTitle = document.getElementById('input-list');
+        const inputTitle = document.getElementById('input-list');
         inputTitle.value = attribute;
     })
 }
@@ -103,10 +118,16 @@ formDelete.addEventListener('submit', (e) => {
                 console.log(attrList);
 
                 if (data == attrList) {
-                    console.log('coucou');
-                    // container.removeChild(list[i]);
+                    list[i].animate([
+                        {transform: 'translateY(0px)'},
+                        {transform: 'translateY(-800px)'}
+                    ], {
+                        duration: 1000,
+                        easeing: 'ease'
+                    });
+                    list[i].style.display = 'none';
                 } else {
-                    console.log('non');
+                    console.log('Error');
                 }
             }
             modal2.closeModal();
