@@ -23,6 +23,9 @@ class WorkspaceController extends Controller {
                         $_SESSION['id_project'] = $project_user['id_project'];
                         $project = $this->project->getOneProject($this->request->getParam('id'));
                         $lists = $this->list->getLists($this->request->getParam('id'));
+                        $listID = $this->list->getListById($this->request->getParam('id'));
+                        $tasks = $this->task->getTasks();
+                        print_r($tasks);
                         require VIEW_BACK . 'workspace.php';
                     }
                 }
@@ -63,7 +66,6 @@ class WorkspaceController extends Controller {
             {
                 $addList = $this->list->addList($list_name, $_SESSION['id_project']);
                 $lists = $this->list->getNameList($_SESSION['id_project'], $list_name);
-
                 $response['success'] = $list_name;
                 $response['id'] = $lists['id_list'];
                 header('Content-Type: application/json');
@@ -97,17 +99,18 @@ class WorkspaceController extends Controller {
     {
         $response = [];
         $taskName = $this->request->getParam('name_task');
+        $idList = $this->request->getParam('id_list');
         if (!empty($_SESSION['id_project']))
         {
-            $task = $this->task->addTasks($name, $user, $project, $list);
-            $response['name'] = $tasks['name'];
+            $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
+            $response['name'] = $taskName;
             $response['user'] = $_SESSION['id'];
-            $response['project'] = $tasks['project'];
-            $response['list'] = $tasks['id_list'];
+            $response['project'] = $_SESSION['id_project'];
+            $response['list'] = $idList;
             header('Content-type: application/json');
         } else {
             $response['error'] = 'Aucun project n\'est relié à cette tâche.';
         }
-        echo json_decode($response);
+        echo json_encode($response);
     }
 }

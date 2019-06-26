@@ -27,6 +27,16 @@ class ListsManager extends Manager {
         return $lists;
     }
 
+    public function getListById($id_project)
+    {
+        $req = $this->db->prepare('SELECT * FROM lists WHERE id_project = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $req->execute(array($id_project));
+        $lists = $req->fetch();
+
+        return $lists;
+    }
+
     public function getNameList($id, $name)
     {
         $req = $this->db->prepare('SELECT * FROM lists WHERE id_project = ? AND name_list = ?')

@@ -67,7 +67,6 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         <div class="headline" style="background-image: url('<?= $svg_wave?>');">
             <h1><?= $project['project_name']?></h1>
         </div>
-        <div class="btn-list add-list" onclick="modal.viewModal();"></div> 
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
@@ -77,7 +76,11 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                             <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                         </div>
                         <div class="container-task">
-                            <div class="task"></div>
+                                <div class="task-content">
+                                    <?php foreach ($tasks as $task): ?>
+                                        <div class="task"><?= $task['name_task'] ?></div>
+                                    <?php endforeach;?>
+                                </div>
                             <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
                                 <form method="POST" class="form-task">
                                     <input type="hidden" name="name_list" id="name_list" value="">
@@ -94,6 +97,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                     </div>
                 <?php endforeach;?>
             <?php endif;?>
+            <div class="btn-list add-list" onclick="modal.viewModal();"></div>
             <div class="modal">
                 <div id="dialog2" class="dialog" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">

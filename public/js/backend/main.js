@@ -134,37 +134,40 @@ formDelete.addEventListener('submit', (e) => {
 /**
  * Task Manager
  */
+const formTask = document.getElementsByClassName('container-form-task');
 let btnTask = document.getElementsByClassName('btn-add-task');
 for (let i = 0; i < btnTask.length; i++) {
-    let attributeName = btnTask[i].getAttribute('data-name');
     let attributeId = btnTask[i].getAttribute('data-id');
     
     btnTask[i].addEventListener('click', () => {
 
-        console.log(attributeId);
-
-        const formTask = document.getElementsByClassName('container-form-task');
-
         for (let j = 0; j < formTask.length; j++) {
             const formAttr = formTask[j].getAttribute('data-id');
-
-            console.log(formAttr);
 
             if (attributeId == formAttr) {
                 formTask[j].style.display = 'block';
                 
                 const btnCancel = document.getElementsByClassName('cancel');
-                for (let k = 0; k < btnCancel.length; k++) {
-                    btnCancel[k].addEventListener('click', () => {
-                        formTask[j].style.display = 'none';
-                    })
-                }
+                // for (let k = 0; k < btnCancel.length; k++) {
+                //     btnCancel[k].addEventListener('click', () => {
+                //         formTask[j].style.display = 'none';
+                //     })
+                // }
+                closeForm(btnCancel, formTask[j], 'click');
             } 
 
             
     
         }
     })
+}
+
+function closeForm (element, cible, event) {
+    for (let i = 0; i < element.length; i++) {
+        element[i].addEventListener(event, () => {
+            cible.style.display = 'none';
+        })
+    }
 }
 
 // Add task
@@ -181,16 +184,22 @@ for (let i = 0; i < formAddTask.length; i++) {
             if (data['error']) {
                 const errorsKey = Objet.keys(data);
     
-                for (let i = 0; i < errorsKey.length; i++) {
-                    let key = errorsKey[i];
+                for (let j = 0; j < errorsKey.length; j++) {
+                    let key = errorsKey[j];
                     let errors = data[key];
                     alert(errors);
                 }
             } else {
-                const task = document.getElementsByClassName('task');
-                for (let i = 0; i < task.length; i++) {
-                    let attribute = task[i].getAttribute('')
+                console.log(data);
+                const task = document.createElement('div');
+                task.classList.add('task');
+                task.textContent = data.name;
+
+                const containerTask = document.getElementsByClassName('task-content'); 
+                for (let k = 0; k < containerTask.length; k++) {
+                    containerTask[i].appendChild(task);
                 }
+                
             }
         })
     })
