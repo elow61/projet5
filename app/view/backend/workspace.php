@@ -78,7 +78,11 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                         <div class="container-task">
                                 <div class="task-content">
                                     <?php foreach ($tasks as $task): ?>
-                                        <div class="task"><?= $task['name_task'] ?></div>
+                                    <div class="task">
+                                        <?php if ($list['id_list'] == $task['list_id']):?>
+                                        <?= $task['name_task'] ?>
+                                        <?php endif;?>
+                                    </div>
                                     <?php endforeach;?>
                                 </div>
                             <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
@@ -88,7 +92,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                                     <textarea name="name_task" id="" cols="30" rows="5"></textarea>
                                     <div class="container-button">
                                         <button type="submit">Nouvelle tâche</button>
-                                        <button class="cancel">X</button>
+                                        <button type="button" class="cancel">X</button>
                                     </div>
                                 </form>
                             </div>

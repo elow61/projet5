@@ -18,24 +18,22 @@ class TasksManager extends Manager {
         return $task;
     }
 
-    // Add the id's task and list in the reference table (list_task)
-    public function addTasksWithList($id_list, $id_task)
+    public function getTasks($project_id)
     {
-        $req = $this->db->prepare('INSERT INTO list_task(id_list, id_task)
-        VALUES((SELECT id_list FROM lists WHERE list_name = ?), ?)') or die(print_r($this->db->errorInfo()));
-
-        $ids = $req->execute(array($id_list, $id_task));
-
-        return $ids;
-    }
-
-    public function getTasks($id_list)
-    {
-        $req = $this->db->prepare('SELECT * from task WHERE list_id = ?')
+        $req = $this->db->prepare('SELECT * from task WHERE project_id = ?')
         or die(var_dump($this->db->errorInfo()));
 
-        $req->execute(array($id_list));
+        $req->execute(array($project_id));
         $tasks = $req->fetchAll();
         return $tasks;
+    }
+
+    public function getNameTask($id, $name)
+    {
+        $req = $this->db->prepare('SELECT * FROM task WHERE id_project = ? AND name_task = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $req->execute(array($id, $name));
+        $list = $req->fetch();
+        return $list;
     }
 }
