@@ -70,19 +70,19 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
-                    <div data-name="<?= $list['id_list'] ?>" class="list">
+                    <div data-id="<?= $list['id_list'] ?>" class="list">
                         <div class="title-list">
-                            <h2><?= $list['name_list'] ?></h2>
-                            <div class="btn-list remove-list" data-name="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
+                            <h2><?= htmlspecialchars_decode($list['name_list']) ?></h2>
+                            <div class="btn-list remove-list" data-id="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                         </div>
                         <div class="container-task">
                                 <div class="task-content">
                                     <?php foreach ($tasks as $task): ?>
-                                    <div class="task">
                                         <?php if ($list['id_list'] == $task['list_id']):?>
-                                        <?= $task['name_task'] ?>
+                                            <div class="task" data-id="<?= $task['id']?>" onclick="menuTask();">
+                                                <?= nl2br(htmlspecialchars_decode($task['name_task']))?>
+                                            </div>
                                         <?php endif;?>
-                                    </div>
                                     <?php endforeach;?>
                                 </div>
                             <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
@@ -108,7 +108,7 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
                         <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
                         <h2 style="color: <?= $color ?>;">Êtes-vous sûr de vouloir supprimer cette liste ?</h2>
                         <form method="POST" id="form-delete">
-                            <input id="input-list" type="hidden" name="name_list" value="">
+                            <input id="input-list" type="hidden" name="id_list" value="">
                             <p id="error-delete" style="color: <?= $color ?>;"></p>
                             <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
                         </form>
@@ -153,6 +153,8 @@ elseif ($project['color_project'] === "#6362D4, #f3afe4")
     </div>
     
     <script src="<?= JS ?>ajax.js"></script>
+    <script src="<?= JS ?>backend/lists.js"></script>
+    <script src="<?= JS ?>backend/tasks.js"></script>
     <script src="<?= JS ?>Modal.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
 </body>

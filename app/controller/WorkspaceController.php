@@ -81,10 +81,11 @@ class WorkspaceController extends Controller {
     public function removeLists() 
     {
         $response = [];
-        $idList = $this->request->getParam('name_list');
+        $idList = $this->request->getParam('id_list');
             if (!empty($_SESSION['id_project']))
             {
                 $removeList = $this->list->removeList($idList);
+                $deleteTask = $this->task->deleteTasks($idList);
                 $response = $idList;
                 header('Content-type: application/json');
             }
