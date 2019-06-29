@@ -32,3 +32,4 @@ class Modal {
 }
 const modal = new Modal('dialog', 'aria-hidden');
 const modal2 = new Modal('dialog2', 'aria-hidden');
+const modal3 = new Modal('dialog3', 'aria-hidden');

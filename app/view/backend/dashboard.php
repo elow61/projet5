@@ -60,6 +60,27 @@ ob_start();
                 </div>
             </div>
         </div>
+        <div class="modal">
+            <button type="button" class="create-project" onclick="modal3.viewModal();">Modifier le nom d'un projet</button>
+            <div id="dialog3" class="dialog" role="dialog" aria-hidden="true">
+                <div role="document" class="container-modal">
+                    <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal3.closeModal();">X</button>
+                    <h2>Modifier le nom de quel projet : </h2>
+                    <form action="/dashboard/update" method="post">
+                        <div class="container-choice-project">
+                            <?php foreach ($projects as $project): ?>
+                                <div class="container-input">
+                                    <input type="radio" name="choice-project" value="<?= $project['p_id'] ?>" onclick="updateProject(this);">
+                                    <label for="choice-project"><?= $project['p_name'] ?></label>
+                                </div>
+                            <?php endforeach; ?>
+                            <input type="text" name="newName" id="newName">
+                        </div>
+                        <button type="submit" class="btn btn-create">Modifier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="container-space__dashboard">

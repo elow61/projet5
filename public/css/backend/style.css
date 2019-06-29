@@ -233,7 +233,6 @@ nav hr {
 
 }
 
-
 .container-modal {
     flex: 1;
     background-color: #fff;
@@ -401,6 +400,10 @@ nav hr {
     margin: auto;
 }
 
+#newName {
+    display: none;
+}
+
 /* ========================================================================================= */
 
 /* WORKSPACE */
@@ -417,9 +420,11 @@ nav hr {
 
 .list {
     min-width: 300px;
+    max-width: 300px;
     height: 400px;
     background-color: #1f2835;
     margin-right: 20px;
+    overflow-y: scroll;
 }
 
 .title-list {
@@ -443,7 +448,7 @@ nav hr {
 }
 
 .add-list {
-    padding-left: 20px;
+    padding-right: 20px;
     padding-bottom: 20px;
 }
 
@@ -475,8 +480,8 @@ nav hr {
 ********************** TASK *************************
 ****************************************************/
 .btn-add-task {
-    position: fixed;
-    bottom: 220px;
+    position: relative;
+    bottom: 0;
     cursor: pointer;
     padding-left: 5px;
 }
@@ -486,6 +491,8 @@ nav hr {
     background-color: #2f3b4d;
     padding: 10px;
     width: inherit;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 3px 0 5px #191f29;
 }
 
 .form-task {
@@ -498,8 +505,19 @@ nav hr {
     margin-top: 10px;
 }
 
+.container-task {
+    margin: 5px;
+}
+
 .task {
     background-color: #2f3b4d;
     padding: 10px 0 10px 5px;
     margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 3px 0 5px #191f29;
+}
+
+.task:hover {
+    background-color: #38465a;
 }

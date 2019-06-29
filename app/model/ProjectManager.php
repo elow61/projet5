@@ -90,4 +90,14 @@ class ProjectManager extends Manager {
 
         return $deleteProject;
     }
+
+    public function updateProject($name, $id) 
+    {
+        $req = $this->db->prepare('UPDATE project SET project_name = ? WHERE id_project = ?')
+        or die(var_dump($this->db->errorInfo()));
+
+        $updateProject = $req->execute(array($name, $id));
+
+        return $updateProjet;
+    }
 }
