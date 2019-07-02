@@ -17,16 +17,23 @@ for (let i = 0; i < btnRemoved.length; i++) {
 
 const createList = function (data) {
 
+    // lists
     const list = document.createElement('div');
     list.classList.add('list');
     list.setAttribute('data-id', data.id);
 
+    // Title list
     const containerTitle = document.createElement('div');
     containerTitle.classList.add('title-list');
-
     const title = document.createElement('h2');
     title.textContent = data.success;
 
+    // Button add list placement
+    for (let i = 0; i < btnAddList.length; i++) {
+        container.insertBefore(list, btnAddList[i]);
+    }
+
+    // Button delete a list
     const btnRemove = document.createElement('div');
     btnRemove.classList.add('remove-list');
     btnRemove.classList.add('btn-list');
@@ -37,15 +44,21 @@ const createList = function (data) {
         const inputTitle = document.getElementById('input-list');
         inputTitle.value = attribute;
     })
-    // Button placement
-    for (let i = 0; i < btnAddList.length; i++) {
-        container.insertBefore(list, btnAddList[i]);
-    }
+    
+    // Container manager task
+    const containerTask = document.createElement('div');
+    containerTask.classList.add('container-task');
 
-    // Create the form for add a task
+    // Container form for add a task
     const formTask = document.createElement('div');
     formTask.classList.add('container-form-task');
     formTask.setAttribute('data-id', data.id);
+
+    // Container only task
+    const contentTask = document.createElement('div');
+    contentTask.classList.add('task-content');
+
+    // Form
     const formPost = document.createElement('form');
     formPost.method = 'POST';
     formPost.classList.add('form-task');
@@ -73,35 +86,41 @@ const createList = function (data) {
     btnCancel.classList.add('cancel');
     btnCancel.textContent = 'X';
 
-    // add btn tasks
-    const containerTask = document.createElement('div');
-    containerTask.classList.add('container-task');
-
+    // Button "+ taches"
     const btnTask = document.createElement('div');
     btnTask.classList.add('btn-add-task');
     btnTask.setAttribute('data-id', data.id);
-    // btnTask.setAttribute('onclick', 'formTaskAction(btnTask);');
     btnTask.textContent = '+ tâches';
-    containerTask.appendChild(btnTask);
     btnTask.addEventListener('click', () => {
         formTask.style.display = 'block';
     })
 
     list.appendChild(containerTitle);
     list.appendChild(containerTask);
-    containerTask.appendChild(formTask);
+
     containerTitle.appendChild(title);
     containerTitle.appendChild(btnRemove);
+
+    containerTask.appendChild(contentTask);
+    containerTask.appendChild(formTask);
+    containerTask.appendChild(btnTask);
+
     formTask.appendChild(formPost);
     formPost.appendChild(inputNameList);
     formPost.appendChild(inputIdList);
     formPost.appendChild(texts);
     formPost.appendChild(containerBtn);
+
     containerBtn.appendChild(btnSubmit);
     containerBtn.appendChild(btnCancel);
+    // formTaskAction(btnTask, formTask);
+
+    addTask(formAddTask, contentTask);
+    closeForm(btnCancel);
+
     modal.closeModal();
 }
-
+const list = document.getElementsByClassName('list');
 const deleteList = function (data) {
     let list = document.getElementsByClassName('list');
         for (let i = 0; i < list.length; i++) {

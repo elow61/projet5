@@ -1,60 +1,64 @@
 const formAddTask = document.getElementsByClassName('form-task');
 const formTask = document.getElementsByClassName('container-form-task');
-let btnTask = document.getElementsByClassName('btn-add-task');
+const btnTask = document.getElementsByClassName('btn-add-task');
 const btnCancel = document.getElementsByClassName('cancel');
 const containerTask = document.getElementsByClassName('task-content'); 
 
-for (let i = 0; i < formAddTask.length; i++) {
-    formAddTask[i].addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const input = new FormData(formAddTask[i]);
-
-        ajaxPost('addTask', input, (response) => {
-            const data = JSON.parse(response);
-            if (data['error']) {
-                const errorsKey = Objet.keys(data);
-    
-                for (let j = 0; j < errorsKey.length; j++) {
-                    let key = errorsKey[j];
-                    let errors = data[key];
-                    alert(errors);
-                }
-            } else {
+function addTask(element, content) {
+        for (let i = 0; i < element.length; i++) {
+            function createTask (data) {
                 const task = document.createElement('div');
                 task.classList.add('task');
                 task.textContent = data.name;
-
-                for (let k = 0; k < containerTask.length; k++) {
-                    containerTask[i].appendChild(task);
-                }
+                task.setAttribute('data-id', data.id_task.id);
+                const attrTask = task.getAttribute('data-id');
+                console.log(task);
+                // if (content.length > 1) {
+                    for (let j = 0; j < content.length; j++) {
+                        for (let k = 0; k < btnTask.length; k++) {
+                            const attr = btnTask[k].getAttribute('data-id');
+                            if (data.list == attr) {
+                                content[k].appendChild(task);
+                            }
+                        }
+                        // content[i].appendChild(task);
+                    }
+                // } else {
+                //     for (let j = 0; j < btnTask.length; j++) {
+                //         const attr = btnTask[i].getAttribute('data-id');
+                //         if (data.list == attr) {
+                //             content.appendChild(task);
+                //         }
+                //     }
+                    
+                //     console.log(content);
+                // }
             }
-        })
-    })
+            formSubmit(element[i], 'addTask', createTask);
+        }
 }
-
+addTask(formAddTask, containerTask);
 
 // Task form
-function formTaskAction(element) {
+function formTaskAction(element, form) {
     for (let i = 0; i < element.length; i++) {
         let attributeId = element[i].getAttribute('data-id');
         
         element[i].addEventListener('click', () => {
     
-            for (let j = 0; j < formTask.length; j++) {
-                const formAttr = formTask[j].getAttribute('data-id');
+            for (let j = 0; j < form.length; j++) {
+                const formAttr = form[j].getAttribute('data-id');
     
                 if (attributeId == formAttr) {
-                    formTask[j].style.display = 'block';
+                    form[j].style.display = 'block';
                     
-                    closeForm(btnCancel, formTask[j], 'click');
+                    closeForm(btnCancel, form[j], 'click');
                 }
             }
         })
     }
-    console.log(element);
 }
-formTaskAction(btnTask);
+formTaskAction(btnTask, formTask);
 
 
 // Close task form

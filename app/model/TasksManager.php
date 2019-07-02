@@ -28,6 +28,15 @@ class TasksManager extends Manager {
         return $tasks;
     }
 
+    public function getTaskById($list_id, $project_id)
+    {
+        $req = $this->db->prepare('SELECT id from task WHERE list_id = ? AND project_id = ?') or die(var_dump($this->db->errorInfo()));
+        $req->execute(array($list_id, $project_id));
+        $id = $req->fetch();
+        return $id;
+
+    }
+
     public function getNameTask($id, $name)
     {
         $req = $this->db->prepare('SELECT * FROM task WHERE id_project = ? AND name_task = ?')
