@@ -17,9 +17,9 @@ class Router {
 
             $controller->executeAction($action);
         } 
-        catch (Exception $e) 
+        catch (\Exception $e) 
         {
-            throw new \Exception('Impossible d\'exécuter la requête.');
+            $this->managerError($e);
         }
     }
 
@@ -36,7 +36,6 @@ class Router {
 
         if (file_exists($file)) 
         {
-
             // Instanciation du controller adapté à la requête
             require($file);
       
@@ -46,7 +45,7 @@ class Router {
         } 
         else 
         {
-            echo ('Fichier '. $file .' introuvable');
+            throw new \Exception('Fichier '. $file .' introuvable');
         }
     }
 
@@ -60,9 +59,9 @@ class Router {
         return $action;
     }
 
-    private function managerError(\Exception $e) 
+    private function managerError(\Exception $exception) 
     {
-        $view = new View('Error');
-        $view->getError();
+        $errorMessage = $exception->getMessage();
+        require(VIEW_FRONT.'error.php');
     }    
 }

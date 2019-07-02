@@ -28,13 +28,13 @@ class ConnexionController extends Controller {
                 if ($this->session->is_connected()) {
                     $this->redirecting('dashboard');
                 } else {
-                    echo 'no connecté.';
+                    throw new \Exception('Vous n\'êtes pas connecté.');
                 }
             } else {
-                echo 'Mauvais identifiant ou mot de passe';
+                throw new \Exception('Mauvais identifiant ou mot de passe');
             }
         } else {
-            'Les paramètres n\'existent pas';
+            throw new \Exception('Les paramètres n\'existent pas');
         }
     }
 

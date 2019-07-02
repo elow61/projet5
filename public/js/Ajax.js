@@ -51,9 +51,7 @@ function formSubmit(form, url, fCreate) {
                 } 
             } else {
                 fCreate(data);
-                console.log(data);
             }
         })
-        // return element, url, data, fCreate;
     })
 }

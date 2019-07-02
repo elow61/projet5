@@ -14,7 +14,7 @@ class DashboardController extends Controller {
         } 
         else 
         {
-            echo 'no connecté.';
+            throw new \Exception('Vous n\'êtes pas connecté.');
         }
     }
 
@@ -31,12 +31,12 @@ class DashboardController extends Controller {
             }
             else
             {
-                echo 'Veuillez être connecté avant de supprimer un projet.';
+                throw new \Exception('Veuillez être connecté avant de supprimer un projet.');
             }
         }
         else 
         {
-            echo 'Sélectionnez un projet à supprimer.';
+            throw new \Exception('Sélectionnez un projet à supprimer.');
         }
     }
 
@@ -55,17 +55,17 @@ class DashboardController extends Controller {
                 }
                 else
                 {
-                    echo 'Veuillez être connecté avant de modifier un projet.';
+                    throw new \Exception('Veuillez être connecté avant de modifier un projet.');
                 }
             }
             else
             {
-                echo 'Veuillez entrer un nom pour votre nouveau projet.';
+                throw new \Exception('Veuillez entrer un nom pour votre nouveau projet.');
             }
         }
         else
         {
-            echo 'Veuillez choisir un projet avant de le modifier.';
+            throw new \Exception('Veuillez choisir un projet avant de le modifier.');
         }
         
     }

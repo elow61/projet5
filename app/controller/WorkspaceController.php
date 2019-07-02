@@ -16,7 +16,7 @@ class WorkspaceController extends Controller {
                 {   
                     if ($_SESSION['id'] !== $project_user['id_user'])
                     {
-                        echo 'Page indisponible.';
+                        throw new \Exception('Page indisponible.');
                     }
                     else 
                     {
@@ -24,107 +24,131 @@ class WorkspaceController extends Controller {
                         $project = $this->project->getOneProject($this->request->getParam('id'));
                         $lists = $this->list->getLists($this->request->getParam('id'));
                         $tasks = $this->task->getTasks($this->request->getParam('id'));
-
                         require VIEW_BACK . 'workspace.php';
                     }
                 }
                 else
                 {
-                    echo 'Ce projet n\'existe pas.';
+                    throw new \Exception('Ce projet n\'existe pas.');
                 }
             } 
             else 
             {
-                echo 'Aucun projet trouvé.';
+                throw new \Exception('Aucun projet trouvé.');
             }
         } 
         else 
         {
-            echo 'Vous devez être connecté.';
+            throw new \Exception('Vous devez être connecté.');
         }
     }
 
-    // protected function isAjax()
-    // {
-    //     return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-    // }
-
     public function lists() 
     {
-        $response = [];
-        $list_name = htmlspecialchars($this->request->getParam('list_name'));
-        $list = $this->list->getNameList($_SESSION['id_project'], $list_name);
-        if (!empty($_SESSION['id_project']))
+        try 
         {
 
-            if ($list_name == $list['name_list'])
+            $response = [];
+            $list_name = htmlspecialchars($this->request->getParam('list_name'));
+            $list = $this->list->getNameList($_SESSION['id_project'], $list_name);
+            if (!empty($_SESSION['id_project']))
             {
-                $response['error'] = 'Cette liste existe déjà.';
+    
+                if ($list_name == $list['name_list'])
+                {
+                    $response['error'] = 'Cette liste existe déjà.';
+                }
+                else 
+                {
+                    $addList = $this->list->addList($list_name, $_SESSION['id_project']);
+                    $lists = $this->list->getNameList($_SESSION['id_project'], $list_name);
+    
+                    $response['success'] = $list_name;
+                    $response['id'] = $lists['id_list'];
+                    header('Content-Type: application/json');
+                }
             }
             else 
             {
-                $addList = $this->list->addList($list_name, $_SESSION['id_project']);
-                $lists = $this->list->getNameList($_SESSION['id_project'], $list_name);
-
-                $response['success'] = $list_name;
-                $response['id'] = $lists['id_list'];
-                header('Content-Type: application/json');
+                $response[errors] = 'Aucun projet existant';
             }
+            echo json_encode($response);
+            // throw new \Exception("Oops ! Une erreur s'est produite !");
+
         }
-        else 
+        catch (\Exception $e)
         {
-            $response[errors] = 'Aucun projet existant';
+            $this->getError($e);
         }
-        echo json_encode($response);
     }
 
     public function removeLists() 
     {
-        $response = [];
-        $idList = $this->request->getParam('id_list');
-            if (!empty($_SESSION['id_project']))
-            {
-                $removeList = $this->list->removeList($idList);
-                $deleteTask = $this->task->deleteTasks($idList);
-                $response = $idList;
-                header('Content-type: application/json');
-            }
-            else 
-            {
-                $response['error'] = 'Aucun projet trouvé.';
-            }
-        echo json_encode($response);
+        try
+        {
+            $response = [];
+            $idList = $this->request->getParam('id_list');
+                if (!empty($_SESSION['id_project']))
+                {
+                    $removeList = $this->list->removeList($idList);
+                    $deleteTask = $this->task->deleteTasks($idList);
+                    $response = $idList;
+                    header('Content-type: application/json');
+                }
+                else 
+                {
+                    $response['error'] = 'Aucun projet trouvé.';
+                }
+            echo json_encode($response);
+            // throw new \Exception("Oops ! Une erreur s'est produite !");
+
+        }
+        catch (\Exception $e)
+        {
+            $this->getError($e);
+        }
+        
     }
 
     public function addTask()
     {
-        $response = [];
-        $taskName = htmlspecialchars($this->request->getParam('name_task'));
-        $idList = $this->request->getParam('id_list');
-        $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
-
-        // print_r($getTask['name_task']);
-        if (!empty($_SESSION['id_project']))
+        try
         {
-            if ($ifTaskName['name_task'] == $taskName) 
+            $response = [];
+            $taskName = htmlspecialchars($this->request->getParam('name_task'));
+            $idList = $this->request->getParam('id_list');
+            $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
+            // print_r($getTask['name_task']);
+            if (!empty($_SESSION['id_project']))
             {
-                $response['error'] = 'Cette tâche existe déjà !';
-            }
+                if ($ifTaskName['name_task'] == $taskName) 
+                {
+                    $response['error'] = 'Cette tâche existe déjà !';
+                }
+                else 
+                {
+                    $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
+                    $id_task = $this->task->getTaskById($idList, $_SESSION['id_project']);
+                    $response['id_task'] = $id_task;
+                    $response['name'] = $taskName;
+                    $response['user'] = $_SESSION['id'];
+                    $response['project'] = $_SESSION['id_project'];
+                    $response['list'] = $idList;
+                    header('Content-type: application/json');
+                }
+                
+            } 
             else 
             {
-                $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
-                $response['name'] = $taskName;
-                $response['user'] = $_SESSION['id'];
-                $response['project'] = $_SESSION['id_project'];
-                $response['list'] = $idList;
-                header('Content-type: application/json');
+                $response['error'] = 'Aucun project n\'est relié à cette tâche.';
             }
-            
-        } 
-        else 
-        {
-            $response['error'] = 'Aucun project n\'est relié à cette tâche.';
+            echo json_encode($response);
+            // throw new \Exception("Oops ! Une erreur s'est produite !");
+
         }
-        echo json_encode($response);
+        catch (\Exception $e)
+        {
+            $this->getError($e);
+        }
     }
 }

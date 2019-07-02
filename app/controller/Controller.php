@@ -63,19 +63,19 @@ abstract class Controller {
                 } 
                 else 
                 {
-                    'Veuillez être connecté avant de créer un projet.';
+                    throw new \Exception('Veuillez être connecté avant de créer un projet.');
                 } 
             }
             else 
             {
-                echo 'Le projet existe déjà.';
+                throw new \Exception('Le projet existe déjà.');
             }
 
             
         } 
         else 
         {
-            echo 'Veuillez entrer un nom de projet ou sélectionner une couleur de référence.';
+            throw new \Exception('Veuillez entrer un nom de projet ou sélectionner une couleur de référence.');
         }
     }
 
@@ -83,5 +83,11 @@ abstract class Controller {
     {
         $racine = HOST . '/';
         header('Location: ' . $racine . $controller . '/' . $action);
+    }
+
+    protected function getError(\Exception $exception)
+    {
+        $errorMessage = $exception->getMessage();
+        require VIEW_FRONT.'error.php';
     }
 }
