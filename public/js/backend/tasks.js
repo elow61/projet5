@@ -1,93 +1,115 @@
-const formAddTask = document.getElementsByClassName('form-task');
-const formTask = document.getElementsByClassName('container-form-task');
-const btnTask = document.getElementsByClassName('btn-add-task');
-const btnCancel = document.getElementsByClassName('cancel');
-const containerTask = document.getElementsByClassName('task-content'); 
+let formAddTask = document.getElementsByClassName('form-task');
+let formTask = document.getElementsByClassName('container-form-task');
+let btnTask = document.getElementsByClassName('btn-add-task');
+let btnCancel = document.getElementsByClassName('cancel');
+let containerTask = document.getElementsByClassName('task-content'); 
 
-function addTask(element, content) {
-        for (let i = 0; i < element.length; i++) {
-            function createTask (data) {
-                const task = document.createElement('div');
-                task.classList.add('task');
-                task.textContent = data.name;
-                task.setAttribute('data-id', data.id_task.id);
-                const attrTask = task.getAttribute('data-id');
-                console.log(task);
-                // if (content.length > 1) {
-                    for (let j = 0; j < content.length; j++) {
-                        for (let k = 0; k < btnTask.length; k++) {
-                            const attr = btnTask[k].getAttribute('data-id');
-                            if (data.list == attr) {
-                                content[k].appendChild(task);
-                            }
-                        }
-                        // content[i].appendChild(task);
-                    }
-                // } else {
-                //     for (let j = 0; j < btnTask.length; j++) {
-                //         const attr = btnTask[i].getAttribute('data-id');
-                //         if (data.list == attr) {
-                //             content.appendChild(task);
-                //         }
-                //     }
-                    
-                //     console.log(content);
-                // }
+// Without reload
+function addTasks(element, content) {
+    for (let i = 0; i < element.length; i++) {
+        function createTask (data) {
+            let tasks = [];
+
+            let task = document.createElement('div');
+            task.classList.add('task');
+            task.textContent = data.name;
+            task.setAttribute('data-id', data.id_task.id);
+            tasks.push(task);
+
+            content.appendChild(task);
+            for (let y = 0; y < formTask.length; y++) {
+                formTask[i].style.display = 'none';
             }
-            formSubmit(element[i], 'addTask', createTask);
         }
-}
-addTask(formAddTask, containerTask);
-
-// Task form
-function formTaskAction(element, form) {
-    for (let i = 0; i < element.length; i++) {
-        let attributeId = element[i].getAttribute('data-id');
-        
-        element[i].addEventListener('click', () => {
-    
-            for (let j = 0; j < form.length; j++) {
-                const formAttr = form[j].getAttribute('data-id');
-    
-                if (attributeId == formAttr) {
-                    form[j].style.display = 'block';
-                    
-                    closeForm(btnCancel, form[j], 'click');
-                }
-            }
-        })
     }
-}
-formTaskAction(btnTask, formTask);
-
-
-// Close task form
-function closeForm (element, cible, event) {
-    for (let i = 0; i < element.length; i++) {
-        element[i].addEventListener(event, () => {
-            cible.style.display = 'none';
-        })
-    }
+    formSubmit(element, 'addTask', createTask);
 }
 
 // Add task
+for (let i = 0; i < formAddTask.length; i++) {
+    formTaskAction(btnTask, formTask);
+    formAddTask[i].addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const input = new FormData(formAddTask[i]);
+
+        ajaxPost('addTask', input, (response) => {
+            const data = JSON.parse(response);
+            if (data['error']) {
+                const errorsKey = Objet.keys(data);
+
+                for (let j = 0; j < errorsKey.length; j++) {
+                    let key = errorsKey[j];
+                    let errors = data[key];
+                    alert(errors);
+                }
+            } else {
+                const task = document.createElement('div');
+                task.classList.add('task');
+                task.textContent = data.name;
+
+                for (let k = 0; k < containerTask.length; k++) {
+                    containerTask[i].appendChild(task);
+                }
+                for (let y = 0; y < formTask.length; y++) {
+                    formTask[i].style.display = 'none';
+                }
+            }
+        })
+    })
+}
+
+// Task form open
+function formTaskAction(element, form) {
+    for (let i = 0; i < element.length; i++) {
+        let attributeId = element[i].getAttribute('data-id');
+
+        for (let j = 0; j < form.length; j++) {
+            if (form[j].style.display === 'none') {
+                element[i].addEventListener('click', () => {
+                    const formAttr = form[j].getAttribute('data-id');
+            
+                    if (attributeId == formAttr) {
+                        form[j].style.display = 'block';
+                        
+                        closeForm(btnCancel, form[j]);
+                    }
+                })
+            } else {
+                form[j].style.display = 'none';
+            }
+        }
+    }
+}
+
+
+// Close task form
+function closeForm (element, cible) {
+    for (let i = 0; i < element.length; i++) {
+        element[i].addEventListener('click', () => {
+            for (let j = 0; j < cible.length; j++) {
+                cible[j].style.display = 'none';
+            }
+        })
+    }
+}
 
 // Menu for delete or update a task
 function menuTask() {
-    tasks = document.getElementsByClassName('task');
+    let tasks = document.getElementsByClassName('task');
     for (let i = 0; i < tasks.length; i++) {
         taskAttr = tasks[i].getAttribute('data-id');
     }
 
     // Create Menu
-    containerMenuTask = document.createElement('div');
+    let containerMenuTask = document.createElement('div');
     container.classList.add('container-menu-task');
 
-    updateTask = document.createElement('a');
+    let updateTask = document.createElement('a');
     updateTask.classList.add('update-task');
-    update.task.href = '/updateTask&id=' + taskAttr;
+    updateTask.task.href = '/updateTask&id=' + taskAttr;
 
-    deleteTask = document.createElement('a');
+    let deleteTask = document.createElement('a');
     deleteTask.classList.add('delete-task');
     deleteTask.href = '/deleteTask&id=' + taskAttr;
 

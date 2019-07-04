@@ -4,7 +4,7 @@ const formDelete = document.getElementById('form-delete');
 let btnRemoved = document.getElementsByClassName('remove-list');
 const container = document.getElementById('container-list');
 const btnAddList = document.getElementsByClassName('add-list');
-
+let arrLists = [];
 // Add the value for the input
 for (let i = 0; i < btnRemoved.length; i++) {
     let attribute = btnRemoved[i].getAttribute('data-id');
@@ -46,8 +46,8 @@ const createList = function (data) {
     })
     
     // Container manager task
-    const containerTask = document.createElement('div');
-    containerTask.classList.add('container-task');
+    const firstContainerTask = document.createElement('div');
+    firstContainerTask.classList.add('container-task');
 
     // Container form for add a task
     const formTask = document.createElement('div');
@@ -96,14 +96,13 @@ const createList = function (data) {
     })
 
     list.appendChild(containerTitle);
-    list.appendChild(containerTask);
-
+    list.appendChild(firstContainerTask);
     containerTitle.appendChild(title);
     containerTitle.appendChild(btnRemove);
 
-    containerTask.appendChild(contentTask);
-    containerTask.appendChild(formTask);
-    containerTask.appendChild(btnTask);
+    firstContainerTask.appendChild(contentTask);
+    firstContainerTask.appendChild(formTask);
+    firstContainerTask.appendChild(btnTask);
 
     formTask.appendChild(formPost);
     formPost.appendChild(inputNameList);
@@ -113,14 +112,12 @@ const createList = function (data) {
 
     containerBtn.appendChild(btnSubmit);
     containerBtn.appendChild(btnCancel);
-    // formTaskAction(btnTask, formTask);
-
-    addTask(formAddTask, contentTask);
-    closeForm(btnCancel);
-
+    formTaskAction(btnTask, formTask);
+    arrLists.push(list);
+    addTasks(formPost, contentTask);
     modal.closeModal();
 }
-const list = document.getElementsByClassName('list');
+
 const deleteList = function (data) {
     let list = document.getElementsByClassName('list');
         for (let i = 0; i < list.length; i++) {
