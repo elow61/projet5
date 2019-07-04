@@ -100,4 +100,13 @@ class ProjectManager extends Manager {
 
         return $updateProjet;
     }
+
+    public function nbProject($id_user)
+    {
+        $number = $this->db->prepare('SELECT COUNT(*) AS nb FROM user_project WHERE id_user = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $number->execute(array($id_user));
+        $nb = $number->fetch();
+        return $nb;
+    }
 }

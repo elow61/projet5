@@ -20,5 +20,3 @@ function updateProject(btnRadio) {
      }
  }
 
- // get DOM Elements
-

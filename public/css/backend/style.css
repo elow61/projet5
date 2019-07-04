@@ -521,3 +521,54 @@ nav hr {
 .task:hover {
     background-color: #38465a;
 }
+
+.container-menu-task {
+    display: none;
+}
+
+/****************************************************
+******************** PROFIL *************************
+****************************************************/
+.container-profil span {
+    text-transform: uppercase;
+    color: #3FD5FB;
+}
+
+.container-info__profil {
+    padding: 20px;
+    background-color: #2f3b4d;
+}
+
+.card-project {
+    display: block;
+    background-color: #44546d;
+    border-radius: 5px 5px 5px 5px;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    z-index: 999;
+    text-align: center;
+    position: relative;
+    top: -145px;
+    right: -556px;
+    transform: skew(-0.01turn, 2deg);
+    box-shadow: 10px 5px 5px #191f29;
+}
+
+.card-project i {
+    background-color: transparent;
+    color: #191f29;
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+.card-project i:hover {
+    transform: scale(1.2);
+}
+
+/* .nb-project:hover {
+    cursor: pointer;
+    font-size: 2em;
+} */

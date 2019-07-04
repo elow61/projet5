@@ -24,6 +24,7 @@ class ConnexionController extends Controller {
                 $_SESSION['id'] = $users['id_user'];
                 $_SESSION['first_name'] = $users['first_name'];
                 $_SESSION['last_name'] = $users['last_name'];
+                $_SESSION['email'] = $users['email'];
 
                 if ($this->session->is_connected()) {
                     $this->redirecting('dashboard');
