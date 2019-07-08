@@ -12,5 +12,7 @@
             "App\\": "app/"
         }
     },
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "6.3.3"
+    }
 }
