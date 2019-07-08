@@ -47,7 +47,6 @@ class WorkspaceController extends Controller {
     {
         try 
         {
-
             $response = [];
             $list_name = htmlspecialchars($this->request->getParam('list_name'));
             $list = $this->list->getNameList($_SESSION['id_project'], $list_name);
@@ -115,7 +114,7 @@ class WorkspaceController extends Controller {
         try
         {
             $response = [];
-            $taskName = htmlspecialchars($this->request->getParam('name_task'));
+            $taskName = nl2br(htmlspecialchars_decode($this->request->getParam('name_task')));
             $idList = $this->request->getParam('id_list');
             $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
             // print_r($getTask['name_task']);

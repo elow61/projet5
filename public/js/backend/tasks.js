@@ -12,14 +12,18 @@ function addTasks(element, content) {
 
             let task = document.createElement('div');
             task.classList.add('task');
-            task.textContent = data.name;
+            task.innerHTML = data.name;
             task.setAttribute('data-id', data.id_task.id);
             tasks.push(task);
 
             content.appendChild(task);
-            for (let y = 0; y < formTask.length; y++) {
-                formTask[i].style.display = 'none';
+            for (let j = 0; j < btnCancel.length; j++) {
+
             }
+            for (let y = 0; y < formTask.length; y++) {
+                formTask[y].style.display = 'none';
+            }
+            console.log(data.name);
         }
     }
     formSubmit(element, 'addTask', createTask);
@@ -46,7 +50,7 @@ for (let i = 0; i < formAddTask.length; i++) {
             } else {
                 const task = document.createElement('div');
                 task.classList.add('task');
-                task.textContent = data.name;
+                task.innerHTML = data.name;
 
                 for (let k = 0; k < containerTask.length; k++) {
                     containerTask[i].appendChild(task);
