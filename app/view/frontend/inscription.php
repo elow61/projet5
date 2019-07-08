@@ -17,7 +17,7 @@ ob_start();
         </div>
         <div id="my-signin2"></div>
         <div class="already-account">
-            <p>Vous avez déjà un compte ? <a class="link-co" href="/Connexion">Connexion</a></p>
+            <p>Vous avez déjà un compte ? <a class="link-co" href="/connexion">Connexion</a></p>
         </div>
     </div>
     <div class="bubble_blue">

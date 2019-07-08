@@ -13,7 +13,7 @@ ob_start();
         <div class="separation">
             <div><p class="separate">ou</p></div>
         </div>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email&access_type=online&redirect_uri=<?= urlencode('http://localhost:8888/google')?>&response_type=code&client_id=<?= GOOGLE_ID ?>">Se connecter via Google</a>
     </div>
     <div class="bubble_blue">
         <img src="<?= IMAGES_BUBBLE ?>bubble_blue.svg" alt="">
