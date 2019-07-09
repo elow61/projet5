@@ -47,7 +47,6 @@ class GoogleController extends Controller {
                     $_SESSION['first_name'] = $users['first_name'];
                     $_SESSION['last_name'] = $users['last_name'];
                     $_SESSION['email'] = $users['email'];
-                    echo 'coucou';
                     if ($this->session->is_connected())
                     {
                         $this->redirecting('dashboard');
@@ -74,7 +73,6 @@ class GoogleController extends Controller {
                     }
                 }
             }
-            echo 'error';
             require VIEW_FRONT . 'google.php';
         } 
         catch (\GuzzleHttp\Exception\ClientException $e)
