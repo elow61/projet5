@@ -35,10 +35,46 @@ class GoogleController extends Controller {
             $response = json_decode($response->getBody());
             if ($response->email_verified === true)
             {
-                $_SESSION['email'] = $response->email;
+                $users = $this->users->get($response->email);
+
+                // var_dump($users);
+                // var_dump((string)$response->email);
+                // die();
+    
+                if ($users['email'] == (string)$response->email)
+                {
+                    $_SESSION['id'] = $users['id_user'];
+                    $_SESSION['first_name'] = $users['first_name'];
+                    $_SESSION['last_name'] = $users['last_name'];
+                    $_SESSION['email'] = $users['email'];
+                    echo 'coucou';
+                    if ($this->session->is_connected())
+                    {
+                        $this->redirecting('dashboard');
+                    }
+                }
+                else
+                {
+                    $newUser = $this->users->newUser(
+                        $response->email,
+                        '',
+                        $response->name,
+                        $response->family_name
+                    );
+                    $getUsers = $this->users->get($response->email);
+
+                    $_SESSION['id'] = $getUsers['id_user'];
+                    $_SESSION['first_name'] = $response->name;
+                    $_SESSION['last_name'] = $response->family_name;
+                    $_SESSION['email'] = $response->email;
+
+                    if ($this->session->is_connected())
+                    {
+                        $this->redirecting('dashboard');
+                    }
+                }
             }
-            echo '<pre>';
-            print_r($_SESSION);
+            echo 'error';
             require VIEW_FRONT . 'google.php';
         } 
         catch (\GuzzleHttp\Exception\ClientException $e)

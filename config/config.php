@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 
 $host = $_SERVER['HTTP_HOST'];
 $root = $_SERVER['DOCUMENT_ROOT'];
+define("GOOGLE_ID", "120427211992-tulcv9lndeshr2vks9ehio6455rep64a.apps.googleusercontent.com");
+define('GOOGLE_SECRET', 'icIIrQf_jh4OCdCFw0WZzMtU');
 
 define('HOST', 'http://'.$host);
 define('ROOT', $root);
@@ -20,3 +22,4 @@ define('IMAGES_BUBBLE', HOST.'/public/images/bubbles/');
 define('IMAGES_WAVE', HOST.'/public/images/waves/');
 
 define('JS', HOST.'/public/js/');
+
