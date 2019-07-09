@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 
 $host = $_SERVER['HTTP_HOST'];
 $root = $_SERVER['DOCUMENT_ROOT'];
-define("GOOGLE_ID", "120427211992-tulcv9lndeshr2vks9ehio6455rep64a.apps.googleusercontent.com");
-define('GOOGLE_SECRET', 'icIIrQf_jh4OCdCFw0WZzMtU');
+define("GOOGLE_ID", "bouh");
+define('GOOGLE_SECRET', 'bouh');
 
 define('HOST', 'http://'.$host);
 define('ROOT', $root);
