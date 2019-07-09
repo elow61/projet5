@@ -37,9 +37,9 @@
     <?= $content ?>
 
     <script src="<?= JS ?>ajax.js"></script>
+    <script src="<?= JS ?>backend/main.js"></script>
     <script src="<?= JS ?>backend/lists.js"></script>
     <script src="<?= JS ?>backend/tasks.js"></script>
     <script src="<?= JS ?>Modal.js"></script>
-    <script src="<?= JS ?>backend/main.js"></script>
 </body>
 </html>

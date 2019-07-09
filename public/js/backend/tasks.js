@@ -7,6 +7,10 @@ let containerTask = document.getElementsByClassName('task-content');
 // Without reload
 function addTasks(element, content) {
     for (let i = 0; i < element.length; i++) {
+        for (let j = 0; j < btnCancel.length; j++) {
+            closeForm(btnCancel, formTask);
+        }
+        
         function createTask (data) {
             let tasks = [];
 
@@ -17,13 +21,14 @@ function addTasks(element, content) {
             tasks.push(task);
 
             content.appendChild(task);
-            for (let j = 0; j < btnCancel.length; j++) {
 
-            }
+            tasks.addEventListener('click', () => {
+                menuTask();
+            })
+            
             for (let y = 0; y < formTask.length; y++) {
                 formTask[y].style.display = 'none';
             }
-            console.log(data.name);
         }
     }
     formSubmit(element, 'addTask', createTask);
@@ -75,8 +80,7 @@ function formTaskAction(element, form) {
             
                     if (attributeId == formAttr) {
                         form[j].style.display = 'block';
-                        
-                        closeForm(btnCancel, form[j]);
+                        // closeForm(btnCancel, form[j]);
                     }
                 })
             } else {
@@ -85,18 +89,7 @@ function formTaskAction(element, form) {
         }
     }
 }
-
-
-// Close task form
-function closeForm (element, cible) {
-    for (let i = 0; i < element.length; i++) {
-        element[i].addEventListener('click', () => {
-            for (let j = 0; j < cible.length; j++) {
-                cible[j].style.display = 'none';
-            }
-        })
-    }
-}
+closeForm(btnCancel, formTask);
 
 // Menu for delete or update a task
 function menuTask() {
@@ -111,11 +104,11 @@ function menuTask() {
 
     let updateTask = document.createElement('a');
     updateTask.classList.add('update-task');
-    updateTask.task.href = '/updateTask&id=' + taskAttr;
+    updateTask.task.href = '/updateTask/' + taskAttr;
 
     let deleteTask = document.createElement('a');
     deleteTask.classList.add('delete-task');
-    deleteTask.href = '/deleteTask&id=' + taskAttr;
+    deleteTask.href = '/deleteTask/' + taskAttr;
 
     containerMenuTask.appendChild(updateTask);
     containerMenuTask.appendChild(deleteTask);

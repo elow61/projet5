@@ -16,7 +16,6 @@ for (let i = 0; i < btnRemoved.length; i++) {
 }
 
 const createList = function (data) {
-
     // lists
     const list = document.createElement('div');
     list.classList.add('list');

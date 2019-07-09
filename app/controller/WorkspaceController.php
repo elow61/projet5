@@ -45,7 +45,7 @@ class WorkspaceController extends Controller {
 
     public function lists() 
     {
-        try 
+        if ($this->isAjax())
         {
             $response = [];
             $list_name = htmlspecialchars($this->request->getParam('list_name'));
@@ -75,15 +75,15 @@ class WorkspaceController extends Controller {
             // throw new \Exception("Oops ! Une erreur s'est produite !");
 
         }
-        catch (\Exception $e)
+        else
         {
-            $this->getError($e);
+            throw new \Exception('Vous vous êtes trompée de page.');
         }
     }
 
     public function removeLists() 
     {
-        try
+        if ($this->isAjax())
         {
             $response = [];
             $idList = $this->request->getParam('id_list');
@@ -99,19 +99,17 @@ class WorkspaceController extends Controller {
                     $response['error'] = 'Aucun projet trouvé.';
                 }
             echo json_encode($response);
-            // throw new \Exception("Oops ! Une erreur s'est produite !");
-
         }
-        catch (\Exception $e)
+        else        
         {
-            $this->getError($e);
+            throw new \Exception('Vous vous êtes trompée de page.');
         }
         
     }
 
     public function addTask()
     {
-        try
+        if ($this->isAjax())
         {
             $response = [];
             $taskName = nl2br(htmlspecialchars_decode($this->request->getParam('name_task')));
@@ -145,9 +143,35 @@ class WorkspaceController extends Controller {
             // throw new \Exception("Oops ! Une erreur s'est produite !");
 
         }
-        catch (\Exception $e)
+        else        
         {
-            $this->getError($e);
+            throw new \Exception('Vous vous êtes trompée de page.');
+        }
+    }
+
+    public function deleteTask()
+    {
+        if ($this->isAjax())
+        {
+            $response = [];
+            // get the task
+            // Exec the function to delete this task
+        }
+        else
+        {
+
+        }
+    }
+
+    public function updateTask()
+    {
+        if ($this->isAjax())
+        {
+
+        }
+        else
+        {
+            
         }
     }
 }

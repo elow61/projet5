@@ -18,5 +18,18 @@ function updateProject(btnRadio) {
          input = document.getElementById('newName');
          input.style.display = 'block';
      }
- }
+}
+
+// Close forms with same class
+function closeForm (element, cible) {
+    for (let i = 0; i < element.length; i++) {
+        element[i].addEventListener('click', () => {
+            for (let j = 0; j < cible.length; j++) {
+                cible[j].style.display = 'none';
+            }
+        })
+    }
+}
+
+
 
