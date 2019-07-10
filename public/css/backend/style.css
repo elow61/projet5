@@ -263,12 +263,16 @@ nav hr {
     align-items: center;
 }
 
-#dialog .container-modal form input {
+.dialog .container-modal form input {
     margin-bottom: 20px;
     padding: 10px;
     width: 300px;
     border: 1px solid #000;
     border-radius: 6px 6px 6px 6px;
+}
+
+#dialog3 .container-modal form input {
+    width: inherit;
 }
 
 .dialog[aria-hidden="true"] {
@@ -568,7 +572,20 @@ nav hr {
     transform: scale(1.2);
 }
 
-/* .nb-project:hover {
-    cursor: pointer;
-    font-size: 2em;
-} */
+.container-modal-profil {
+    margin-top: -159px;
+}
+
+.update {
+    margin: 20px;
+    background-color: #2f3b4d;
+    text-transform: uppercase;
+}
+
+/* responsive profil page */
+@media screen and (max-width: 908px) {
+    .card-project {
+        top: 189px;
+        right: -15px;
+    }
+}

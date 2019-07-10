@@ -33,13 +33,23 @@ class UsersManager extends Manager {
         return $users;
     }
 
-    // Get a user with his ID
-    // public function getId($id) 
-    // {
-    //     $req = $this->db->prepare('SELECT id_user, email, pass, first_name, last_name
-    //     FROM users WHERE id = ?') or die(var_dump($this->db->errorInfo()));
+    public function updateName($first_name, $last_name, $email)
+    {
+        $req = $this->db->prepare('UPDATE users SET first_name = ?, last_name = ? WHERE email = ?')
+        or die(var_dump($this->db->errorInfo()));
 
-    //     $req->execute(array($id));
-    //     $users = $req->fetch();
-    // }
+        $updateName = $req->execute(array($first_name, $last_name, $email));
+
+        return $updateName;
+    }
+
+    public function updatePass($pass, $email)
+    {
+        $req = $this->db->prepare('UPDATE users SET pass = ? where email = ?')
+        or die(var_dump($this->db->errorInfo()));
+
+        $updatePass = $req->execute(array($pass, $email));
+
+        return $updatePass;
+    }
 }
