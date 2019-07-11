@@ -3,6 +3,12 @@ let formTask = document.getElementsByClassName('container-form-task');
 let btnTask = document.getElementsByClassName('btn-add-task');
 let btnCancel = document.getElementsByClassName('cancel');
 let containerTask = document.getElementsByClassName('task-content'); 
+const formDeleteTask = document.getElementById('modal-tasks-delete');
+const formUpdateTask = document.getElementById('modal-tasks-update');
+let tasks = document.getElementsByClassName('task');
+
+addAttribute(tasks, 'data-id', 'input-task-delete');
+addAttribute(tasks, 'data-id', 'input-task-update');
 
 // Without reload
 function addTasks(element, content) {
@@ -18,14 +24,18 @@ function addTasks(element, content) {
             task.classList.add('task');
             task.innerHTML = data.name;
             task.setAttribute('data-id', data.id_task.id);
+            task.setAttribute('onclick', 'modal3.viewModal();');
+            const attribute = task.getAttribute('data-id');
+            task.addEventListener('click', () => {
+                const inputDelete = document.getElementById('input-task-delete');
+                const inputUpdate = document.getElementById('input-task-update');
+                inputDelete.value = attribute;
+                inputUpdate.value = attribute;
+            })
             tasks.push(task);
 
             content.appendChild(task);
 
-            tasks.addEventListener('click', () => {
-                menuTask();
-            })
-            
             for (let y = 0; y < formTask.length; y++) {
                 formTask[y].style.display = 'none';
             }
@@ -80,7 +90,6 @@ function formTaskAction(element, form) {
             
                     if (attributeId == formAttr) {
                         form[j].style.display = 'block';
-                        // closeForm(btnCancel, form[j]);
                     }
                 })
             } else {
@@ -91,41 +100,14 @@ function formTaskAction(element, form) {
 }
 closeForm(btnCancel, formTask);
 
-// Menu for delete or update a task
-function menuTask() {
+const deleteTask = function (data) {
     let tasks = document.getElementsByClassName('task');
     for (let i = 0; i < tasks.length; i++) {
-        taskAttr = tasks[i].getAttribute('data-id');
+        let taskAttr = tasks[i].getAttribute('data-id');
+        if (data == taskAttr) {
+            tasks[i].style.display = 'none';
+        }
     }
-
-    // Create Menu
-    let containerMenuTask = document.createElement('div');
-    container.classList.add('container-menu-task');
-
-    let updateTask = document.createElement('a');
-    updateTask.classList.add('update-task');
-    updateTask.task.href = '/updateTask/' + taskAttr;
-
-    let deleteTask = document.createElement('a');
-    deleteTask.classList.add('delete-task');
-    deleteTask.href = '/deleteTask/' + taskAttr;
-
-    containerMenuTask.appendChild(updateTask);
-    containerMenuTask.appendChild(deleteTask);
-
-    for (let i = 0; i < updateTask.length; i++) {
-        updateTask[i].addEventListener('click', () => {
-            ajaxGet(updateTask[i].href, (response) => {
-                const data = JSON.parse(response);
-            });
-        })
-    }
-
-    for (let i = 0; i < deleteTask.length; i++) {
-        deleteTask[i].addEventListener('click', () => {
-            ajaxGet(deleteTask[i].href, (response) => {
-                const data = JSON.parse(response);
-            });
-        })
-    }
+    modal3.closeModal();
 }
+formSubmit(formDeleteTask, 'deleteTask', deleteTask);

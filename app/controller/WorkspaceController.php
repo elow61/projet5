@@ -90,7 +90,7 @@ class WorkspaceController extends Controller {
                 if (!empty($_SESSION['id_project']))
                 {
                     $removeList = $this->list->removeList($idList);
-                    $deleteTask = $this->task->deleteTasks($idList);
+                    $deleteTask = $this->task->deleteTasksByList($idList);
                     $response = $idList;
                     header('Content-type: application/json');
                 }
@@ -154,12 +154,23 @@ class WorkspaceController extends Controller {
         if ($this->isAjax())
         {
             $response = [];
-            // get the task
-            // Exec the function to delete this task
+            $idTask = $this->request->getParam('id_task');
+            if (!empty($_SESSION['id_project']))
+            {
+                $deleteTask = $this->task->deleteTask($idTask);
+                $response = $idTask;
+                header('Content-type: application/json');
+            }
+            else 
+            {
+                $response['error'] = 'Tâche introuvable';
+            }
+            echo json_encode($response);
+
         }
         else
         {
-
+            throw new \Exception('Vous vous êtes trompé de page.');
         }
     }
 

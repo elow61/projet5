@@ -13,10 +13,10 @@ ob_start();
     </div>
     <div class="card-project">
         <i class="fas fa-tasks"></i>
-        <div class="nb-project">
+        <a href="dashboard" class="nb-project">
             <span class="nb"><?= $nb_project['nb'] ?></span>
             <span>Projet<?php if ($nb_project['nb'] > 1):?>s<?php endif;?></span>
-        </div>
+        </a>
     </div>
     <div class="container-modal-profil">
     <div class="modal">

@@ -56,7 +56,7 @@ class GoogleController extends Controller {
                 {
                     $newUser = $this->users->newUser(
                         $response->email,
-                        '',
+                        null,
                         $response->name,
                         $response->family_name
                     );

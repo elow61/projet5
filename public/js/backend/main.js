@@ -31,5 +31,12 @@ function closeForm (element, cible) {
     }
 }
 
-
-
+function addAttribute(elmtClick, attName, cible) {
+    for (let i = 0; i < elmtClick.length; i++) {
+        let attribute = elmtClick[i].getAttribute(attName);
+        elmtClick[i].addEventListener('click', () => {
+            let input = document.getElementById(cible);
+            input.value = attribute;
+        })
+    }
+}

@@ -46,9 +46,18 @@ class TasksManager extends Manager {
         return $list;
     }
 
-    public function deleteTasks($id)
+    public function deleteTasksByList($id)
     {
         $req = $this->db->prepare('DELETE FROM task WHERE list_id = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $deleteTask = $req->execute(array($id));
+
+        return $deleteTask;
+    }
+
+    public function deleteTask($id)
+    {
+        $req = $this->db->prepare('DELETE FROM task WHERE id = ?')
         or die(var_dump($this->db->errorInfo()));
         $deleteTask = $req->execute(array($id));
 

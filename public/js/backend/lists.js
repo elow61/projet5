@@ -5,15 +5,8 @@ let btnRemoved = document.getElementsByClassName('remove-list');
 const container = document.getElementById('container-list');
 const btnAddList = document.getElementsByClassName('add-list');
 let arrLists = [];
-// Add the value for the input
-for (let i = 0; i < btnRemoved.length; i++) {
-    let attribute = btnRemoved[i].getAttribute('data-id');
 
-    btnRemoved[i].addEventListener('click', () => {
-        const inputTitle = document.getElementById('input-list');
-        inputTitle.value = attribute;
-    })
-}
+addAttribute(btnRemoved, 'data-id', 'input-list');
 
 const createList = function (data) {
     // lists
