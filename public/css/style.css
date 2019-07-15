@@ -615,3 +615,29 @@ label:hover {
 .yellow {background-color: rgb(206, 216, 67);} /* #CED843 */
 .violet {background-color: #6e4eb0;}
 .white {background-color: #E6EAEC;}
+
+/** PAGE ERROR **/
+.textError {
+    position: relative;
+    text-align: center;
+    top: 300px;
+}
+
+.textError p {
+    font-size: 3em;
+    font-weight: bold;
+    color: #6e4eb0;
+    margin-bottom: 20px;
+}
+
+.textError span {
+    display: block;
+    font-style: italic;
+    margin-bottom: 30px;
+
+}
+
+.textError a {
+    background-color: #E6EAEC;
+    color: #6e4eb0;
+}

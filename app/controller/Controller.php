@@ -85,12 +85,6 @@ abstract class Controller {
         header('Location: ' . $racine . $controller . '/' . $action);
     }
 
-    protected function getError(\Exception $exception)
-    {
-        $errorMessage = $exception->getMessage();
-        require VIEW_FRONT.'error.php';
-    }
-
     protected function isAjax()
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';

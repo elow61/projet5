@@ -2,7 +2,6 @@
 $title = 'Connexion | Success Mission';
 ob_start();
 ?>
-
     <div class="container-form">
         <h1>Connexion</h1>
         <form action="/connexion/login" method="post">

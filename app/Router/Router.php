@@ -45,7 +45,7 @@ class Router {
         } 
         else 
         {
-            throw new \Exception('Fichier '. $file .' introuvable');
+            require(VIEW_ERROR.'error-404.php');
         }
     }
 
@@ -59,9 +59,9 @@ class Router {
         return $action;
     }
 
-    private function managerError(\Exception $exception) 
+    private function managerError(\Exception $e) 
     {
-        $errorMessage = $exception->getMessage();
-        require(VIEW_FRONT.'error.php');
+        $errorMessage = $e->getMessage();
+        require(VIEW_ERROR.'error.php');
     }    
 }

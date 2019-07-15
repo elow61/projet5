@@ -12,7 +12,6 @@ class ConnexionController extends Controller {
     public function login() 
     {
         $users = $this->users->get($this->request->getParam('email'));
-
         // Vérifie que les champs ont étés remplis
         if ($this->request->paramExist('email') && $this->request->paramExist('pass')) {
             $email = htmlspecialchars($this->request->getParam('email'));

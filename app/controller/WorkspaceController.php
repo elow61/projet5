@@ -77,7 +77,7 @@ class WorkspaceController extends Controller {
         }
         else
         {
-            throw new \Exception('Vous vous êtes trompée de page.');
+            require(VIEW_ERROR.'error-404.php');
         }
     }
 
@@ -102,7 +102,7 @@ class WorkspaceController extends Controller {
         }
         else        
         {
-            throw new \Exception('Vous vous êtes trompée de page.');
+            require(VIEW_ERROR.'error-404.php');
         }
         
     }
@@ -170,7 +170,7 @@ class WorkspaceController extends Controller {
         }
         else
         {
-            throw new \Exception('Vous vous êtes trompé de page.');
+            require(VIEW_ERROR.'error-404.php');
         }
     }
 
@@ -182,7 +182,7 @@ class WorkspaceController extends Controller {
         }
         else
         {
-            
+            require(VIEW_ERROR.'error-404.php');
         }
     }
 }
