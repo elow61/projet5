@@ -6,8 +6,6 @@ class Slider {
         this.index = 0;
 
         this.touchSlider();
-        this.clickOnStep();
-
     }
 
     changeImage () {
@@ -50,12 +48,12 @@ class Slider {
         });
     }
 
-    clickOnStep () {
-        for (let i = 0; i < this.image.length; i = i+this.image.length) {
+    // clickOnStep () {
+    //     for (let i = 0; i < this.image.length; i = i+this.image.length) {
             
-            this.step[i].addEventListener('click', () => this.changeImage(i));
-        }
-    }
+    //         this.step[i].addEventListener('click', () => this.changeImage(i));
+    //     }
+    // }
 
 }
 const slider = new Slider('slide', 'step');

@@ -227,12 +227,20 @@ nav ul li a:hover {
 /* ========================================================================================= */
 
 /* SECTION INFO */
+.container-page {
+    background-image: linear-gradient(to bottom, #fefefe, #f5f6fd, #eaeefd, #dce7fd, #cbe1fd, #c8e2fd, #c5e2fd, #c2e3fc, #cfe9fd, #dcf0fd, #e9f6fe, #f7fcff);
+}
 
 #info {
     padding-top: 80px;
     display: flex;
     justify-content: space-around;
     padding-bottom: 80px;
+}
+
+.text-info {
+    width: 450px;
+    height: auto;
 }
 
 .text-info p {
@@ -257,7 +265,7 @@ nav ul li a:hover {
     position: relative;
     width: 100%;
     height: auto;
-    background: linear-gradient(#d5f5fd ,#5693d6);
+    /* background: linear-gradient(#d5f5fd ,#5693d6); */
     padding-bottom: 100px;
 }
 
@@ -400,6 +408,26 @@ figcaption {
     color: #fdfdfd;
     margin-right: 10px;
 }
+
+/* ========================================================================================= */
+
+/* FOOTER */
+.container-footer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container-footer p {
+    font-size: .8em;
+}
+
+.container-footer .name-footer {
+    font-weight: bold;
+}
+
+.container-footer .type-footer {
+    font-style: italic;
+}
+
 
 /* ========================================================================================= */
 /* PAGE CONNEXION ET INSCRIPTION */
