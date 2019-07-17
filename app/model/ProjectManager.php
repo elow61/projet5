@@ -20,13 +20,14 @@ class ProjectManager extends Manager {
     }
 
     // Add the id's project and the id's user in the table reference (user_project)
-    public function projectId($id_user, $project_name) 
+    public function projectId($id_user) 
     {
        $req = $this->db->prepare('INSERT INTO user_project(id_user, id_project)
-       VALUES(?, (SELECT id_project FROM project WHERE project_name = ?))')
+       VALUES(?, (SELECT id_project FROM project WHERE id_project = 
+       (SELECT MAX(id_project) FROM project)))')
        or die(print_r($this->db->errorInfo()));
 
-       $id = $req->execute(array($id_user, $project_name));
+       $id = $req->execute(array($id_user));
 
        return $id;
     }
@@ -41,6 +42,19 @@ class ProjectManager extends Manager {
 
         $req->execute(array($id_user));
         $projects = $req->fetchAll();
+        return $projects;
+    }
+
+    public function ifProjectExist($id_user, $p_name) 
+    {
+        $req = $this->db->prepare('SELECT p.id_project p_id, p.project_name p_name, 
+        i.id_user u_id, i.id_project id_project
+        FROM project AS p
+        INNER JOIN user_project AS i
+        ON p.id_project = i.id_project AND i.id_user = ? WHERE p.project_name = ?') or die(var_dump($this->db->errorInfo()));
+
+        $req->execute(array($id_user, $p_name));
+        $projects = $req->fetch();
         return $projects;
     }
 
@@ -62,16 +76,6 @@ class ProjectManager extends Manager {
         $project_id = $req->fetch();
 
         return $project_id;
-    }
-
-    public function getProjectByName($name) 
-    {
-        $req = $this->db->prepare('SELECT id_project, project_name FROM project WHERE project_name = ? ')
-        or die(var_dump($this->db->errorInfo()));
-        $req->execute(array($name));
-        $project_name = $req->fetch();
-
-        return $project_name;
     }
 
     // Delete project from table reference

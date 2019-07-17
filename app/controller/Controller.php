@@ -47,18 +47,18 @@ abstract class Controller {
     // Create a project
     public function create() 
     {
-        $projectDB = $this->project->getProjectByName($this->request->getParam('project_name'));
 
         if ($this->request->paramExist('project_name') && $this->request->paramExist('color')) 
         {
             $color = $this->request->getParam('color');
             $project = htmlspecialchars($this->request->getParam('project_name'));
+            $projectDB = $this->project->ifProjectExist($_SESSION['id'], $project);
 
-            if ($project !== $projectDB['project_name'])
+            if ($project !== $projectDB['p_name'])
             {
                 if ($this->session->is_connected()) {
                     $project_name = $this->project->newProject($project, $color);
-                    $id = $this->project->projectId($_SESSION['id'], $project);
+                    $id = $this->project->projectId($_SESSION['id']);
                     $this->redirecting('dashboard');
                 } 
                 else 
