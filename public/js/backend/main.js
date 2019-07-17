@@ -31,11 +31,23 @@ function closeForm (element, cible) {
     }
 }
 
-function addAttribute(elmtClick, attName, cible) {
-    for (let i = 0; i < elmtClick.length; i++) {
-        let attribute = elmtClick[i].getAttribute(attName);
-        elmtClick[i].addEventListener('click', () => {
-            let input = document.getElementById(cible);
+function addAttribute(elmtClick, attName, cible, getTitle) {
+    let input = document.getElementById(cible);
+    const title = document.getElementById(getTitle);
+
+    if (elmtClick instanceof HTMLCollection) {
+        for (let i = 0; i < elmtClick.length; i++) {
+            let attribute = elmtClick[i].getAttribute(attName);
+            let textHTML = elmtClick[i].innerHTML;
+            elmtClick[i].addEventListener('click', () => {
+                input.value = attribute;
+                title.textContent = textHTML;
+            })
+        }
+    } else {
+        elmtClick.addEventListener('click', () => {
+            const attribute = elmtClick.getAttribute(attName);
+            title.textContent = elmtClick.innerHTML;
             input.value = attribute;
         })
     }

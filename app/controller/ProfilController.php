@@ -100,7 +100,7 @@ class ProfilController extends Controller {
                 print_r($_FILES);
                 $uploads_dir = 'public/images/avatars';
                 $avatar = $_FILES['avatar'];
-                $name = $avatar['name'];
+                $name = $_SESSION['id'].'.'.substr($avatar['name'], -3);
                 move_uploaded_file($avatar['tmp_name'], "$uploads_dir/$name");
                 $updateAvatar = $this->users->updateImg(IMAGES . "avatars/$name", $_SESSION['email']);
                 $this->redirecting('profil');

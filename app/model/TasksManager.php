@@ -30,7 +30,7 @@ class TasksManager extends Manager {
 
     public function getTaskById($list_id, $project_id)
     {
-        $req = $this->db->prepare('SELECT id from task WHERE list_id = ? AND project_id = ?') or die(var_dump($this->db->errorInfo()));
+        $req = $this->db->prepare('SELECT id from task WHERE id = (SELECT MAX(id) FROM task) AND list_id = ? AND project_id = ?') or die(var_dump($this->db->errorInfo()));
         $req->execute(array($list_id, $project_id));
         $id = $req->fetch();
         return $id;
@@ -62,5 +62,14 @@ class TasksManager extends Manager {
         $deleteTask = $req->execute(array($id));
 
         return $deleteTask;
+    }
+
+    public function updateTask($newName, $id)
+    {
+        $req = $this->db->prepare('UPDATE task SET name_task = ? WHERE id = ?')
+        or die(var_dump($this->db->errorInfo()));
+        $updateTask = $req->execute(array($newName, $id));
+
+        return $updateTask;
     }
 }

@@ -44,8 +44,8 @@ ob_start();
                                 <div class="task-content">
                                     <?php foreach ($tasks as $task): ?>
                                         <?php if ($list['id_list'] == $task['list_id']):?>
-                                            <div class="task" data-id="<?= $task['id']?>" onclick="modal3.viewModal();">
-                                                <?= nl2br(htmlspecialchars_decode($task['name_task']))?>
+                                            <div class="task" data-id="<?= $task['id']?>" onclick="modal4.viewModal();">
+                                                <?= $task['name_task']?>
                                             </div>
                                         <?php endif;?>
                                     <?php endforeach;?>
@@ -97,18 +97,21 @@ ob_start();
             </div>
             <!-- Update or delete a task -->
             <div class="modal">
-                <div id="dialog3" class="dialog" role="dialog" aria-hidden="true">
+                <div id="dialog4" class="dialog" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
-                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal3.closeModal();">X</button>
-                        <h2 style="color: <?= $color ?>;">Nom de la tâche</h2>
-                        <form method="POST" id="modal-tasks-delete">
-                            <input id="input-task-delete" type="hidden" name="id_task" value="">
-                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
-                        </form>
-                        <form method="post" id="modal-tasks-update">
-                            <input id="input-task-update" type="hidden" name="id_task" value="">
-                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Modifier</button>
-                        </form>
+                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal4.closeModal();">X</button>
+                        <h2 style="color: <?= $color ?>;"  id="title-name-task"></h2>
+                        <div class="container-forms_for_task">
+                            <form method="POST" id="modal-tasks-delete">
+                                <input id="input-task-delete" type="hidden" name="id_task" value="">
+                                <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
+                            </form>
+                            <form method="post" id="modal-tasks-update">
+                                <input id="input-task-update" type="hidden" name="id_task" value="">
+                                <input type="text" name="newTask" id="newTask">
+                                <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Mettre à jour la tâche</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

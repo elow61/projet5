@@ -113,27 +113,29 @@ class WorkspaceController extends Controller {
         {
             $response = [];
             $taskName = nl2br(htmlspecialchars_decode($this->request->getParam('name_task')));
-            $idList = $this->request->getParam('id_list');
             $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
             // print_r($getTask['name_task']);
             if (!empty($_SESSION['id_project']))
             {
-                if ($ifTaskName['name_task'] == $taskName) 
+                if ($this->request->paramExist('id_list'))
                 {
-                    $response['error'] = 'Cette tâche existe déjà !';
+                    $idList = $this->request->getParam('id_list');
+                    if ($ifTaskName['name_task'] == $taskName) 
+                    {
+                        $response['error'] = 'Cette tâche existe déjà !';
+                    }
+                    else 
+                    {
+                        $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
+                        $id_task = $this->task->getTaskById($idList, $_SESSION['id_project']);
+                        $response['id_task'] = $id_task;
+                        $response['name'] = $taskName;
+                        $response['user'] = $_SESSION['id'];
+                        $response['project'] = $_SESSION['id_project'];
+                        $response['list'] = $idList;
+                        header('Content-type: application/json');
+                    }
                 }
-                else 
-                {
-                    $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
-                    $id_task = $this->task->getTaskById($idList, $_SESSION['id_project']);
-                    $response['id_task'] = $id_task;
-                    $response['name'] = $taskName;
-                    $response['user'] = $_SESSION['id'];
-                    $response['project'] = $_SESSION['id_project'];
-                    $response['list'] = $idList;
-                    header('Content-type: application/json');
-                }
-                
             } 
             else 
             {
@@ -178,11 +180,33 @@ class WorkspaceController extends Controller {
     {
         if ($this->isAjax())
         {
+            $response = [];
+            $idTask = $this->request->getParam('id_task');
+            if (!empty($_SESSION['id_project']))
+            {
+                if ($this->request->paramExist('newTask'))
+                {
+                    $newName = nl2br(htmlspecialchars_decode($this->request->getParam('newTask')));
 
+                    $updateTask = $this->task->updateTask($newName, $idTask);
+                    $response['id'] = $idTask;
+                    $response['name'] = $newName;
+                    header('Content-type: application/json');
+                }
+                else
+                {
+                    $response['error'] = 'Impossible de modifier la tâche.';
+                }
+            }
+            else
+            {
+                $response['error'] = 'Vous n\'êtes pas connecté.';
+            }
         }
         else
         {
             require(VIEW_ERROR.'error-404.php');
         }
+        echo json_encode($response);
     }
 }

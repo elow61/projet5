@@ -35,23 +35,47 @@ function ajaxGet(url, callback) {
 
 // Form POST for Ajax
 function formSubmit(form, url, fCreate) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const element = new FormData(form);
-
-        ajaxPost(url, element, (response) => {
-            const data = JSON.parse(response);
-            
-            if (data['error']) {
-                const errorsKey = Object.keys(data);
-                for (let i = 0; i < errorsKey.length; i++) {
-                    let key = errorsKey[i];
-                    let error = data[key];
-                    alert(error);
-                } 
-            } else {
-                fCreate(data);
-            }
+    if (form instanceof HTMLCollection) {
+        for (let i = 0; i < form.length; i++) {
+            form[i].addEventListener('submit', (e) => {
+                e.preventDefault();
+                const element = new FormData(form);
+    
+                ajaxPost(url, element, (response) => {
+                    const data = JSON.parse(response);
+                    
+                    if (data['error']) {
+                        const errorsKey = Object.keys(data);
+                        for (let i = 0; i < errorsKey.length; i++) {
+                            let key = errorsKey[i];
+                            let error = data[key];
+                            alert(error);
+                        } 
+                    } else {
+                        fCreate(data);
+                    }
+                })
+            })
+        }
+    } else {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const element = new FormData(form);
+    
+            ajaxPost(url, element, (response) => {
+                const data = JSON.parse(response);
+                
+                if (data['error']) {
+                    const errorsKey = Object.keys(data);
+                    for (let i = 0; i < errorsKey.length; i++) {
+                        let key = errorsKey[i];
+                        let error = data[key];
+                        alert(error);
+                    } 
+                } else {
+                    fCreate(data);
+                }
+            })
         })
-    })
+    }
 }
