@@ -239,6 +239,7 @@ nav hr {
     padding: 20px;
     max-width: 50rem;
     margin: auto;
+    text-align: center;
 }
 
 .container-modal h2 {
@@ -253,10 +254,6 @@ nav hr {
     font-size: 1rem;
 }
 
-.container-modal h2 {
-    text-align: center;
-}
-
 .container-modal form{
     display: flex;
     flex-direction: column;
@@ -269,10 +266,16 @@ nav hr {
     width: 300px;
     border: 1px solid #000;
     border-radius: 6px 6px 6px 6px;
+    color: #000;
 }
 
-#dialog3 .container-modal form input {
+/* #dialog3 .container-modal form input {
     width: inherit;
+} */
+
+#dialog4 .container-forms_for_task {
+    display: flex;
+    justify-content: space-around;
 }
 
 .dialog[aria-hidden="true"] {
@@ -530,6 +533,10 @@ nav hr {
     display: none;
 }
 
+.contain-update-task {
+    display: none;
+}
+
 /****************************************************
 ******************** PROFIL *************************
 ****************************************************/
@@ -538,7 +545,26 @@ nav hr {
     color: #3FD5FB;
 }
 
+.container-img-profil {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    top: -30px;
+    left: 300px;
+    z-index: 8;
+}
+
+.rounded {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+
+}
+
 .container-info__profil {
+    position: relative;
+    top: -78px;
     padding: 20px;
     background-color: #2f3b4d;
 }
@@ -555,7 +581,7 @@ nav hr {
     z-index: 999;
     text-align: center;
     position: relative;
-    top: -145px;
+    top: -225px;
     right: -556px;
     transform: skew(-0.01turn, 2deg);
     box-shadow: 10px 5px 5px #191f29;
@@ -577,7 +603,9 @@ nav hr {
 }
 
 .container-modal-profil {
-    margin-top: -159px;
+    display: flex;
+    position: relative;
+    top: -275px;
 }
 
 .update {
@@ -590,7 +618,12 @@ nav hr {
 /* responsive profil page */
 @media screen and (max-width: 908px) {
     .card-project {
-        top: 189px;
+        top: 120px;
         right: -15px;
+        max-width: 200px;
+        height: 100px;
+    }
+    .card-project i {
+        font-size: 50px;
     }
 }

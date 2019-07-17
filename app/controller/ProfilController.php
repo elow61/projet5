@@ -52,7 +52,6 @@ class ProfilController extends Controller {
     {
         if ($this->session->is_connected())
         {
-            $profil = $this->users->get($_SESSION['email']);
             if ($this->request->paramExist('old-pass') && $this->request->paramExist('new-pass') && $this->request->paramExist('new-pass-confirm'))
             {
                 $oldPass = $this->request->getParam('old-pass');
@@ -89,6 +88,24 @@ class ProfilController extends Controller {
             {
                 throw new \Exception('Vous n\'avez pas remplis tous les champs.');
             }
+        }
+    }
+
+    public function updateImg()
+    {
+        if ($this->session->is_connected())
+        {
+            if (!empty($_FILES))
+            {
+                print_r($_FILES);
+                $uploads_dir = 'public/images/avatars';
+                $avatar = $_FILES['avatar'];
+                $name = $avatar['name'];
+                move_uploaded_file($avatar['tmp_name'], "$uploads_dir/$name");
+                $updateAvatar = $this->users->updateImg(IMAGES . "avatars/$name", $_SESSION['email']);
+                $this->redirecting('profil');
+            }
+
         }
     }
 }

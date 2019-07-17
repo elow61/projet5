@@ -33,14 +33,12 @@ class GoogleController extends Controller {
                 ]
             ]);
             $response = json_decode($response->getBody());
+            // print_r($response);
+            // die();
             if ($response->email_verified === true)
             {
                 $users = $this->users->get($response->email);
 
-                // var_dump($users);
-                // var_dump((string)$response->email);
-                // die();
-    
                 if ($users['email'] == (string)$response->email)
                 {
                     $_SESSION['id'] = $users['id_user'];
@@ -58,7 +56,9 @@ class GoogleController extends Controller {
                         $response->email,
                         null,
                         $response->name,
-                        $response->family_name
+                        $response->family_name,
+                        'true',
+                        $response->picture
                     );
                     $getUsers = $this->users->get($response->email);
 

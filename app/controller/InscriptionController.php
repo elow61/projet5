@@ -53,7 +53,8 @@ class InscriptionController extends Controller {
                     $email,
                     password_hash($pass, PASSWORD_BCRYPT),
                     $first_name,
-                    $last_name
+                    $last_name,
+                    'false'
                 );
                 $this->sessionID();
                 break;
