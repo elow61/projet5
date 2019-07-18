@@ -69,6 +69,8 @@ class InscriptionController extends Controller {
         $_SESSION['id'] = $getUsers['id_user'];
         $_SESSION['first_name'] = $getUsers['first_name'];
         $_SESSION['last_name'] = $getUsers['last_name'];
+        $_SESSION['email'] = $getUsers['email'];
+
         if ($this->session->is_connected()) {
             $this->redirecting('welcome');
         }

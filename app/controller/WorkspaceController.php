@@ -110,28 +110,36 @@ class WorkspaceController extends Controller {
         if ($this->isAjax())
         {
             $response = [];
-            $taskName = nl2br(htmlspecialchars_decode($this->request->getParam('name_task')));
-            $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
             if (!empty($_SESSION['id_project']))
             {
-                if ($this->request->paramExist('id_list'))
+                if ($this->request->paramExist('name_task'))
                 {
-                    $idList = $this->request->getParam('id_list');
-                    if ($ifTaskName['name_task'] == $taskName) 
+                    $taskName = nl2br(htmlspecialchars($this->request->getParam('name_task')));
+                    $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
+
+                    if ($this->request->paramExist('id_list'))
                     {
-                        $response['error'] = 'Cette tâche existe déjà !';
+                        $idList = $this->request->getParam('id_list');
+                        if ($ifTaskName['name_task'] == $taskName) 
+                        {
+                            $response['error'] = 'Cette tâche existe déjà !';
+                        }
+                        else 
+                        {
+                            $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
+                            $id_task = $this->task->getTaskById($idList, $_SESSION['id_project']);
+                            $response['id_task'] = $id_task;
+                            $response['name'] = $taskName;
+                            $response['user'] = $_SESSION['id'];
+                            $response['project'] = $_SESSION['id_project'];
+                            $response['list'] = $idList;
+                            header('Content-type: application/json');
+                        }
                     }
-                    else 
-                    {
-                        $task = $this->task->addTasks($taskName, $_SESSION['id'], $_SESSION['id_project'], $idList);
-                        $id_task = $this->task->getTaskById($idList, $_SESSION['id_project']);
-                        $response['id_task'] = $id_task;
-                        $response['name'] = $taskName;
-                        $response['user'] = $_SESSION['id'];
-                        $response['project'] = $_SESSION['id_project'];
-                        $response['list'] = $idList;
-                        header('Content-type: application/json');
-                    }
+                } 
+                else
+                {
+                    $response['error'] = 'Impossible d\'ajouter votre tâche.';
                 }
             } 
             else 
