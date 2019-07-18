@@ -38,7 +38,7 @@ function addAttribute(elmtClick, attName, cible, getTitle) {
     if (elmtClick instanceof HTMLCollection) {
         for (let i = 0; i < elmtClick.length; i++) {
             let attribute = elmtClick[i].getAttribute(attName);
-            let textHTML = elmtClick[i].innerHTML;
+            let textHTML = elmtClick[i].textContent;
             elmtClick[i].addEventListener('click', () => {
                 input.value = attribute;
                 title.textContent = textHTML;
@@ -47,7 +47,7 @@ function addAttribute(elmtClick, attName, cible, getTitle) {
     } else {
         elmtClick.addEventListener('click', () => {
             const attribute = elmtClick.getAttribute(attName);
-            title.textContent = elmtClick.innerHTML;
+            title.textContent = elmtClick.textContent;
             input.value = attribute;
         })
     }
