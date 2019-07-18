@@ -87,6 +87,9 @@ h2 {
     cursor: pointer;
 }
 
+::selection {
+    background: #3FD5FB;
+}
 /* ========================================================================================= */
 
 /* HEADER */
@@ -214,7 +217,6 @@ nav ul li a:hover {
 #logo {
     width: 40%;
     height: 40%;
-    margin-top: -50px;
 }
 
 .bubble-blue {
@@ -234,6 +236,7 @@ nav ul li a:hover {
 #info {
     padding-top: 80px;
     display: flex;
+    flex-wrap: wrap-reverse;
     justify-content: space-around;
     padding-bottom: 80px;
 }
@@ -253,7 +256,6 @@ nav ul li a:hover {
 }
 
 .mockup {
-    width: 80%;
     height: auto;
 }
 
@@ -513,10 +515,102 @@ figcaption {
     color: #6e4eb0;
 }
 
+.btn-google {
+    border: 1px solid #000;
+    display: flex;
+    justify-content: space-around;
+    background-color: #4285f4;
+}
+
+.logo-google {
+    background-color: #E6EAEC;
+    height: 30px;
+    padding: 1px;
+}
+
+.logo-google img {
+    width: 30px;
+    height: auto;
+}
+
+.btn-google a {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #E6EAEC;
+    padding-top: 7px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
 .bubble_blue {
     position: fixed;
     bottom: -80px;
     margin: auto;
+}
+
+/* Responsive design for home, inscription, connexion pages */
+@media screen and (max-width: 1440px) {
+    .container-accroche {
+        padding-top: 0;
+        margin-left: 100px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .text p {
+        line-height: 1em;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #how {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    header nav {
+        justify-content: unset;
+        color: #6e4eb0;
+    }
+
+    #logo {
+        display: none;
+    }
+    nav ul li a {
+        margin-right: 5px;
+        padding: 0;
+    }
+    .bubble_blue img {
+        width: 80px;
+        height: auto;
+    }
+
+    .mockup {
+        width: 300px;
+    }
+    .text-info {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .container-accroche {
+        margin-left: 50px;
+    }
+    .headline h1 {
+        font-size: 4.5em;
+    }
+    .text p {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container-accroche {
+        margin-left: 10px;
+    }
 }
 
 /* ========================================================================================= */

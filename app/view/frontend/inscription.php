@@ -15,7 +15,12 @@ ob_start();
         <div class="separation">
             <div><p class="separate">ou</p></div>
         </div>
-        <div id="my-signin2"></div>
+        <div class="btn-google">
+            <div class="logo-google">
+                <img src="<?= IMAGES ?>logo-google.png" alt="logo google">
+            </div>
+            <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email profile&access_type=online&redirect_uri=<?= urlencode('http://localhost:8888/google')?>&response_type=code&client_id=<?= GOOGLE_ID ?>">Utiliser un compte Google</a>
+        </div>
         <div class="already-account">
             <p>Vous avez déjà un compte ? <a class="link-co" href="/connexion">Connexion</a></p>
         </div>
