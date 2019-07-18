@@ -9,7 +9,7 @@ class WelcomeController extends Controller {
         if ($this->session->is_connected()) {
             require VIEW_FRONT . '/welcome.php';
         } else {
-            throw new \Execption('Vous n\'êtes pas connecté.');
+            throw new \Exception('Vous n\'êtes pas connecté.');
         }
     }
 }

@@ -1,6 +1,7 @@
 <?php 
 $title = $project['project_name'] . ' | ' . $_SESSION['first_name'];
-$color = "#E6EAEC"; // White
+$color = "#E6EAEC"; // white
+$svg_wave = "/public/images/waves/wave-white.svg";
 if ($project['color_project'] === "#BC1D35, #EB8C53")
 {
     $color = "#A33535"; // Red
@@ -51,6 +52,7 @@ ob_start();
                                     <?php endforeach;?>
                                 </div>
                             <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
+                                <!-- Create a task -->
                                 <form method="POST" class="form-task">
                                     <input type="hidden" name="name_list" id="name_list" value="">
                                     <input type="hidden" class="input_id_list" name="id_list" id="id_list" value="<?= $list['id_list'] ?>">
@@ -69,47 +71,45 @@ ob_start();
             <div class="btn-list add-list" onclick="modal.viewModal();"></div>
             <!-- Create a list -->
             <div class="modal">
-                <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
+                <div id="dialog" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
-                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
-                        <h2 style="color: <?= $color ?>;">Créer une liste :</h2>
+                        <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
+                        <h2 style="background-color: <?= $color ?>;">Créer une liste :</h2>
                         <form method="POST" id="form">
                             <input type="text" name="list_name" id="list_name" placeholder="Entrez le nom d'une liste. Ex: En cours">
-                            <p id="error" style="color: <?= $color ?>;"></p>
-                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Créer</button>
+                            <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Créer</button>
                         </form>
                     </div>
                 </div>
             </div>
             <!-- Delete a list -->
             <div class="modal">
-                <div id="dialog2" class="dialog" role="dialog" aria-hidden="true">
+                <div id="dialog2" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
-                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal2.closeModal();">X</button>
-                        <h2 style="color: <?= $color ?>;">Êtes-vous sûr de vouloir supprimer cette liste ?</h2>
+                        <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal2.closeModal();">X</button>
+                        <h2 style="background-color: <?= $color ?>;">Êtes-vous sûr de vouloir supprimer cette liste ?</h2>
                         <form method="POST" id="form-delete">
                             <input id="input-list" type="hidden" name="id_list" value="">
-                            <p id="error-delete" style="color: <?= $color ?>;"></p>
-                            <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
+                            <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
                         </form>
                     </div>
                 </div>
             </div>
             <!-- Update or delete a task -->
             <div class="modal">
-                <div id="dialog4" class="dialog" role="dialog" aria-hidden="true">
+                <div id="dialog4" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
-                        <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal4.closeModal();">X</button>
-                        <h2 style="color: <?= $color ?>;"  id="title-name-task"></h2>
+                        <button style="color: <?= $color ?>;" class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal4.closeModal();">X</button>
+                        <h2 style="background-color: <?= $color ?>;"  id="title-name-task"></h2>
                         <div class="container-forms_for_task">
                             <form method="POST" id="modal-tasks-delete">
                                 <input id="input-task-delete" type="hidden" name="id_task" value="">
-                                <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
+                                <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Supprimer</button>
                             </form>
                             <form method="post" id="modal-tasks-update">
                                 <input id="input-task-update" type="hidden" name="id_task" value="">
                                 <input type="text" name="newTask" id="newTask">
-                                <button type="submit" style="color: <?= $color ?>;" class="btn btn-create">Mettre à jour la tâche</button>
+                                <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Mettre à jour la tâche</button>
                             </form>
                         </div>
                     </div>

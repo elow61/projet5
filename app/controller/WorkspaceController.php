@@ -72,8 +72,6 @@ class WorkspaceController extends Controller {
                 $response[errors] = 'Aucun projet existant';
             }
             echo json_encode($response);
-            // throw new \Exception("Oops ! Une erreur s'est produite !");
-
         }
         else
         {
@@ -114,7 +112,6 @@ class WorkspaceController extends Controller {
             $response = [];
             $taskName = nl2br(htmlspecialchars_decode($this->request->getParam('name_task')));
             $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
-            // print_r($getTask['name_task']);
             if (!empty($_SESSION['id_project']))
             {
                 if ($this->request->paramExist('id_list'))
@@ -142,8 +139,6 @@ class WorkspaceController extends Controller {
                 $response['error'] = 'Aucun project n\'est relié à cette tâche.';
             }
             echo json_encode($response);
-            // throw new \Exception("Oops ! Une erreur s'est produite !");
-
         }
         else        
         {
