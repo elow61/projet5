@@ -36,8 +36,7 @@ abstract class Controller {
             $this->action = $action;
             $this->{$this->action}();
         } else {
-            $fileName = get_class($this);
-            throw new \Exception('Action "' . $action . '" non définie dans la classe ' . $fileName);
+            require(VIEW_ERROR.'error-404.php');
         }
     }
     
