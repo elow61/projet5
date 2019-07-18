@@ -42,13 +42,14 @@ const createList = function (data) {
     firstContainerTask.classList.add('container-task');
 
     // Container form for add a task
-    const formTask = document.createElement('div');
-    formTask.classList.add('container-form-task');
-    formTask.setAttribute('data-id', data.id);
+    const containerFormTask = document.createElement('div');
+    containerFormTask.classList.add('container-form-task');
+    containerFormTask.setAttribute('data-id', data.id);
 
     // Container only task
     const contentTask = document.createElement('div');
     contentTask.classList.add('task-content');
+    contentTask.setAttribute('data-id', data.id);
 
     // Form
     const formPost = document.createElement('form');
@@ -84,7 +85,7 @@ const createList = function (data) {
     btnTask.setAttribute('data-id', data.id);
     btnTask.textContent = '+ tâches';
     btnTask.addEventListener('click', () => {
-        formTask.style.display = 'block';
+        containerFormTask.style.display = 'block';
     })
 
     list.appendChild(containerTitle);
@@ -93,10 +94,10 @@ const createList = function (data) {
     containerTitle.appendChild(btnRemove);
 
     firstContainerTask.appendChild(contentTask);
-    firstContainerTask.appendChild(formTask);
+    firstContainerTask.appendChild(containerFormTask);
     firstContainerTask.appendChild(btnTask);
 
-    formTask.appendChild(formPost);
+    containerFormTask.appendChild(formPost);
     formPost.appendChild(inputNameList);
     formPost.appendChild(inputIdList);
     formPost.appendChild(texts);
@@ -104,9 +105,13 @@ const createList = function (data) {
 
     containerBtn.appendChild(btnSubmit);
     containerBtn.appendChild(btnCancel);
-    formTaskAction(btnTask, formTask);
+    openFormToAddTask();
     arrLists.push(list);
-    addTasks(formPost, contentTask);
+    // addTasks(formPost, contentTask);
+    console.log(contentTask instanceof HTMLCollection);
+    console.log(contentTask);
+
+    formSubmit(formPost, 'addTask', createTask, openFormToAddTask);
     modal.closeModal();
 }
 

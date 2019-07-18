@@ -34,20 +34,21 @@ function ajaxGet(url, callback) {
 }
 
 // Form POST for Ajax
-function formSubmit(form, url, fCreate) {
+function formSubmit(form, url, fCreate, fOpenForm = null) {
     if (form instanceof HTMLCollection) {
         for (let i = 0; i < form.length; i++) {
+            fOpenForm();
             form[i].addEventListener('submit', (e) => {
                 e.preventDefault();
-                const element = new FormData(form);
+                const element = new FormData(form[i]);
     
                 ajaxPost(url, element, (response) => {
                     const data = JSON.parse(response);
                     
                     if (data['error']) {
                         const errorsKey = Object.keys(data);
-                        for (let i = 0; i < errorsKey.length; i++) {
-                            let key = errorsKey[i];
+                        for (let j = 0; j < errorsKey.length; j++) {
+                            let key = errorsKey[j];
                             let error = data[key];
                             alert(error);
                         } 

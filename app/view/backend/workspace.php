@@ -38,15 +38,15 @@ ob_start();
                 <?php foreach ($lists as $list):?>
                     <div data-id="<?= $list['id_list'] ?>" class="list">
                         <div class="title-list">
-                            <h2><?= htmlspecialchars_decode($list['name_list']) ?></h2>
+                            <h2><?= htmlspecialchars($list['name_list']) ?></h2>
                             <div class="btn-list remove-list" data-id="<?= $list['id_list'] ?>" onclick="modal2.viewModal();"></div>
                         </div>
                         <div class="container-task">
-                                <div class="task-content">
+                                <div class="task-content" data-id="<?= $list['id_list'] ?>">
                                     <?php foreach ($tasks as $task): ?>
                                         <?php if ($list['id_list'] == $task['list_id']):?>
                                             <div class="task" data-id="<?= $task['id']?>" onclick="modal4.viewModal();">
-                                                <?= $task['name_task']?>
+                                                <?= htmlspecialchars($task['name_task'])?>
                                             </div>
                                         <?php endif;?>
                                     <?php endforeach;?>
@@ -108,7 +108,9 @@ ob_start();
                             </form>
                             <form method="post" id="modal-tasks-update">
                                 <input id="input-task-update" type="hidden" name="id_task" value="">
-                                <input type="text" name="newTask" id="newTask">
+                                <!-- <input type="text" name="newTask" id="newTask"> -->
+                                <textarea name="newTask" id="newTask" cols="30" rows="4"></textarea>
+                                <br>
                                 <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Mettre à jour la tâche</button>
                             </form>
                         </div>
