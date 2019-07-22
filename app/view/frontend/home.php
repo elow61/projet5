@@ -102,9 +102,11 @@ ob_start();
         <div class="separation"></div>
         <footer>
             <div class="container-footer">
-                <img id="logo-menu" src="<?= IMAGES ?>logo.svg" alt="Logo Success Mission">
+                <img class="logo-menu" src="<?= IMAGES ?>logo.svg" alt="Logo Success Mission">
                 <p class="name-footer">SuccessMission</p>
                 <p class="type-footer">Application web de gestion de projets</p>
+                <br>
+                <p><a href="/mention" class="mention">Mentions légales</a></p>
                 <p class="copyright">Copyright © Success Mission - 2019. Tous droits réservés</p>
             </div>
         </footer>

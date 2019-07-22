@@ -106,11 +106,8 @@ const createList = function (data) {
     containerBtn.appendChild(btnSubmit);
     containerBtn.appendChild(btnCancel);
     openFormToAddTask();
+    closeForm(btnCancel, containerFormTask);
     arrLists.push(list);
-    // addTasks(formPost, contentTask);
-    console.log(contentTask instanceof HTMLCollection);
-    console.log(contentTask);
-
     formSubmit(formPost, 'addTask', createTask, openFormToAddTask);
     modal.closeModal();
 }

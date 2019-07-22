@@ -143,6 +143,13 @@ nav hr {
     border: none;
 }
 
+nav .li-hr {
+    padding: 0;
+}
+nav .li-hr:hover {
+    background-color: transparent;
+}
+
 
 /****************************************************
 ******************* DASHBOARD ***********************

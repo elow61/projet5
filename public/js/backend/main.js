@@ -22,13 +22,21 @@ function updateProject(btnRadio) {
 
 // Close forms with same class
 function closeForm (element, cible) {
-    for (let i = 0; i < element.length; i++) {
-        element[i].addEventListener('click', () => {
-            for (let j = 0; j < cible.length; j++) {
-                cible[j].style.display = 'none';
-            }
+    
+    if (element instanceof HTMLCollection) {
+        for (let i = 0; i < element.length; i++) {
+            element[i].addEventListener('click', () => {
+                for (let j = 0; j < cible.length; j++) {
+                    cible[j].style.display = 'none';
+                }
+            })
+        }
+    } else {
+        element.addEventListener('click', () => {
+            cible.style.display = 'none';
         })
     }
+    
 }
 
 function addAttribute(elmtClick, attName, cible, getTitle) {

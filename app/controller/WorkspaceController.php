@@ -7,29 +7,23 @@ class WorkspaceController extends Controller {
 
     public function index()
     {
-        $project_user = $this->project->getProjectById($this->request->getParam('id'));
         if ($this->session->is_connected())
         {
             if ($this->request->paramExist('id'))
             {
-                if ($this->request->getParam('id') && !empty($project_user))
-                {   
-                    if ($_SESSION['id'] !== $project_user['id_user'])
-                    {
-                        throw new \Exception('Page indisponible.');
-                    }
-                    else 
-                    {
-                        $_SESSION['id_project'] = $project_user['id_project'];
-                        $project = $this->project->getOneProject($this->request->getParam('id'));
-                        $lists = $this->list->getLists($this->request->getParam('id'));
-                        $tasks = $this->task->getTasks($this->request->getParam('id'));
-                        require VIEW_BACK . 'workspace.php';
-                    }
-                }
-                else
+                $project_user = $this->project->getProjectById($this->request->getParam('id'));
+
+                if ($_SESSION['id'] !== $project_user['id_user'])
                 {
-                    throw new \Exception('Ce projet n\'existe pas.');
+                    throw new \Exception('Page indisponible.');
+                }
+                else 
+                {
+                    $_SESSION['id_project'] = $project_user['id_project'];
+                    $project = $this->project->getOneProject($this->request->getParam('id'));
+                    $lists = $this->list->getLists($this->request->getParam('id'));
+                    $tasks = $this->task->getTasks($this->request->getParam('id'));
+                    require VIEW_BACK . 'workspace.php';
                 }
             } 
             else 
@@ -41,7 +35,7 @@ class WorkspaceController extends Controller {
         {
             throw new \Exception('Vous devez être connecté.');
         }
-    }
+    } 
 
     public function lists() 
     {
@@ -189,7 +183,7 @@ class WorkspaceController extends Controller {
             {
                 if ($this->request->paramExist('newTask'))
                 {
-                    $newName = nl2br(htmlspecialchars_decode($this->request->getParam('newTask')));
+                    $newName = nl2br(htmlspecialchars($this->request->getParam('newTask')));
 
                     $updateTask = $this->task->updateTask($newName, $idTask);
                     $response['id'] = $idTask;

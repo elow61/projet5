@@ -26,7 +26,7 @@ $title = 'Erreur | Success Mission';
         <nav>
             <div class="container-logo">
                 <a class="link-logo" href="/">
-                    <img id="logo-menu" src="<?= IMAGES ?>logo.png" alt="Logo Success Mission">
+                    <img class="logo-menu" src="<?= IMAGES ?>logo.png" alt="Logo Success Mission">
                 </a>
             </div>
         </nav>
@@ -34,7 +34,7 @@ $title = 'Erreur | Success Mission';
             <div class="textError">
                 <p>Erreur</p>
                 <span>Message : <?= $errorMessage ?></span>
-                <a class="btn" href="home">Retour à la page d'accueil</a>
+                <a class="btn" href="/home">Retour à la page d'accueil</a>
             </div>
         </div>
         <div class="bubble_blue">

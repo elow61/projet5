@@ -20,7 +20,7 @@ ob_start();
     </div>
     <div class="card-project">
         <i class="fas fa-tasks"></i>
-        <a href="dashboard" class="nb-project">
+        <a href="/dashboard" class="nb-project">
             <span class="nb"><?= $nb_project['nb'] ?></span>
             <span>Projet<?php if ($nb_project['nb'] > 1):?>s<?php endif;?></span>
         </a>
@@ -61,7 +61,7 @@ ob_start();
                     <div id="dialog3" class="dialog" role="dialog" aria-hidden="true">
                         <div role="document" class="container-modal">
                             <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal3.closeModal();">X</button>
-                            <h2>Modifier le mot de passe : </h2>
+                            <h2>Modifier l'avatar : </h2>
                             <form action="/profil/updateImg" method="post" enctype="multipart/form-data">
                                 <input type="file" name="avatar" id="avatar" accept="image/png, image/jpg">
                                 <button type="submit" class="btn btn-create">Modifier</button>

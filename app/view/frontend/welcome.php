@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
         <nav>
             <div class="container-logo">
                 <a class="link-logo" href="/">
-                    <img id="logo-menu" src="<?= IMAGES ?>logo.png" alt="Logo Success Mission">
+                    <img class="logo-menu" src="<?= IMAGES ?>logo.png" alt="Logo Success Mission">
                 </a>
             </div>
             <ul>

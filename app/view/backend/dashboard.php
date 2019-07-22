@@ -51,7 +51,7 @@ ob_start();
                             <?php foreach ($projects as $project): ?>
                                 <div class="container-input">
                                     <input type="radio" name="choice-project" value="<?= $project['p_id'] ?>">
-                                    <label for="choice-project"><?= $project['p_name'] ?></label>
+                                    <label><?= $project['p_name'] ?></label>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -71,7 +71,7 @@ ob_start();
                             <?php foreach ($projects as $project): ?>
                                 <div class="container-input">
                                     <input type="radio" name="choice-project" value="<?= $project['p_id'] ?>" onclick="updateProject(this);">
-                                    <label for="choice-project"><?= $project['p_name'] ?></label>
+                                    <label><?= $project['p_name'] ?></label>
                                 </div>
                             <?php endforeach; ?>
                             <input type="text" name="newName" id="newName">

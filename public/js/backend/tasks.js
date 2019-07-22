@@ -37,7 +37,7 @@ openFormToAddTask();
 function createTask(data) {
     let task = document.createElement('div');
     task.classList.add('task');
-    task.innerHTML = data.name;
+    task.textContent = data.name;
     task.setAttribute('data-id', data.id_task.id);
     task.setAttribute('onclick', 'modal4.viewModal();');
     arrayTasks.push(task);
@@ -46,7 +46,6 @@ function createTask(data) {
     addAttribute(task, 'data-id', 'input-task-update', 'title-name-task');
 
     if (contentTask instanceof HTMLCollection) {
-        console.log(contentTask);
         for (let i = 0; i < contentTask.length; i++) {
             let attribute = contentTask[i].getAttribute('data-id');
             if (attribute == data['list']) {
@@ -78,7 +77,7 @@ const updateTask = function (data) {
     for (let i = 0; i < tasks.length; i++) {
         let taskAttr = tasks[i].getAttribute('data-id');
         if (data['id'] == taskAttr) {
-            tasks[i].textContent = data.name;
+            tasks[i].innerHTML = data.name;
         } else {
         }
     }

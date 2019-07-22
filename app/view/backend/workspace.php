@@ -46,7 +46,7 @@ ob_start();
                                     <?php foreach ($tasks as $task): ?>
                                         <?php if ($list['id_list'] == $task['list_id']):?>
                                             <div class="task" data-id="<?= $task['id']?>" onclick="modal4.viewModal();">
-                                                <?= htmlspecialchars($task['name_task'])?>
+                                                <?= $task['name_task']?>
                                             </div>
                                         <?php endif;?>
                                     <?php endforeach;?>
@@ -54,9 +54,9 @@ ob_start();
                             <div class="container-form-task" data-id="<?= $list['id_list'] ?>">
                                 <!-- Create a task -->
                                 <form method="POST" class="form-task">
-                                    <input type="hidden" name="name_list" id="name_list" value="">
-                                    <input type="hidden" class="input_id_list" name="id_list" id="id_list" value="<?= $list['id_list'] ?>">
-                                    <textarea name="name_task" id="" cols="30" rows="5"></textarea>
+                                    <input type="hidden" name="name_list" value="">
+                                    <input type="hidden" class="input_id_list" name="id_list" value="<?= $list['id_list'] ?>">
+                                    <textarea name="name_task" cols="30" rows="5"></textarea>
                                     <div class="container-button">
                                         <button type="submit">Nouvelle tâche</button>
                                         <button type="button" class="cancel">X</button>
@@ -76,7 +76,7 @@ ob_start();
                         <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
                         <h2 style="background-color: <?= $color ?>;">Créer une liste :</h2>
                         <form method="POST" id="form">
-                            <input type="text" name="list_name" id="list_name" placeholder="Entrez le nom d'une liste. Ex: En cours">
+                            <input type="text" name="list_name" placeholder="Entrez le nom d'une liste. Ex: En cours">
                             <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Créer</button>
                         </form>
                     </div>
@@ -100,7 +100,7 @@ ob_start();
                 <div id="dialog4" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
                         <button style="color: <?= $color ?>;" class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal4.closeModal();">X</button>
-                        <h2 style="background-color: <?= $color ?>;"  id="title-name-task"></h2>
+                        <h2 style="background-color: <?= $color ?>;" id="title-name-task"></h2>
                         <div class="container-forms_for_task">
                             <form method="POST" id="modal-tasks-delete">
                                 <input id="input-task-delete" type="hidden" name="id_task" value="">
@@ -133,7 +133,7 @@ ob_start();
                     <feGaussianBlur result="blur" stdDeviation="2.646"/>
                     <feFlood result="flood" flood-opacity="0.5"/>
                     <feComposite result="composite" operator="in" in2="blur"/>
-                    <feBlend result="blend" in="SourceGraphic"/>
+                    <feBlend result="blend" in="SourceGraphic" in2="blur"/>
                     </filter>
                 </defs>
                 <path id="bulle_bleu" data-name="bulle bleu" class="cls-1" d="M36.5,949c71.009,0,123.817,75.08,111.5,110.5-9.221,26.52-53.942,21.58-80,54.5-15.368,19.42-14.161,48.64-31.5,56C4.166,1183.72-75,1130.99-75,1059.5-75,998.472-25.08,949,36.5,949Z" transform="translate(0 -946)"/>

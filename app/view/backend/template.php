@@ -18,19 +18,19 @@
                 </a>
             </div>
             <div id="btn-hamburger">
-                <div class="barre" style="background-color: <?= $color ?>;"></div>
-                <div class="barre" style="background-color: <?= $color ?>;"></div>
-                <div class="barre" style="background-color: <?= $color ?>;"></div>
+                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
+                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
+                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
             </div>
         </div>
         <nav>
             <ul>
                 <li class="pseudo"><?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] ?></li>
-                <hr style="background-color: <?= $color ?>;">
-                <a href="/profil"><li>Profil</li></a>
-                <a href="/dashboard"><li>Tableau de bord</li></a>
-                <hr style="background-color: <?= $color ?>;">
-                <a href="/connexion/logout" style="color: <?= $color ?>;"><li>Déconnexion</li></a>
+                <li class="li-hr"><hr style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></li>
+                <li><a href="/profil" style="color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;">Profil</a></li>
+                <li><a href="/dashboard" style="color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;">Tableau de bord</a></li>
+                <li class="li-hr"><hr style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></li>
+                <li><a href="/connexion/logout" style="color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;">Déconnexion</a></li>
             </ul>
         </nav> 
     </header>
