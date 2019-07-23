@@ -61,6 +61,7 @@ body {
 }
 header {
     overflow-x: hidden;
+    padding-bottom: 130px;
 }
 
 a {
@@ -119,6 +120,10 @@ nav {
 
 nav.view {
     transform: translateX(0%);
+}
+
+nav ul {
+    display: flex;
 }
 
 .pseudo {
@@ -665,9 +670,13 @@ nav .li-hr:hover {
     }
 }
 
-@media screen and (max-width: 421px) {
+@media screen and (max-width: 425px) {
     .container-img-profil {
         top: -62px;
         left: 20px;
+    }
+
+    .container-modals {
+        justify-content: center;
     }
 }
