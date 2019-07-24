@@ -1,6 +1,6 @@
 <?php 
-header('Status: 404 Not Found');
-header('HTTP/1.0 404 Not Found');
+// header('Status: 404 Not Found');
+// header('HTTP/1.0 404 Not Found');
 $title = 'Erreur | Success Mission';
 // echo '<pre>';
 // print_r($_SERVER);
@@ -26,7 +26,7 @@ $title = 'Erreur | Success Mission';
         <nav>
             <div class="container-logo">
                 <a class="link-logo" href="/">
-                    <img id="logo-menu" src="/public/images/logo.png" alt="Logo Success Mission">
+                    <img class="logo-menu" src="/public/images/logo.png" alt="Logo Success Mission">
                 </a>
             </div>
         </nav>

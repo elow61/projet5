@@ -37,7 +37,7 @@ openFormToAddTask();
 function createTask(data) {
     let task = document.createElement('div');
     task.classList.add('task');
-    task.textContent = data.name;
+    task.innerHTML = data.name;
     task.setAttribute('data-id', data.id_task.id);
     task.setAttribute('onclick', 'modal4.viewModal();');
     arrayTasks.push(task);

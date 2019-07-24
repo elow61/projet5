@@ -57,7 +57,7 @@ abstract class Controller {
             {
                 if ($this->session->is_connected()) {
                     $project_name = $this->project->newProject($project, $color);
-                    $id = $this->project->projectId($_SESSION['id']);
+                    $id = $this->project->projectId($_SESSION['id'], $_SESSION['id']);
                     $this->redirecting('dashboard');
                 } 
                 else 

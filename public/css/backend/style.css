@@ -112,6 +112,12 @@ nav {
     border-radius: 5px 5px 5px 5px;
     float: right;
     background-color: #1f2835;
+    /* background-image: url(/public/images/waves/wave-white.svg);
+    background-repeat: repeat-x;
+    background-position: top center;
+    background-position-x: 100px;
+    background-position-y: 66%;
+    animation: transitionWave linear infinite 20s; */
     line-height: 25px;
 
     transform: translateX(100%);
@@ -188,7 +194,6 @@ nav .li-hr:hover {
 /* SPACE DASHBOARD */
 .container-space__dashboard {
     position: relative;
-    top: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -222,16 +227,21 @@ nav .li-hr:hover {
     background: linear-gradient(#1c212e, #242d3d);
     border-radius: 5px 5px 5px 5px;
     padding-left: 10px;
-    width: 300px;
-    height: 150px;
     margin-right: 20px;
     margin-bottom: 20px;
     cursor: pointer;
     text-transform: uppercase;
     font-size: 1.2em;
     color: #fff;
-    transition: transform .2s;
+    transition: color .5s;
     overflow: hidden;
+    border: 1px solid transparent;
+
+}
+
+.create-project:hover {
+    border: 1px solid #fff;
+    color: #3FD5FB;
 }
 
 .dialog {
@@ -442,6 +452,32 @@ nav .li-hr:hover {
 /* ========================================================================================= */
 
 /* WORKSPACE */
+/****************************************************
+********************** INVIT ************************
+****************************************************/
+.container-invit {
+    display: flex;
+}
+
+.btn-invit {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.container-img {
+    display: flex;
+    margin-left: 20px;
+}
+
+.img-min {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
 
 /****************************************************
 ********************** LIST *************************

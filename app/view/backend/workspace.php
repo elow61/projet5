@@ -33,6 +33,31 @@ ob_start();
         <div class="headline" style="background-image: url('<?= $svg_wave?>');">
             <h1><?= $project['project_name']?></h1>
         </div>
+        <!-- Invitation -->
+            <div class="container-invit">
+            <?php if ($main_user == $_SESSION['id']): ?>
+                <div class="btn-invit btn" style="background-color: <?= $color ?>;" onclick="modalInvit.viewModal();">Inviter</div>
+                <div class="modal">
+                    <div id="dialog5" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
+                        <div role="document" class="container-modal">
+                            <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modalInvit.closeModal();">X</button>
+                            <h2 style="background-color: <?= $color ?>;">Inviter</h2>
+                            <form method="POST" action="giveProject">
+                                <input id="input-list" type="text" name="invit_member" value="" placeholder="Adresse e-mail de la personne à inviter">
+                                <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Inviter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php endif;?>
+                <div class="container-img">
+                    <?php foreach ($getImg as $img):?>
+                        <div class="avatar-project">
+                            <img class="img-min" src="<?= $img['img']?>" alt="image profil">
+                        </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>

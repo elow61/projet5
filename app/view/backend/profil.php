@@ -7,11 +7,7 @@ ob_start();
         <h1><?= $_SESSION['first_name']. ' ' . $_SESSION['last_name']?></h1> 
     </div>
     <div class="container-img-profil">
-        <?php if ($profil['url_img'] !== null):?>
-            <img class="rounded" src="<?= $profil['url_img']?>" alt="">
-        <?php else:?>
-            <img src="<?= IMAGES ?>avatars/default.jpg" class="rounded" alt="">
-        <?php endif;?>
+        <img class="rounded" src="<?= $profil['url_img']?>" alt="">
     </div>
     <div class="container-info__profil">
         <p><?= $_SESSION['email']; ?></p>

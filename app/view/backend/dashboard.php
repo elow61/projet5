@@ -8,7 +8,7 @@ ob_start();
     </div>
     <div class="container-modals">
         <div class="modal">
-            <button type="button" class="create-project" onclick="modal.viewModal();">Créer un nouveau projet</button>
+            <button type="button" class="create-project btn" onclick="modal.viewModal();">Créer un projet</button>
             <div id="dialog" class="dialog" role="dialog" aria-hidden="true">
                 <div role="document" class="container-modal">
                     <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal.closeModal();">X</button>
@@ -41,7 +41,7 @@ ob_start();
             </div>
         </div>
         <div class="modal">
-            <button type="button" class="create-project" onclick="modal2.viewModal();">Supprimer un projet</button>
+            <button type="button" class="create-project btn" onclick="modal2.viewModal();">Supprimer un projet</button>
             <div id="dialog2" class="dialog" role="dialog" aria-hidden="true">
                 <div role="document" class="container-modal">
                     <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal2.closeModal();">X</button>
@@ -61,7 +61,7 @@ ob_start();
             </div>
         </div>
         <div class="modal">
-            <button type="button" class="create-project" onclick="modal3.viewModal();">Modifier le nom d'un projet</button>
+            <button type="button" class="create-project btn" onclick="modal3.viewModal();">Modifier un projet</button>
             <div id="dialog3" class="dialog" role="dialog" aria-hidden="true">
                 <div role="document" class="container-modal">
                     <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal3.closeModal();">X</button>
@@ -84,19 +84,41 @@ ob_start();
     </div>
     
     <div class="container-space__dashboard">
-        <div><h3 class="list-projects">Liste de vos projets</h3></div>
+        <div><h3 class="list-projects">Mes projets</h3></div>
         <div class="container-projects">
             <?php if (is_array($projects)): ?>
                 <?php foreach ($projects as $project): ?>
-                    <a href="/workspace/<?=$project['id_project']?>">
-                        <div class="project" style="background:linear-gradient(<?= $project['p_color']?>);">
-                            <h3><?= htmlspecialchars_decode($project['p_name'])?></h3>
-                            <div class="container-bubble">
-                                <div class="bubble bubble-top"></div>
-                                <div class="bubble bubble-bottom"></div>
+                    <?php if ($project['main_user'] == $_SESSION['id']):?>
+                        <a href="/workspace/<?=$project['id_project']?>">
+                            <div class="project" style="background:linear-gradient(<?= $project['p_color']?>);">
+                                <h3><?= htmlspecialchars_decode($project['p_name'])?></h3>
+                                <div class="container-bubble">
+                                    <div class="bubble bubble-top"></div>
+                                    <div class="bubble bubble-bottom"></div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    <?php endif;?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="container-space__dashboard project-invit">
+        <div><h3 class="list-projects">Mes projets collectifs</h3></div>
+        <div class="container-projects">
+            <?php if (is_array($projects)): ?>
+                <?php foreach ($projects as $project): ?>
+                    <?php if ($project['main_user'] !== $_SESSION['id']):?>
+                        <a href="/workspace/<?=$project['id_project']?>">
+                            <div class="project" style="background:linear-gradient(<?= $project['p_color']?>);">
+                                <h3><?= htmlspecialchars_decode($project['p_name'])?></h3>
+                                <div class="container-bubble">
+                                    <div class="bubble bubble-top"></div>
+                                    <div class="bubble bubble-bottom"></div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endif;?>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>

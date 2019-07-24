@@ -55,7 +55,7 @@ class InscriptionController extends Controller {
                     $first_name,
                     $last_name,
                     'false',
-                    null
+                    '../public/images/avatars/default.jpg'
                 );
                 $this->sessionID();
                 break;

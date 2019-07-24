@@ -2,7 +2,6 @@
 namespace App\Router;
 
 use App\Controller\Controller;
-use App\View\View;
 
 class Router {
 

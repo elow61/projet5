@@ -11,7 +11,7 @@ class WorkspaceController extends Controller {
         {
             if ($this->request->paramExist('id'))
             {
-                $project_user = $this->project->getProjectById($this->request->getParam('id'));
+                $project_user = $this->project->getProjectById($this->request->getParam('id'), $_SESSION['id']);
 
                 if ($_SESSION['id'] !== $project_user['id_user'])
                 {
@@ -20,6 +20,8 @@ class WorkspaceController extends Controller {
                 else 
                 {
                     $_SESSION['id_project'] = $project_user['id_project'];
+                    $main_user = $project_user['main_user'];
+                    $getImg = $this->project->getImg($_SESSION['id_project']);
                     $project = $this->project->getOneProject($this->request->getParam('id'));
                     $lists = $this->list->getLists($this->request->getParam('id'));
                     $tasks = $this->task->getTasks($this->request->getParam('id'));
@@ -205,5 +207,37 @@ class WorkspaceController extends Controller {
             require(VIEW_ERROR.'error-404.php');
         }
         echo json_encode($response);
+    }
+
+    public function giveProject()
+    {
+        if ($this->request->paramExist('invit_member'))
+        {
+            $newMember = $this->request->getParam('invit_member');
+            $user = $this->users->get($newMember);
+            if ($newMember == $user['email'])
+            {
+                $idProject = $_SESSION['id_project'];
+                $member = $this->project->getProjectById($idProject, $user['id_user']);
+                if (!$member)
+                {
+                    $giveProject = $this->project->giveProject($user['id_user'], $idProject, $_SESSION['id']);
+                    $getImg = $this->project->getImg($_SESSION['id_project']);
+                    $this->redirecting('workspace/'.$idProject);
+                }
+                else 
+                {
+                    throw new \Exception('Cette personne a déjà accès à ce projet.');
+                }
+                
+            }
+            else {
+                throw new \Exception('Cet utilisateur n\'est pas inscrit en base.');
+            }
+            
+        } else {
+            throw new \Exception('Veuillez entrer l\'adresse email.');
+        }
+        
     }
 }
