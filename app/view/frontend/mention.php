@@ -23,9 +23,9 @@ ob_start();
     <br>
     <h2>Hébergement :</h2>
     <ul>
-        <li><span>Hébergeur</span> : OVH</li>
-        <li><span>Ville</span> : 2 rue Kellermann - 59100 Roubaix - France</li>
-        <li><span>Site Web</span> :  <a href="https://www.ovh.com/fr/">https://www.ovh.com/fr/</a></li>
+        <li><span>Hébergeur</span> : 1&1 IONOS SARL</li>
+        <li><span>Ville</span> : 7, place de la Gare BP 70109 - 57200 Sarreguemines C</li>
+        <li><span>Site Web</span> :  <a href="https://www.ionos.fr/">https://www.ionos.fr/</a></li>
     </ul> 
     <br>
     <h2>Développement :</h2>
