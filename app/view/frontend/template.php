@@ -11,6 +11,7 @@
     <meta property="og:title" content="Success Mission">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="WkgBPwROBubN3v0hOzoRZkHUrtR31rJI3CrZESg-bDo" />
 </head>
 <body>
     <header>

@@ -43,6 +43,6 @@ class ConnexionController extends Controller {
         $_SESSION = [];
         setcookie(session_name(), '', time());
         session_destroy();
-        $this->redirecting(connexion);
+        $this->redirecting('connexion');
     }
 }
