@@ -61,7 +61,7 @@ class ProjectManager extends Manager {
     public function ifProjectExist($id_user, $p_name) 
     {
         $req = $this->db->prepare('SELECT p.id_project p_id, p.project_name p_name, 
-        i.id_user u_id, i.id_project id_project
+        i.id_user u_id, i.id_project id_project, i.main_user main_user
         FROM project AS p
         INNER JOIN user_project AS i
         ON p.id_project = i.id_project AND i.id_user = ? WHERE p.project_name = ?') or die(var_dump($this->db->errorInfo()));
@@ -93,7 +93,7 @@ class ProjectManager extends Manager {
     // Delete project from table reference
     public function deleteProject($id_project, $id_user) 
     {
-        $req = $this->db->prepare('DELETE FROM user_project WHERE id_project = ? AND id_user = ?') or die(var_dump($this->db->errorInfo()));
+        $req = $this->db->prepare('DELETE FROM user_project WHERE id_project = ? AND main_user = ?') or die(var_dump($this->db->errorInfo()));
         $deleteProject = $req->execute(array($id_project, $id_user));
 
         return $deleteProject;

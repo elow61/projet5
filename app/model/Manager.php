@@ -16,4 +16,5 @@ class Manager {
 
 }
 
-
+// $this->db = new \PDO("mysql:host=db5000130959.hosting-data.io;dbname=dbs125746;charset=utf8", 'dbu263092', 'Edenelo_61',
+//         array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));

@@ -23,11 +23,18 @@ class DashboardController extends Controller {
         if ($this->request->paramExist('choice-project'))
         {
             if ($this->session->is_connected())
-            {
+            {                    
                 $project = $this->request->getParam('choice-project');
-                $deleteProject = $this->project->deleteProject($project, $_SESSION['id']);
-                $deleteProjectFrom = $this->project->deleteProjectFrom($project);
-                $this->redirecting('dashboard');
+                $getMain = $this->project->getProjectById($project, $_SESSION['id']);
+                if ($getMain['main_user'] == $_SESSION['id'])
+                {
+                    $deleteProject = $this->project->deleteProject($project, $_SESSION['id']);
+                    $deleteProjectFrom = $this->project->deleteProjectFrom($project);
+                    $this->redirecting('dashboard');    
+                }
+                else{
+                    throw new \Exception('Vous n\'êtes pas le propriétaire de ce projet.');
+                }
             }
             else
             {
@@ -50,8 +57,16 @@ class DashboardController extends Controller {
                 {
                     $project = $this->request->getParam('choice-project');
                     $newName = $this->request->getParam('newName');
-                    $updateProject = $this->project->updateProject($newName, $project);
-                    $this->redirecting('dashboard');
+                    $getMain = $this->project->getProjectById($project, $_SESSION['id']);
+                    if ($getMain['main_user'] == $_SESSION['id'])
+                    {
+                        $updateProject = $this->project->updateProject($newName, $project);
+                        $this->redirecting('dashboard');    
+                    }
+                    else
+                    {
+                        throw new \Exception('Vous n\'êtes pas le propriétaire de ce projet.');
+                    }
                 }
                 else
                 {
