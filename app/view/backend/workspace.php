@@ -43,7 +43,7 @@ ob_start();
                             <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modalInvit.closeModal();">X</button>
                             <h2 style="background-color: <?= $color ?>;">Inviter</h2>
                             <form method="POST" action="giveProject">
-                                <input id="input-list" type="text" name="invit_member" value="" placeholder="Adresse e-mail de la personne à inviter">
+                                <input type="text" name="invit_member" value="" placeholder="Adresse e-mail de la personne à inviter">
                                 <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Inviter</button>
                             </form>
                         </div>
@@ -80,7 +80,7 @@ ob_start();
                                 <!-- Create a task -->
                                 <form method="POST" class="form-task">
                                     <input type="hidden" name="name_list" value="">
-                                    <input type="hidden" class="input_id_list" name="id_list" value="<?= $list['id_list'] ?>">
+                                    <input type="hidden" class="input_id_list" name="input_id_list" value="<?= $list['id_list'] ?>">
                                     <textarea name="name_task" cols="30" rows="5"></textarea>
                                     <div class="container-button">
                                         <button type="submit">Nouvelle tâche</button>

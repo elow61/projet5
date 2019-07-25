@@ -6,7 +6,15 @@ const container = document.getElementById('container-list');
 const btnAddList = document.getElementsByClassName('add-list');
 let arrLists = [];
 
-addAttribute(btnRemoved, 'data-id', 'input-list');
+// Add attribute for the removed Button
+for (let i = 0; i < btnRemoved.length; i++) {
+    let attribute = btnRemoved[i].getAttribute('data-id');
+
+    btnRemoved[i].addEventListener('click', () => {
+        let inputTitle = document.getElementById('input-list');
+        inputTitle.value = attribute;
+    })
+}
 
 const createList = function (data) {
     // lists
@@ -58,12 +66,12 @@ const createList = function (data) {
     const inputNameList = document.createElement('input');
     inputNameList.type = 'hidden';
     inputNameList.name = 'name_list';
-    inputNameList.id = 'name_list';
+    // inputNameList.id = 'name_list';
     const inputIdList = document.createElement('input');
     inputIdList.type = 'hidden';
-    inputIdList.name = 'id_list';
+    inputIdList.name = 'input_id_list';
     inputIdList.classList.add('input_id_list');
-    inputIdList.id = 'id_list';
+    // inputIdList.id = 'id_list';
     inputIdList.value = data.id;
     const texts = document.createElement('textarea');
     texts.name = 'name_task';

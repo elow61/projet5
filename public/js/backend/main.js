@@ -39,6 +39,7 @@ function closeForm (element, cible) {
     
 }
 
+// Function to add attribute for delete or update a task
 function addAttribute(elmtClick, attName, cible, getTitle) {
     let input = document.getElementById(cible);
     const title = document.getElementById(getTitle);

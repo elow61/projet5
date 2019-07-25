@@ -113,9 +113,9 @@ class WorkspaceController extends Controller {
                     $taskName = nl2br(htmlspecialchars($this->request->getParam('name_task')));
                     $ifTaskName = $this->list->getNameList($_SESSION['id_project'], $taskName);
 
-                    if ($this->request->paramExist('id_list'))
+                    if ($this->request->paramExist('input_id_list'))
                     {
-                        $idList = $this->request->getParam('id_list');
+                        $idList = $this->request->getParam('input_id_list');
                         if ($ifTaskName['name_task'] == $taskName) 
                         {
                             $response['error'] = 'Cette tâche existe déjà !';
