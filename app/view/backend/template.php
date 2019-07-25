@@ -18,9 +18,9 @@
                 </a>
             </div>
             <div id="btn-hamburger">
-                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
-                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
-                <div class="barre" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
+                <div class="barre b-1" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
+                <div class="barre b-2" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
+                <div class="barre b-3" style="background-color: <?php if(isset($color)){echo $color;}else{echo '#3FD5FB';}?>;"></div>
             </div>
         </div>
         <nav>

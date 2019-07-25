@@ -139,6 +139,8 @@ nav ul li a{
     padding: 5px;
     margin-right: 20px;
     transition: border .2s ease-in-out;
+    border: 2px solid transparent;
+
 }
 
 nav ul li a:hover {

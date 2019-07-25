@@ -99,15 +99,34 @@ a {
 #btn-hamburger {
     z-index: 20;
     cursor: pointer;
+    background-image: url('/public/images/bubbles/bg-menu.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70px;
+    height: 67px;
+    width: 70px;
+    margin-top: -7px;
 }
 
 #btn-hamburger .barre {
-    width: 35px;
+    width: 40px;
     height: 3px;
     background-color: #3FD5FB;
     margin-top: 8px;
+    margin-left: 17px;
 }
 
+#btn-hamburger .b-1 {
+    margin-top: 21px;
+}
+#btn-hamburger .b-2 {
+    width: 30px;
+    margin-left: 27px;
+}
+#btn-hamburger .b-3 {
+    width: 20px;
+    margin-left: 36px;
+}
 nav {
     border-radius: 5px 5px 5px 5px;
     float: right;
