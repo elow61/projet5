@@ -84,7 +84,10 @@ ob_start();
     </div>
     
     <div class="container-space__dashboard">
-        <div><h3 class="list-projects">Mes projets</h3></div>
+        <div>
+            <h3 class="list-projects">Mes projets</h3>
+            <hr>
+        </div>
         <div class="container-projects">
             <?php if (is_array($projects)): ?>
                 <?php foreach ($projects as $project): ?>
@@ -104,7 +107,10 @@ ob_start();
         </div>
     </div>
     <div class="container-space__dashboard project-invit">
-        <div><h3 class="list-projects">Mes projets invités</h3></div>
+        <div>
+            <h3 class="list-projects">Mes projets invités</h3>
+            <hr>
+        </div>
         <div class="container-projects">
             <?php if (is_array($projects)): ?>
                 <?php foreach ($projects as $project): ?>

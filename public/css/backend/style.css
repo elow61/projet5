@@ -217,10 +217,19 @@ nav .li-hr:hover {
     flex-direction: column;
 }
 
+.container-space__dashboard hr {
+    background-color: #3FD5FB;
+    width: 300px;
+    height: 1px;
+    border-width: 0;
+    float: left;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
 .list-projects {
-    position: absolute;
-    padding-top: 9px;
     padding-left: 25px;
+    margin-bottom: 0;
 }
 
 /****************************************************
@@ -407,9 +416,7 @@ nav .li-hr:hover {
 ********************* PROJECT ***********************
 ****************************************************/
 .container-projects {
-    margin-top: 20px;
     padding-left: 25px;
-    padding-top: 40px;
     display: flex;
     overflow-y: hidden;
 }
