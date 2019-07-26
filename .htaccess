@@ -3,4 +3,4 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?url=$1&action=$2&id=$3 [QSA,L]
-ErrorDocument 404 /app/view/error/error-404.php
+ErrorDocument 404 /app/View/error/error-404.php

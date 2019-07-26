@@ -3,11 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-hamburger').addEventListener('click', () => {
         const sClass = 'view';
         const navigation = document.querySelector('nav');
+        const b1 = document.getElementById('b-1');
+        const b2 = document.getElementById('b-2');
+        const classMove = 'move';
 
         if (navigation.classList.contains(sClass) === true) {
             navigation.classList.remove(sClass);
         } else {
             navigation.classList.add(sClass);
+        }
+
+        if (b1.classList.contains(classMove) === true) {
+            b1.classList.remove(classMove);
+            b2.classList.remove(classMove);
+        } else {
+            b1.classList.add(classMove);
+            b2.classList.add(classMove);
         }
     })
 })
