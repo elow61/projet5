@@ -272,4 +272,30 @@ class WorkspaceController extends Controller {
         }
         
     }
+
+    public function removeMember()
+    {
+        if ($this->isAjax())
+        {
+            $response = [];
+            $idMember = $this->request->getParam('id_member');
+            $idMain = $this->request->getParam('id_main');
+            if ($idMain == $_SESSION['id'])
+            {
+                $deleteMember = $this->users->deleteMember($idMember, $idMain);
+                $response['id-member'] = $idMember;
+                $response['id-main'] = $idMain;
+                header('Content-type: application/json');
+            }
+            else
+            {
+                throw new \Exception('Vous n\'êtes pas le propriétaire de ce projet.');
+            }
+        }
+        else
+        {
+            require(VIEW_ERROR.'error-404.php');
+        }
+        echo json_encode($response);
+    }
 }

@@ -62,4 +62,15 @@ class UsersManager extends Manager {
 
         return $updateImg;
     }
+
+    public function deleteMember($idMember, $idMain)
+    {
+        $req = $this->db->prepare('DELETE FROM user_project WHERE id_user = ? AND main_user = ?')
+        or die(var_dump($this->db->errorInfo()));
+
+        $removeMember = $req->execute(array($idMember, $idMain));
+
+        return $removeMember;
+
+    }
 }

@@ -35,3 +35,4 @@ const modal2 = new Modal('dialog2', 'aria-hidden');
 const modal3 = new Modal('dialog3', 'aria-hidden');
 const modal4 = new Modal('dialog4', 'aria-hidden');
 const modalInvit = new Modal('dialog5', 'aria-hidden');
+const modalMember = new Modal('dialog-member', 'aria-hidden');

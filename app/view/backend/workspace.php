@@ -25,12 +25,13 @@ ob_start();
                 <div class="container-img">
                     <?php foreach ($getImg as $img):?>
                         <div class="avatar-project">
-                            <img class="img-min" src="<?= $img['img']?>" alt="image profil">
+                            <img class="img-min" src="<?= $img['img']?>" alt="image profil" data-id="<?= $img['id']?>" data-main="<?= $img['main'] ?>" onclick="modalMember.viewModal();">
                             <span style="color: <?= $color ?>;"><?=$img['first_name']?></span>
                         </div>
                     <?php endforeach;?>
                 </div>
             </div>
+            <!-- Lists -->
         <div id="container-list">
             <?php if (is_array($lists)): ?>
                 <?php foreach ($lists as $list):?>
@@ -66,7 +67,22 @@ ob_start();
                     </div>
                 <?php endforeach;?>
             <?php endif;?>
-            <div class="btn-list add-list" onclick="modal.viewModal();"></div>
+            <div class="btn-list" id="add-list" onclick="modal.viewModal();"></div>
+            <!-- Delete a member -->
+            <div class="modal">
+                <div id="dialog-member" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
+                    <div role="document" class="container-modal">
+                        <button class="btn" style="color: <?= $color ?>;" aria-label="Fermer" title="Fermer la fenêtre" onclick="modalMember.closeModal();">X</button>
+                        <h2 style="background-color: <?= $color ?>;">Retirer ce membre du projet ?</h2>
+                        <form method="POST" id="form-delete-member">
+                            <input id="input-id-member" type="hidden" name="id_member" value="">
+                            <input id="input-id-main" type="hidden" name="id_main" value="">
+                            <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Oui</button>
+                            <button type="button" class="btn btn-create" onclick="modalMember.closeModal();">Non</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Create a list -->
             <div class="modal">
                 <div id="dialog" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">

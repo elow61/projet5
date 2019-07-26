@@ -514,6 +514,12 @@ nav .li-hr:hover {
     width: 30px;
     height: 30px;
 }
+
+.img-min.bye {
+    transition: transform .3s ease-in-out;
+    transform: translateY(-290px);
+}
+
 .avatar-project {
     display: flex;
     flex-direction: column;
@@ -553,6 +559,11 @@ nav .li-hr:hover {
     overflow-y: scroll;
 }
 
+.list.bye {
+    transition: transform .3s ease-in-out;
+    transform: translateY(900px);
+}
+
 .title-list {
     display: flex;
     justify-content: space-around;
@@ -573,12 +584,12 @@ nav .li-hr:hover {
     cursor: pointer;
 }
 
-.add-list {
+#add-list {
     padding-right: 20px;
     padding-bottom: 20px;
 }
 
-.add-list::before {
+#add-list::before {
     content: '\f055';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;

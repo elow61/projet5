@@ -40,6 +40,7 @@
     <script src="<?= JS ?>backend/main.js"></script>
     <script src="<?= JS ?>backend/lists.js"></script>
     <script src="<?= JS ?>backend/tasks.js"></script>
+    <script src="<?= JS ?>backend/member.js"></script>
     <script src="<?= JS ?>Modal.js"></script>
 </body>
 </html>
