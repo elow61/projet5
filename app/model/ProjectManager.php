@@ -114,7 +114,7 @@ class ProjectManager extends Manager {
 
         $updateProject = $req->execute(array($name, $id));
 
-        return $updateProjet;
+        return $updateProject;
     }
 
     public function nbProject($id_user)

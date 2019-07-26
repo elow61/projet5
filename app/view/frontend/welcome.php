@@ -12,7 +12,6 @@
     <meta property="og:title" content="Success Mission">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
-    <meta name="google-signin-client_id" content="785047213751-h0p7jjmjfvhdhmslgk5tv2822hfpsvut.apps.googleusercontent.com">
 </head>
 <body>
     <header style="min-height:0;">

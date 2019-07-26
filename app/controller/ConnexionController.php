@@ -6,6 +6,7 @@ class ConnexionController extends Controller {
 
     public function index() 
     {
+        $title = 'Connexion | Success Mission';
         require VIEW_FRONT . 'connexion.php';
     }
 

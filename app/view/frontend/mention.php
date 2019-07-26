@@ -1,5 +1,4 @@
 <?php 
-$title = 'Mentions Légales | Success Mission';
 ob_start();
 ?>
 <div class="container-mention">

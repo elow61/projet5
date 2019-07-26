@@ -9,6 +9,8 @@ class DashboardController extends Controller {
         if ($this->session->is_connected()) 
         {
             $projects = $this->project->getProject($_SESSION['id']);
+            $color = "#3FD5FB";
+            $title = 'Tableau de bord | Success Mission';
             require VIEW_BACK . '/dashboard.php';
 
         } 
@@ -60,8 +62,8 @@ class DashboardController extends Controller {
                     $getMain = $this->project->getProjectById($project, $_SESSION['id']);
                     if ($getMain['main_user'] == $_SESSION['id'])
                     {
-                        $updateProject = $this->project->updateProject($newName, $project);
-                        $this->redirecting('dashboard');    
+                        $updatesProject = $this->project->updateProject($newName, $project);
+                        $this->redirecting('dashboard');  
                     }
                     else
                     {

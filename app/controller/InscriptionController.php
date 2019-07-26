@@ -7,6 +7,7 @@ class InscriptionController extends Controller {
 
     public function index() 
     {
+        $title = 'Inscription | Success Mission';
         require VIEW_FRONT.'inscription.php';
     }
 

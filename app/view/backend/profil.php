@@ -1,5 +1,4 @@
 <?php 
-$title = 'Espace profil | ' . $_SESSION['first_name'];
 ob_start();
 ?>
 <div class="container-profil">

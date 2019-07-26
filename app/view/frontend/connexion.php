@@ -1,5 +1,4 @@
 <?php 
-$title = 'Connexion | Success Mission';
 ob_start();
 ?>
     <div class="container-form">
@@ -16,7 +15,7 @@ ob_start();
             <div class="logo-google">
                 <img src="<?= IMAGES ?>logo-google.png" alt="logo google">
             </div>
-            <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email profile&access_type=online&redirect_uri=<?= urlencode('http://localhost:8888/google')?>&response_type=code&client_id=<?= GOOGLE_ID ?>">Utiliser un compte Google</a>
+            <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email profile&access_type=online&redirect_uri=<?= urlencode('http://success-mission.elodie-meunier.fr/google')?>&response_type=code&client_id=<?= GOOGLE_ID ?>">Utiliser un compte Google</a>
         </div>
     </div>
     <div class="bubble_blue">

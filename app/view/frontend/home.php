@@ -1,5 +1,4 @@
 <?php 
-$title = 'Accueil | Success Mission';
 ob_start();
 ?>
         <div class="container-accroche">

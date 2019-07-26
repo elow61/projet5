@@ -1,32 +1,4 @@
 <?php 
-$title = $project['project_name'] . ' | ' . $_SESSION['first_name'];
-$color = "#E6EAEC"; // white
-$svg_wave = "/public/images/waves/wave-white.svg";
-if ($project['color_project'] === "#BC1D35, #EB8C53")
-{
-    $color = "#A33535"; // Red
-    $svg_wave = "/public/images/waves/wave-red.svg";
-} 
-elseif ($project['color_project'] === "#5EBE4B,#CED843")
-{
-    $color = "#5EBE4B"; // Green
-    $svg_wave = "/public/images/waves/wave-green.svg";
-}
-elseif ($project['color_project'] === "#3FD5FB, #f3afe4")
-{
-    $color = "#3FD5FB"; // Blue
-    $svg_wave = "/public/images/waves/wave-blue.svg";
-}
-elseif ($project['color_project'] === "#CED843, #D1721D")
-{
-    $color = "#CED843"; // Yellow
-    $svg_wave = "/public/images/waves/wave-yellow.svg";
-}
-elseif ($project['color_project'] === "#6362D4, #f3afe4")
-{
-    $color = "#6e4eb0"; // Violet
-    $svg_wave = "/public/images/waves/wave-violet.svg";
-}
 ob_start();
 ?>
     <div class="container-workspace">

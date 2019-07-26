@@ -1,5 +1,4 @@
 <?php 
-$title = 'Tableau de bord | Success Mission';
 ob_start();
 ?>
 <div class="container-dashboard">

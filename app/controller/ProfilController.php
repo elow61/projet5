@@ -10,8 +10,9 @@ class ProfilController extends Controller {
         {
             $profil = $this->users->get($_SESSION['email']);
             $nb_project = $this->project->nbProject($_SESSION['id']);
+            $color = "#3FD5FB";
+            $title = 'Espace profil | ' . $_SESSION['first_name'];
             require VIEW_BACK . '/profil.php';
-
         } 
         else 
         {
@@ -101,7 +102,7 @@ class ProfilController extends Controller {
                 $avatar = $_FILES['avatar'];
                 $name = $_SESSION['id'].'.'.substr($avatar['name'], -3);
                 move_uploaded_file($avatar['tmp_name'], "$uploads_dir/$name");
-                $updateAvatar = $this->users->updateImg('../'.$uploads_dir.'/'.$name, $_SESSION['email']);
+                $updateAvatar = $this->users->updateImg('/'.$uploads_dir.'/'.$name, $_SESSION['email']);
                 $this->redirecting('profil');
             }
 
