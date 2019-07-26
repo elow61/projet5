@@ -26,6 +26,7 @@ ob_start();
                     <?php foreach ($getImg as $img):?>
                         <div class="avatar-project">
                             <img class="img-min" src="<?= $img['img']?>" alt="image profil">
+                            <span style="color: <?= $color ?>;"><?=$img['first_name']?></span>
                         </div>
                     <?php endforeach;?>
                 </div>

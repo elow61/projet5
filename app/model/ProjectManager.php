@@ -48,7 +48,7 @@ class ProjectManager extends Manager {
     public function getImg($id_project)
     {
         $req = $this->db->prepare('SELECT p.id_user id_user, p.id_project id_project, p.main_user main, 
-        u.id_user id, u.url_img img 
+        u.id_user id, u.first_name first_name, u.url_img img 
         FROM user_project AS p 
         INNER JOIN users AS u 
         ON p.id_user = u.id_user WHERE p.id_project = ?') or die(var_dump($this->db->errorInfo()));
