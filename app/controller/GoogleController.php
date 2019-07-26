@@ -22,7 +22,7 @@ class GoogleController extends Controller {
                     'code'          => $_GET['code'],
                     'client_id'     => GOOGLE_ID,
                     'client_secret' => GOOGLE_SECRET,
-                    'redirect_uri'  => 'http://localhost:8888/google',
+                    'redirect_uri'  => 'http://success-mission.elodie-meunier.fr/google',
                     'grant_type'    => 'authorization_code'
                 ]
             ]);
@@ -33,8 +33,7 @@ class GoogleController extends Controller {
                 ]
             ]);
             $response = json_decode($response->getBody());
-            // print_r($response);
-            // die();
+            
             if ($response->email_verified === true)
             {
                 $users = $this->users->get($response->email);
@@ -55,7 +54,7 @@ class GoogleController extends Controller {
                     $newUser = $this->users->newUser(
                         $response->email,
                         null,
-                        $response->name,
+                        $response->given_name,
                         $response->family_name,
                         'true',
                         $response->picture

@@ -78,10 +78,10 @@ abstract class Controller {
         }
     }
 
-    protected function redirecting($controller, $action = null) 
+    protected function redirecting($controller, $slash = null, $action = null) 
     {
         $racine = HOST . '/';
-        header('Location: ' . $racine . $controller . '/' . $action);
+        header('Location: ' . $racine . $controller . $slash . $action);
     }
 
     protected function isAjax()
