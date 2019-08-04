@@ -62,7 +62,7 @@ class GoogleController extends Controller {
                     $getUsers = $this->users->get($response->email);
 
                     $_SESSION['id'] = $getUsers['id_user'];
-                    $_SESSION['first_name'] = $response->name;
+                    $_SESSION['first_name'] = $response->given_name;
                     $_SESSION['last_name'] = $response->family_name;
                     $_SESSION['email'] = $response->email;
 
