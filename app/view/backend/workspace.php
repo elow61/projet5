@@ -69,6 +69,7 @@ ob_start();
             <?php endif;?>
             <div class="btn-list" id="add-list" onclick="modal.viewModal();"></div>
             <!-- Delete a member -->
+            <?php if ($main_user == $_SESSION['id']): ?>
             <div class="modal">
                 <div id="dialog-member" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
                     <div role="document" class="container-modal">
@@ -83,6 +84,7 @@ ob_start();
                     </div>
                 </div>
             </div>
+            <?php endif;?>
             <!-- Create a list -->
             <div class="modal">
                 <div id="dialog" class="dialog modal-for_workspace" role="dialog" aria-hidden="true">
@@ -122,7 +124,6 @@ ob_start();
                             </form>
                             <form method="post" id="modal-tasks-update">
                                 <input id="input-task-update" type="hidden" name="id_task" value="">
-                                <!-- <input type="text" name="newTask" id="newTask"> -->
                                 <textarea name="newTask" id="newTask" cols="30" rows="4"></textarea>
                                 <br>
                                 <button type="submit" style="background-color: <?= $color ?>;" class="btn btn-create">Mettre à jour la tâche</button>
@@ -133,7 +134,7 @@ ob_start();
             </div>
         </div>
         <div class="bubble-end">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="237" viewBox="0 0 157 237">                
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="200" viewBox="0 0 157 237">                
                 <defs>
                     <style>
                     .cls-1 {

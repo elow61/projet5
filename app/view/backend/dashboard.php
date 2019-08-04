@@ -1,6 +1,7 @@
 <?php 
 ob_start();
 ?>
+
 <div class="container-dashboard">
     <div class="headline">
         <h1>Tableau de bord</h1>
@@ -48,10 +49,12 @@ ob_start();
                     <form action="/dashboard/delete" method="post">
                         <div class="container-choice-project">
                             <?php foreach ($projects as $project): ?>
+                            <?php if ($project['main_user'] == $_SESSION['id']):?>
                                 <div class="container-input">
                                     <input type="radio" name="choice-project" value="<?= $project['p_id'] ?>">
                                     <label><?= $project['p_name'] ?></label>
                                 </div>
+                                <?php endif;?>
                             <?php endforeach; ?>
                         </div>
                         <button type="submit" class="btn btn-create">Supprimer</button>
@@ -68,10 +71,12 @@ ob_start();
                     <form action="/dashboard/update" method="post">
                         <div class="container-choice-project">
                             <?php foreach ($projects as $project): ?>
+                            <?php if ($project['main_user'] == $_SESSION['id']):?>
                                 <div class="container-input">
                                     <input type="radio" name="choice-project" value="<?= $project['p_id'] ?>" onclick="updateProject(this);">
                                     <label><?= $project['p_name'] ?></label>
                                 </div>
+                                <?php endif;?>
                             <?php endforeach; ?>
                             <input type="text" name="newName" id="newName">
                         </div>
@@ -129,8 +134,26 @@ ob_start();
         </div>
     </div>
     
-    <div class="bubble-blue">
-        <img src="<?= IMAGES_BUBBLE ?>bubble_blue.svg" alt="">
+    <div class="bubble-end">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="200" viewBox="0 0 157 237">                
+            <defs>
+                <style>
+                .cls-1 {
+                    fill: <?= $color ?>;
+                    fill-rule: evenodd;
+                    filter: url(#filter);
+                }
+                </style>
+                <filter id="filter" x="-81" y="946" width="238" height="237" filterUnits="userSpaceOnUse">
+                <feOffset result="offset" dx="-0.261" dy="2.989" in="SourceAlpha"/>
+                <feGaussianBlur result="blur" stdDeviation="2.646"/>
+                <feFlood result="flood" flood-opacity="0.5"/>
+                <feComposite result="composite" operator="in" in2="blur"/>
+                <feBlend result="blend" in="SourceGraphic" in2="blur"/>
+                </filter>
+            </defs>
+            <path id="bulle_bleu" data-name="bulle bleu" class="cls-1" d="M36.5,949c71.009,0,123.817,75.08,111.5,110.5-9.221,26.52-53.942,21.58-80,54.5-15.368,19.42-14.161,48.64-31.5,56C4.166,1183.72-75,1130.99-75,1059.5-75,998.472-25.08,949,36.5,949Z" transform="translate(0 -946)"/>
+        </svg>
     </div>
 </div>
 <?php 

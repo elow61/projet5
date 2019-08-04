@@ -42,7 +42,7 @@ ob_start();
                         <div role="document" class="container-modal">
                             <button class="btn" aria-label="Fermer" title="Fermer la fenêtre" onclick="modal2.closeModal();">X</button>
                             <h2>Modifier le mot de passe : </h2>
-                            <form action="/profil/updatePass" method="post">
+                            <form class="form-update-mdp" action="/profil/updatePass" method="post">
                                 <input type="text" name="old-pass" placeholder="Tapez votre ancien mot de passe">
                                 <input type="text" name="new-pass" placeholder="Tapez votre nouveau mot de passe">
                                 <input type="text" name="new-pass-confirm" placeholder="Confirmez votre nouveau mot de passe">
@@ -67,9 +67,27 @@ ob_start();
             </div>
         <?php endif;?>
 </div>
-<div class="bubble-blue">
-    <img src="<?= IMAGES_BUBBLE ?>bubble_blue.svg" alt="">
-</div>
+<div class="bubble-end">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="200" viewBox="0 0 157 237">                
+        <defs>
+            <style>
+            .cls-1 {
+                fill: <?= $color ?>;
+                fill-rule: evenodd;
+                filter: url(#filter);
+            }
+            </style>
+            <filter id="filter" x="-81" y="946" width="238" height="237" filterUnits="userSpaceOnUse">
+            <feOffset result="offset" dx="-0.261" dy="2.989" in="SourceAlpha"/>
+            <feGaussianBlur result="blur" stdDeviation="2.646"/>
+            <feFlood result="flood" flood-opacity="0.5"/>
+            <feComposite result="composite" operator="in" in2="blur"/>
+            <feBlend result="blend" in="SourceGraphic" in2="blur"/>
+            </filter>
+        </defs>
+        <path id="bulle_bleu" data-name="bulle bleu" class="cls-1" d="M36.5,949c71.009,0,123.817,75.08,111.5,110.5-9.221,26.52-53.942,21.58-80,54.5-15.368,19.42-14.161,48.64-31.5,56C4.166,1183.72-75,1130.99-75,1059.5-75,998.472-25.08,949,36.5,949Z" transform="translate(0 -946)"/>
+    </svg>
+        </div>
 <?php 
 $content = ob_get_clean();
 require 'template.php';
