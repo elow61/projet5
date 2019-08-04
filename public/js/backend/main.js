@@ -1,28 +1,3 @@
-// Menu Hamburger
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn-hamburger').addEventListener('click', () => {
-        const sClass = 'view';
-        const navigation = document.querySelector('nav');
-        const b1 = document.getElementById('b-1');
-        const b2 = document.getElementById('b-2');
-        const classMove = 'move';
-
-        if (navigation.classList.contains(sClass) === true) {
-            navigation.classList.remove(sClass);
-        } else {
-            navigation.classList.add(sClass);
-        }
-
-        if (b1.classList.contains(classMove) === true) {
-            b1.classList.remove(classMove);
-            b2.classList.remove(classMove);
-        } else {
-            b1.classList.add(classMove);
-            b2.classList.add(classMove);
-        }
-    })
-})
-
 // Update project name
 function updateProject(btnRadio) {
      if (btnRadio.checked) {
@@ -50,25 +25,3 @@ function closeForm (element, cible) {
     
 }
 
-// Function to add attribute for delete or update a task
-function addAttribute(elmtClick, attName, cible, getTitle) {
-    let input = document.getElementById(cible);
-    const title = document.getElementById(getTitle);
-
-    if (elmtClick instanceof HTMLCollection) {
-        for (let i = 0; i < elmtClick.length; i++) {
-            let attribute = elmtClick[i].getAttribute(attName);
-            let textHTML = elmtClick[i].textContent;
-            elmtClick[i].addEventListener('click', () => {
-                input.value = attribute;
-                title.textContent = textHTML;
-            })
-        }
-    } else {
-        elmtClick.addEventListener('click', () => {
-            const attribute = elmtClick.getAttribute(attName);
-            title.textContent = elmtClick.textContent;
-            input.value = attribute;
-        })
-    }
-}

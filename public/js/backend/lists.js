@@ -3,7 +3,7 @@ const form = document.getElementById('form');
 const formDelete = document.getElementById('form-delete');
 let btnRemoved = document.getElementsByClassName('remove-list');
 const container = document.getElementById('container-list');
-const btnAddList = document.getElementsByClassName('add-list');
+const btnAddList = document.getElementById('add-list');
 let arrLists = [];
 
 // Add attribute for the removed Button
@@ -29,9 +29,7 @@ const createList = function (data) {
     title.textContent = data.success;
 
     // Button add list placement
-    for (let i = 0; i < btnAddList.length; i++) {
-        container.insertBefore(list, btnAddList[i]);
-    }
+    container.insertBefore(list, btnAddList);
 
     // Button delete a list
     const btnRemove = document.createElement('div');
@@ -66,12 +64,10 @@ const createList = function (data) {
     const inputNameList = document.createElement('input');
     inputNameList.type = 'hidden';
     inputNameList.name = 'name_list';
-    // inputNameList.id = 'name_list';
     const inputIdList = document.createElement('input');
     inputIdList.type = 'hidden';
     inputIdList.name = 'input_id_list';
     inputIdList.classList.add('input_id_list');
-    // inputIdList.id = 'id_list';
     inputIdList.value = data.id;
     const texts = document.createElement('textarea');
     texts.name = 'name_task';
@@ -116,7 +112,7 @@ const createList = function (data) {
     openFormToAddTask();
     closeForm(btnCancel, containerFormTask);
     arrLists.push(list);
-    formSubmit(formPost, 'addTask', createTask, openFormToAddTask);
+    const addTask = new Submit(formPost, 'addTask', createTask);
     modal.closeModal();
 }
 
@@ -125,18 +121,14 @@ const deleteList = function (data) {
         for (let i = 0; i < list.length; i++) {
             let attrList = list[i].getAttribute('data-id');
             if (data == attrList) {
-                list[i].animate([
-                    {transform: 'translateY(0px)'},
-                    {transform: 'translateY(-800px)'}
-                ], {
-                    duration: 1000,
-                    easeing: 'ease'
-                });
-                list[i].style.display = 'none';
+                list[i].classList.add('bye');
+                if (list[i].classList.contains('bye')  === true) {
+                    setTimeout(function(){container.replaceChild(btnAddList, list[i]);}, 200);
+                }
             }
         }
         modal2.closeModal();
 }
 
-formSubmit(form, 'lists', createList);
-formSubmit(formDelete, 'removeLists', deleteList);
+const sendList = new Submit(form, 'lists', createList);
+const removeList = new Submit(formDelete, 'removeLists', deleteList);

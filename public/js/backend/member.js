@@ -1,12 +1,12 @@
 // Add attribute for remove a member
 let img = document.getElementsByClassName('img-min');
 for (let i = 0; i < img.length; i++) {
-    var getId = img[i].getAttribute('data-id');
-    var getMain = img[i].getAttribute('data-main');
+    let getId = img[i].getAttribute('data-id');
+    let getMain = img[i].getAttribute('data-main');
 
     img[i].addEventListener('click', () => {
-        var inputIdMember = document.getElementById('input-id-member');
-        var inputIdMain = document.getElementById('input-id-main');
+        let inputIdMember = document.getElementById('input-id-member');
+        let inputIdMain = document.getElementById('input-id-main');
         inputIdMember.value = getId;
         inputIdMain.value = getMain;
     })
@@ -22,4 +22,4 @@ const deleteMember = function (data) {
     modalMember.closeModal();
 }
 const formDeleteMember = document.getElementById('form-delete-member');
-formSubmit(formDeleteMember, 'removeMember', deleteMember);
+const removeMember = new Submit(formDeleteMember, 'removeMember', deleteMember);

@@ -8,8 +8,8 @@ const formUpdateTask = document.getElementById('modal-tasks-update');
 let tasks = document.getElementsByClassName('task');
 let arrayTasks = [];
 arrayTasks.push(tasks);
-addAttribute(tasks, 'data-id', 'input-task-delete', 'title-name-task');
-addAttribute(tasks, 'data-id', 'input-task-update', 'title-name-task');
+const attDeleteTask = new Attribute(tasks, 'data-id', 'input-task-delete', 'title-name-task');
+const attUpdateTask = new Attribute(tasks, 'data-id', 'input-task-update', 'title-name-task');
 
 // Task form open with button (+tâches)
 function openFormToAddTask() {
@@ -42,8 +42,8 @@ function createTask(data) {
     task.setAttribute('onclick', 'modal4.viewModal();');
     arrayTasks.push(task);
 
-    addAttribute(task, 'data-id', 'input-task-delete', 'title-name-task');
-    addAttribute(task, 'data-id', 'input-task-update', 'title-name-task');
+    const attDeleteTask = new Attribute(task, 'data-id', 'input-task-delete', 'title-name-task');
+    const attUpdateTask = new Attribute(task, 'data-id', 'input-task-update', 'title-name-task');
 
     if (contentTask instanceof HTMLCollection) {
         for (let i = 0; i < contentTask.length; i++) {
@@ -83,7 +83,6 @@ const updateTask = function (data) {
     }
     modal4.closeModal();
 }
-
-formSubmit(formAddTask, 'addTask', createTask, openFormToAddTask);
-formSubmit(formDeleteTask, 'deleteTask', deleteTask);
-formSubmit(formUpdateTask, 'updateTask', updateTask);
+const sendTask = new Submit(formAddTask, 'addTask', createTask);
+const removeTask = new Submit(formDeleteTask, 'deleteTask', deleteTask);
+const updateTasks = new Submit(formUpdateTask, 'updateTask', updateTask);
