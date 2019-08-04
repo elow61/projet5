@@ -163,15 +163,21 @@ nav ul li a:hover {
 }
 
 .headline {
-    top: 50px;
     background-image: url(/public/images/waves/wave-violet-head.svg);
     background-repeat: repeat-x;
     background-position: top center;
     background-position-x: 100px;
     background-position-y: 97%;
-    background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    -ms-background-clip: text;
+    -moz-background-clip: text;
+    -o-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -ms-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -o-text-fill-color: transparent;
+
     animation: transitionWave linear infinite 20s;
 }
 
@@ -181,6 +187,7 @@ nav ul li a:hover {
 }
 
 .headline h1 {
+    display: inline;
     font-size: 5em;
     font-weight: 900;
 }
@@ -553,7 +560,7 @@ figcaption {
 /* Responsive design for home, inscription, connexion pages */
 @media screen and (max-width: 1440px) {
     .container-accroche {
-        padding-top: 0;
+        padding-top: 137px;
         margin-left: 100px;
     }
 }
