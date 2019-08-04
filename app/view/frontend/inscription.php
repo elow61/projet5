@@ -7,7 +7,7 @@ ob_start();
             <p><input type="text" name="first_name" placeholder="Votre prénom"></p>
             <p><input type="text" name="last_name" placeholder="Votre nom"></p>
             <p><input type="email" name="email" placeholder="Votre e-mail"></p>
-            <p><input type="password" name="pass" placeholder="Votre mot de passe" pattern=".{6,}" required title="8 caractères minimum"></p>
+            <p><input type="password" name="pass" placeholder="Votre mot de passe" pattern=".{6,}" required title="6 caractères minimum"></p>
             <p><input type="password" name="pass_confirm" placeholder="Confirmez votre mot de passe" pattern=".{6,}" required title="8 caractères minimum"></p>
             <button class="btn-connexion" type="submit">Commencer</button>
         </form>
