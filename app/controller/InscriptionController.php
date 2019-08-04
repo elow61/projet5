@@ -18,30 +18,30 @@ class InscriptionController extends Controller {
 
         switch (false) {
             case ($this->request->paramExist('first_name') && $this->request->paramExist('last_name')):
-                echo "Veuillez remplir les champs nom et prénom";
+                throw new \Exception("Veuillez remplir les champs nom et prénom");
                 break;
             case ($this->request->paramExist('email')):
-                echo "Veuillez remplir le champ e-mail";
+                throw new \Exception("Veuillez remplir le champ e-mail");
                 break;
 
             case (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $this->request->getParam('email'))):
-                echo "Email non autorisé<hr>";
+                throw new \Exception("Email non autorisé");
                 break;
 
             case ($this->request->getParam('email') !== $getUsers['email']):
-                echo "L'E-mail est déjà inscrit en base de donnée<hr>";
+                throw new \Exception("L'E-mail est déjà inscrit en base de donnée");
                 break;
 
             case ($this->request->paramExist('pass') && $this->request->paramExist('pass_confirm')):
-                "Veuillez remplir les champs mot de passe";
+                throw new \Exception("Veuillez remplir les champs mot de passe");
                 break;
 
             case (preg_match('#^(?=.*[a-z])(?=.*[0-9]).{6,}$#', $this->request->getParam('pass'))):
-                echo 'Mot de passe non autorisé<hr>';
+                throw new \Exception('Mot de passe non autorisé');
                 break;
 
             case ($this->request->getParam('pass_confirm') == $this->request->getParam('pass')):
-                "Combinaison des mots de passe fausse.";
+                throw new \Exception("Combinaison des mots de passe fausse.");
                 break;
 
             default:
@@ -66,7 +66,6 @@ class InscriptionController extends Controller {
     public function sessionID() 
     {
         $getUsers = $this->users->get($this->request->getParam('email'));
-        echo 'connexion réussie';
         $_SESSION['id'] = $getUsers['id_user'];
         $_SESSION['first_name'] = $getUsers['first_name'];
         $_SESSION['last_name'] = $getUsers['last_name'];
