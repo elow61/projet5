@@ -280,17 +280,25 @@ class WorkspaceController extends Controller {
             $response = [];
             $idMember = $this->request->getParam('id_member');
             $idMain = $this->request->getParam('id_main');
-            if ($idMain == $_SESSION['id'])
+            if ($idMain !== $idMember)
             {
-                $deleteMember = $this->users->deleteMember($idMember, $idMain);
-                $response['id-member'] = $idMember;
-                $response['id-main'] = $idMain;
-                header('Content-type: application/json');
+                if ($idMain == $_SESSION['id'])
+                {
+                    $deleteMember = $this->users->deleteMember($idMember, $idMain);
+                    $response['id-member'] = $idMember;
+                    $response['id-main'] = $idMain;
+                    header('Content-type: application/json');    
+                }
+                else
+                {
+                    throw new \Exception('Vous n\'êtes pas le propriétaire de ce projet.');
+                }
             }
             else
             {
-                throw new \Exception('Vous n\'êtes pas le propriétaire de ce projet.');
+                $response['error'] = 'Vous ne pouvez pas vous retirer du projet. Veuillez supprimer le projet dans le tableau de bord.';
             }
+            
         }
         else
         {
