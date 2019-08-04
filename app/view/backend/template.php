@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="<?= CSS ?>backend/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="shortcut icon" href="<?= IMAGES ?>favicon.png" type="image/png">
 </head>
+
 <body>
     <header>
         <div class="container-btn__hamburger">
@@ -26,10 +28,8 @@
         <nav>
             <ul>
                 <li class="pseudo"><?= $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] ?></li>
-                <li class="li-hr"><hr style="background-color: <?= $color?>;"></li>
                 <li><a href="/profil" style="color: <?= $color?>;">Profil</a></li>
                 <li><a href="/dashboard" style="color: <?= $color?>;">Tableau de bord</a></li>
-                <li class="li-hr"><hr style="background-color: <?= $color?>;"></li>
                 <li><a href="/connexion/logout" style="color: <?= $color?>;">Déconnexion</a></li>
             </ul>
         </nav> 
@@ -37,6 +37,9 @@
     <?= $content ?>
 
     <script src="<?= JS ?>ajax.js"></script>
+    <script src="<?= JS ?>backend/Submit.js"></script>
+    <script src="<?= JS ?>backend/Attribute.js"></script>
+    <script src="<?= JS ?>backend/ClassManager.js"></script>
     <script src="<?= JS ?>backend/main.js"></script>
     <script src="<?= JS ?>backend/lists.js"></script>
     <script src="<?= JS ?>backend/tasks.js"></script>

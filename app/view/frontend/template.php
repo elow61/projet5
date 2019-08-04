@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?= CSS ?>style.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="shortcut icon" href="<?= IMAGES ?>favicon.png" type="image/png">
     <meta property="og:title" content="Success Mission">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
